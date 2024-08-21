@@ -6,7 +6,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class TeleopDrivetrain extends Drivetrain {
 
-
     public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap,telemetry);
     }
