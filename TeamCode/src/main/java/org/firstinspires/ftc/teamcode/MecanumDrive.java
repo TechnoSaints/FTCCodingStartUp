@@ -64,6 +64,7 @@ public final class MecanumDrive {
         // drive model parameters
         // GoBilda 312RPM 5203 Motor encoder = 537.7 PPR
         // GoBilda mecanum wheels D = 96 mm
+        // Replace inPerTick and lateralInPerTick with empirically determined value after you have it
         public double ticksPerRev = 537.7;
         public double wheelCircumferenceIn = (96 * Math.PI)/25.4;
         public double inPerTick = wheelCircumferenceIn/ticksPerRev;
@@ -240,7 +241,7 @@ public final class MecanumDrive {
 
         voltageSensor = hardwareMap.voltageSensor.iterator().next();
 
-        localizer = new DriveLocalizer();
+        localizer = new ThreeDeadWheelLocalizer(hardwareMap, PARAMS.inPerTick);
 
         FlightRecorder.write("MECANUM_PARAMS", PARAMS);
     }
