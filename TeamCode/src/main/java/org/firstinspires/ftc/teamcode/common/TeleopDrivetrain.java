@@ -5,6 +5,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class TeleopDrivetrain extends Drivetrain {
+    private double leftFrontFactor = 1.0;
+    private double rightFrontFactor = 1.0;
+    private double leftBackFactor = 1.0;
+    private double rightBackFactor = 1.0;
 
     public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap,telemetry);
@@ -34,10 +38,10 @@ public class TeleopDrivetrain extends Drivetrain {
             rightBackPower /= max;
         }
 
-        leftFrontDrive.setPower(leftFrontPower * maxPower);
-        rightFrontDrive.setPower(rightFrontPower * maxPower);
-        leftBackDrive.setPower(leftBackPower * maxPower);
-        rightBackDrive.setPower(rightBackPower * maxPower);
+        leftFrontDrive.setPower(leftFrontPower * maxPower * leftFrontFactor);
+        rightFrontDrive.setPower(rightFrontPower * maxPower * rightFrontFactor);
+        leftBackDrive.setPower(leftBackPower * maxPower * leftBackFactor);
+        rightBackDrive.setPower(rightBackPower * maxPower * rightBackFactor);
     }
 
     public void stop() {
