@@ -210,7 +210,7 @@ public final class AutoDrivetrain3Wheel {
         }
     }
 
-    public AutoDrivetrain3Wheel(HardwareMap hardwareMap, Telemetry telemetry, Pose2d pose) {
+    public AutoDrivetrain3Wheel(HardwareMap hardwareMap, Pose2d pose) {
         this.pose = pose;
 
         LynxFirmware.throwIfModulesAreOutdated(hardwareMap);

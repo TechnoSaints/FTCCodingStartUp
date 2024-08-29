@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class Bot extends Component {
+public abstract class Bot extends Component {
     private final LiftOneMotor lift;
 
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
@@ -31,5 +31,4 @@ public class Bot extends Component {
     public void liftZero() {
         lift.liftZero();
     }
-
 }
