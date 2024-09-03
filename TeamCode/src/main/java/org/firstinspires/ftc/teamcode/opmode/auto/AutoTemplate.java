@@ -45,9 +45,10 @@ public abstract class AutoTemplate extends LinearOpMode {
         telemetry.addLine("Building trajectory actions.");
         telemetry.update();
 
+        // A sample trajectory action that moves around and call some bot actions
         trajectoryAction1 = bot.drivetrain().actionBuilder(startPose)
                 .afterTime(0, bot.liftToCruisingPosition())
-                .lineToX(24)
+                .lineToX(pose1.position.x)
                 .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
                 .afterDisp(12, bot.openGrabber())
@@ -58,12 +59,14 @@ public abstract class AutoTemplate extends LinearOpMode {
                 .afterTime(5.0, bot.liftToBottomPosition())
                 .build();
 
-        telemetry.addLine("trajectory1 built");
+        telemetry.addLine("trajectoryAction1 built");
         telemetry.update();
 
+        // Another sample trajectory action that moves around and call some bot actions
+        // Initially is the same as trajectoryAction1, but may be changed
         trajectoryAction2 = bot.drivetrain().actionBuilder(startPose)
                 .afterTime(0, bot.liftToCruisingPosition())
-                .lineToX(24)
+                .lineToX(pose2.position.x)
                 .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
                 .afterDisp(12, bot.openGrabber())
@@ -74,9 +77,8 @@ public abstract class AutoTemplate extends LinearOpMode {
                 .afterTime(5.0, bot.liftToBottomPosition())
                 .build();
 
-        telemetry.addLine("trajectory2 built");
+        telemetry.addLine("trajectoryAction2 built");
         telemetry.update();
-
 
         sleep(500);
         telemetry.addLine("Entering detection loop.");
