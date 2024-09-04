@@ -7,7 +7,7 @@ public class TeleopBot extends Bot {
     private TeleopDrivetrain drivetrain = null;
     public TeleopBot(HardwareMap hardwareMap, Telemetry telemetry)
     {
-        super(telemetry);
+        super(hardwareMap, telemetry);
         drivetrain = new TeleopDrivetrain(hardwareMap, telemetry);
     }
 
@@ -22,4 +22,5 @@ public class TeleopBot extends Bot {
     {
         drivetrain.stop();
     }
+
 }
