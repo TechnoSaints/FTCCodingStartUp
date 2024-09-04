@@ -9,9 +9,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.common.TeleopBot;
 
 @Config
-@TeleOp(name = "TeleopNormal", group = "Linear OpMode")
+@TeleOp(name = "TeleopTemplate", group = "Linear OpMode")
 
-public class TeleopNormal extends LinearOpMode {
+public class TeleopTemplate extends LinearOpMode {
 
     private TeleopBot bot;
 
