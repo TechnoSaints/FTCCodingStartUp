@@ -40,9 +40,9 @@ public class AutoTemplate extends LinearOpMode {
         telemetry.update();
 
         startPose = new Pose2d(0, 0, Math.toRadians(0));
-        pose1 = new Pose2d(24, 0, Math.toRadians(0));
+        pose1 = new Pose2d(36, 12, Math.toRadians(0));
         pose2 = new Pose2d(24, 24, Math.toRadians(0));
-        pose3 = new Pose2d(0, 24, Math.toRadians(0));
+        pose3 = new Pose2d(12, -12, Math.toRadians(0));
 
         bot = new AutoBot(hardwareMap, multipleTelemetry, startPose);
         telemetry.addLine("Bot created.");
@@ -54,7 +54,9 @@ public class AutoTemplate extends LinearOpMode {
         // A sample trajectory action that moves around and call some bot actions
         trajectoryAction1 = bot.drivetrain().actionBuilder(startPose)
 //                .afterTime(0, bot.liftToCruisingPosition())
-//                .lineToX(pose1.position.x)
+//                .lineToX(36)
+//                .lineToX(0)
+
                 .splineToLinearHeading(pose1, pose1.heading)
 //                .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
@@ -62,6 +64,7 @@ public class AutoTemplate extends LinearOpMode {
 //                .waitSeconds(1)
                 .splineToLinearHeading(pose3, pose3.heading)
 //                .afterTime(0.5, bot.closeGrabber())
+
                 .splineToLinearHeading(startPose, startPose.heading)
 //                .afterTime(5.0, bot.liftToBottomPosition())
                 .build();
