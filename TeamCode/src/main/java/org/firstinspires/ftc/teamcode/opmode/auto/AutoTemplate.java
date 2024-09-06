@@ -88,7 +88,7 @@ public abstract class AutoTemplate extends LinearOpMode {
         sleep(500);
         telemetry.addLine("Entering detection loop.");
         telemetry.update();
-
+        waitForStart();
         while (!isStarted() && !isStopRequested()) {
             telemetry.addLine("Detecting stuff");
             telemetry.update();
