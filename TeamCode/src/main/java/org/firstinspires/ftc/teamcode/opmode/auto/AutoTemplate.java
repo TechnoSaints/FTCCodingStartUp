@@ -1,17 +1,22 @@
 package org.firstinspires.ftc.teamcode.opmode.auto;
 
 import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.acmerobotics.roadrunner.Action;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.SequentialAction;
 import com.acmerobotics.roadrunner.ftc.Actions;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.common.AutoBot;
 
-public abstract class AutoTemplate extends LinearOpMode {
+@Config
+@Autonomous(name = "AutoTemplate", group = "Linear OpMode")
+public class AutoTemplate extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
     protected AutoBot bot;
@@ -24,11 +29,7 @@ public abstract class AutoTemplate extends LinearOpMode {
 
     protected MultipleTelemetry multipleTelemetry;
 
-    protected AutoTemplate() {
-        startPose = new Pose2d(0, 0, Math.toRadians(0));
-        pose1 = new Pose2d(24, 0, Math.toRadians(-90));
-        pose2 = new Pose2d(24, 24, Math.toRadians(0));
-        pose3 = new Pose2d(0, 24, Math.toRadians(90));
+    public AutoTemplate() {
     }
 
     @Override
@@ -37,6 +38,11 @@ public abstract class AutoTemplate extends LinearOpMode {
         multipleTelemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
         telemetry.addLine("Initializing.");
         telemetry.update();
+
+        startPose = new Pose2d(0, 0, Math.toRadians(0));
+        pose1 = new Pose2d(24, 0, Math.toRadians(-90));
+        pose2 = new Pose2d(24, 24, Math.toRadians(0));
+        pose3 = new Pose2d(0, 24, Math.toRadians(90));
 
         bot = new AutoBot(hardwareMap, multipleTelemetry, startPose);
         telemetry.addLine("Bot created.");
@@ -47,16 +53,16 @@ public abstract class AutoTemplate extends LinearOpMode {
 
         // A sample trajectory action that moves around and call some bot actions
         trajectoryAction1 = bot.drivetrain().actionBuilder(startPose)
-                .afterTime(0, bot.liftToCruisingPosition())
+//                .afterTime(0, bot.liftToCruisingPosition())
                 .lineToX(pose1.position.x)
-                .afterTime(2.5, bot.closeGrabber())
+//                .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
-                .afterDisp(12, bot.openGrabber())
-                .waitSeconds(1)
+//                .afterDisp(12, bot.openGrabber())
+//                .waitSeconds(1)
                 .splineToSplineHeading(pose3, pose3.heading)
-                .afterTime(0.5, bot.closeGrabber())
+//                .afterTime(0.5, bot.closeGrabber())
                 .splineToLinearHeading(startPose, startPose.heading)
-                .afterTime(5.0, bot.liftToBottomPosition())
+//                .afterTime(5.0, bot.liftToBottomPosition())
                 .build();
 
         telemetry.addLine("trajectoryAction1 built");
@@ -79,8 +85,6 @@ public abstract class AutoTemplate extends LinearOpMode {
 
         telemetry.addLine("trajectoryAction2 built");
         telemetry.update();
-
-        sleep(500);
         telemetry.addLine("Entering detection loop.");
         telemetry.update();
 

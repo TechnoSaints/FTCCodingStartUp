@@ -31,13 +31,13 @@ public class TeleopTemplate extends LinearOpMode {
 
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.dpad_up) {
-                bot.creepDirection(1.0, 0.0, 0.0);
-            } else if (gamepad1.dpad_down) {
                 bot.creepDirection(-1.0, 0.0, 0.0);
+            } else if (gamepad1.dpad_down) {
+                bot.creepDirection(1.0, 0.0, 0.0);
             } else if (gamepad1.dpad_left) {
-                bot.creepDirection(0.0, 1.0, 0.0);
-            } else if (gamepad1.dpad_right) {
                 bot.creepDirection(0.0, -1.0, 0.0);
+            } else if (gamepad1.dpad_right) {
+                bot.creepDirection(0.0, 1.0, 0.0);
             } else {
                 driveAxial = gamepad1.left_stick_y;
                 driveStrafe = gamepad1.left_stick_x;
@@ -45,7 +45,7 @@ public class TeleopTemplate extends LinearOpMode {
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
-                    bot.moveDirection(-driveAxial, -driveStrafe, -driveYaw);
+                    bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
         }
     }
