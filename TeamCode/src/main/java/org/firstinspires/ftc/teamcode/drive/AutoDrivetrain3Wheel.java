@@ -70,7 +70,7 @@ public final class AutoDrivetrain3Wheel {
         //public double wheelCircumferenceIn = (96 * Math.PI)/25.4;
         public double inPerTick = 0.00294334069; //wheelCircumferenceIn/ticksPerRev;
         public double lateralInPerTick = 0.002157553880767978;
-        public double trackWidthTicks = 4469.895882124905;
+        public double trackWidthTicks = 4469.895882124905/2;
 
         // feedforward parameters (in tick units)
         public double kS = 0.8821990328887943;
