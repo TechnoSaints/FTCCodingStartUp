@@ -33,6 +33,7 @@ import com.acmerobotics.roadrunner.ftc.RawEncoder;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
@@ -143,9 +144,9 @@ public final class AutoDrivetrain3Wheel {
             imu = lazyImu.get();
 
             // TODO: reverse encoders if needed
-            leftFront.setDirection(DcMotorEx.Direction.FORWARD); // par0
-            leftBack.setDirection(DcMotorEx.Direction.FORWARD);  // perp
-            rightBack.setDirection(DcMotorEx.Direction.REVERSE); // par1
+            leftFront.setDirection(DcMotorSimple.Direction.FORWARD); // par0
+            leftBack.setDirection(DcMotorSimple.Direction.FORWARD);  // perp
+            rightBack.setDirection(DcMotorSimple.Direction.REVERSE); // par1
         }
 
         @Override

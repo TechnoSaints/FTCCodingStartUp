@@ -53,16 +53,16 @@ public class AutoTemplate extends LinearOpMode {
 
         // A sample trajectory action that moves around and call some bot actions
         trajectoryAction1 = bot.drivetrain().actionBuilder(startPose)
-                .afterTime(0, bot.liftToCruisingPosition())
+//                .afterTime(0, bot.liftToCruisingPosition())
                 .lineToX(pose1.position.x)
-                .afterTime(2.5, bot.closeGrabber())
+//                .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
-                .afterDisp(12, bot.openGrabber())
-                .waitSeconds(1)
+//                .afterDisp(12, bot.openGrabber())
+//                .waitSeconds(1)
                 .splineToSplineHeading(pose3, pose3.heading)
-                .afterTime(0.5, bot.closeGrabber())
+//                .afterTime(0.5, bot.closeGrabber())
                 .splineToLinearHeading(startPose, startPose.heading)
-                .afterTime(5.0, bot.liftToBottomPosition())
+//                .afterTime(5.0, bot.liftToBottomPosition())
                 .build();
 
         telemetry.addLine("trajectoryAction1 built");
