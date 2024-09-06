@@ -143,10 +143,8 @@ public final class AutoDrivetrain3Wheel {
 
             imu = lazyImu.get();
 
-            // TODO: reverse encoders if needed
-            leftFront.setDirection(DcMotorSimple.Direction.FORWARD); // par0
-            leftBack.setDirection(DcMotorSimple.Direction.FORWARD);  // perp
-            rightBack.setDirection(DcMotorSimple.Direction.REVERSE); // par1
+            // TODO: reverse motor encoders if needed
+ //           leftFront.setDirection(DcMotorSimple.Direction.FORWARD); // par0
         }
 
         @Override
