@@ -38,7 +38,6 @@ public class AutoTemplate extends LinearOpMode {
         multipleTelemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
         telemetry.addLine("Initializing.");
         telemetry.update();
-        sleep(250);
 
         startPose = new Pose2d(0, 0, Math.toRadians(0));
         pose1 = new Pose2d(24, 0, Math.toRadians(-90));
@@ -48,12 +47,9 @@ public class AutoTemplate extends LinearOpMode {
         bot = new AutoBot(hardwareMap, multipleTelemetry, startPose);
         telemetry.addLine("Bot created.");
         telemetry.update();
-        sleep(250);
-
 
         telemetry.addLine("Building trajectory actions.");
         telemetry.update();
-        sleep(250);
 
         // A sample trajectory action that moves around and call some bot actions
         trajectoryAction1 = bot.drivetrain().actionBuilder(startPose)
@@ -71,7 +67,6 @@ public class AutoTemplate extends LinearOpMode {
 
         telemetry.addLine("trajectoryAction1 built");
         telemetry.update();
-        sleep(250);
 
         // Another sample trajectory action that moves around and call some bot actions
         // Initially is the same as trajectoryAction1, but may be changed
@@ -90,7 +85,6 @@ public class AutoTemplate extends LinearOpMode {
 
         telemetry.addLine("trajectoryAction2 built");
         telemetry.update();
-        sleep(250);
         telemetry.addLine("Entering detection loop.");
         telemetry.update();
 

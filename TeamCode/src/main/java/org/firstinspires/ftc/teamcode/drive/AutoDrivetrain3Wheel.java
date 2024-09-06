@@ -143,7 +143,9 @@ public final class AutoDrivetrain3Wheel {
             imu = lazyImu.get();
 
             // TODO: reverse encoders if needed
-            //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+            leftFront.setDirection(DcMotorEx.Direction.FORWARD); // par0
+            leftBack.setDirection(DcMotorEx.Direction.FORWARD);  // perp
+            rightBack.setDirection(DcMotorEx.Direction.REVERSE); // par1
         }
 
         @Override
@@ -232,7 +234,10 @@ public final class AutoDrivetrain3Wheel {
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // TODO: reverse motor directions if needed
-        //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFront.setDirection(DcMotorEx.Direction.REVERSE);
+        leftBack.setDirection(DcMotorEx.Direction.FORWARD);
+        rightBack.setDirection(DcMotorEx.Direction.FORWARD);
+        rightFront.setDirection(DcMotorEx.Direction.REVERSE);
 
         // TODO: make sure your config has an IMU with this name (can be BNO or BHI)
         //   see https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/configuring/index.html
