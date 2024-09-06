@@ -65,16 +65,16 @@ public final class AutoDrivetrain3Wheel {
         // GoBilda 312RPM 5203 Motor encoder = 537.7 PPR
         // GoBilda mecanum wheels D = 96 mm
         // Replace inPerTick and lateralInPerTick with empirically determined value after you have it
-        public double ticksPerRev = 537.7;
-        public double wheelCircumferenceIn = (96 * Math.PI)/25.4;
-        public double inPerTick = wheelCircumferenceIn/ticksPerRev;
-        public double lateralInPerTick = inPerTick;
-        public double trackWidthTicks = 0;
+        //public double ticksPerRev = 537.7;
+        //public double wheelCircumferenceIn = (96 * Math.PI)/25.4;
+        public double inPerTick = 0.00294334069; //wheelCircumferenceIn/ticksPerRev;
+        public double lateralInPerTick = 0.0023972958829032234;
+        public double trackWidthTicks = 4036.6965352340944;
 
         // feedforward parameters (in tick units)
-        public double kS = 0;
-        public double kV = 0;
-        public double kA = 0;
+        public double kS = 0.5023213352450615;
+        public double kV = 0.000612687386696137;//0
+        public double kA = 0.00001;
 
         // path profile parameters (in inches)
         public double maxWheelVel = 50;
@@ -86,8 +86,8 @@ public final class AutoDrivetrain3Wheel {
         public double maxAngAccel = Math.PI;
 
         // path controller gains
-        public double axialGain = 0.0;
-        public double lateralGain = 0.0;
+        public double axialGain = 0.0; //forward
+        public double lateralGain = 0.5;
         public double headingGain = 0.0; // shared with turn
 
         public double axialVelGain = 0.0;
