@@ -69,12 +69,12 @@ public final class AutoDrivetrain3Wheel {
         //public double ticksPerRev = 537.7;
         //public double wheelCircumferenceIn = (96 * Math.PI)/25.4;
         public double inPerTick = 0.00294334069; //wheelCircumferenceIn/ticksPerRev;
-        public double lateralInPerTick = 0.0023972958829032234;
-        public double trackWidthTicks = 4036.6965352340944;
+        public double lateralInPerTick = 0.002157553880767978;
+        public double trackWidthTicks = 4469.895882124905;
 
         // feedforward parameters (in tick units)
-        public double kS = 0.5023213352450615;
-        public double kV = 0.000612687386696137;//0
+        public double kS = 0.8821990328887943;
+        public double kV = 0.0005507118915878047;//0
         public double kA = 0.00001;
 
         // path profile parameters (in inches)
