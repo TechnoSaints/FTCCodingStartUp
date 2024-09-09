@@ -33,13 +33,11 @@ import com.acmerobotics.roadrunner.ftc.RawEncoder;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.teamcode.messages.DriveCommandMessage;
@@ -52,7 +50,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Config
-public final class AutoDrivetrain3Wheel {
+public final class AutoDrivetrain3DeadWheel {
     public static class Params {
         // IMU orientation
         // TODO: fill in these values based on
@@ -78,9 +76,9 @@ public final class AutoDrivetrain3Wheel {
         public double kA = 0.00001;
 
         // path profile parameters (in inches)
-        public double maxWheelVel = 50;
-        public double minProfileAccel = -30;
-        public double maxProfileAccel = 50;
+        public double maxWheelVel = 25;
+        public double minProfileAccel = -15;
+        public double maxProfileAccel = 15;
 
         // turn profile parameters (in radians)
         public double maxAngVel = Math.PI; // shared with path
@@ -88,7 +86,7 @@ public final class AutoDrivetrain3Wheel {
 
         // path controller gains
         public double axialGain = 0.0; //forward
-        public double lateralGain = 0.5;
+        public double lateralGain = 0.0;
         public double headingGain = 0.0; // shared with turn
 
         public double axialVelGain = 0.0;
@@ -136,10 +134,10 @@ public final class AutoDrivetrain3Wheel {
         private boolean initialized;
 
         public DriveLocalizer() {
-            leftFront = new OverflowEncoder(new RawEncoder(AutoDrivetrain3Wheel.this.leftFront));
-            leftBack = new OverflowEncoder(new RawEncoder(AutoDrivetrain3Wheel.this.leftBack));
-            rightBack = new OverflowEncoder(new RawEncoder(AutoDrivetrain3Wheel.this.rightBack));
-            rightFront = new OverflowEncoder(new RawEncoder(AutoDrivetrain3Wheel.this.rightFront));
+            leftFront = new OverflowEncoder(new RawEncoder(AutoDrivetrain3DeadWheel.this.leftFront));
+            leftBack = new OverflowEncoder(new RawEncoder(AutoDrivetrain3DeadWheel.this.leftBack));
+            rightBack = new OverflowEncoder(new RawEncoder(AutoDrivetrain3DeadWheel.this.rightBack));
+            rightFront = new OverflowEncoder(new RawEncoder(AutoDrivetrain3DeadWheel.this.rightFront));
 
             imu = lazyImu.get();
 
@@ -211,7 +209,7 @@ public final class AutoDrivetrain3Wheel {
         }
     }
 
-    public AutoDrivetrain3Wheel(HardwareMap hardwareMap, Pose2d pose) {
+    public AutoDrivetrain3DeadWheel(HardwareMap hardwareMap, Pose2d pose) {
         this.pose = pose;
 
         LynxFirmware.throwIfModulesAreOutdated(hardwareMap);
