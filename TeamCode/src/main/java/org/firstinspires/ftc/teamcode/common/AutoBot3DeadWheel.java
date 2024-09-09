@@ -10,11 +10,11 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Pose2d;
 import androidx.annotation.NonNull;
 
-public class AutoBot extends Bot {
+public class AutoBot3DeadWheel extends Bot {
     private final AutoDrivetrain3DeadWheel drivetrain;
     private Pose2d startPose;
 
-    public AutoBot(HardwareMap hardwareMap, Telemetry telemetry, Pose2d startPose) {
+    public AutoBot3DeadWheel(HardwareMap hardwareMap, Telemetry telemetry, Pose2d startPose) {
         super(hardwareMap, telemetry);
         drivetrain = new AutoDrivetrain3DeadWheel(hardwareMap, startPose);
     }
