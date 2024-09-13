@@ -34,6 +34,7 @@ import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
@@ -60,7 +61,12 @@ public final class AutoDrivetrain3DeadWheel {
         public RevHubOrientationOnRobot.UsbFacingDirection usbFacingDirection =
                 RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
 
-        // Empirically determined
+        // drive model parameters
+        // GoBilda 312RPM 5203 Motor encoder = 537.7 PPR
+        // GoBilda mecanum wheels D = 96 mm
+        // Replace inPerTick and lateralInPerTick with empirically determined value after you have it
+        //public double ticksPerRev = 537.7;
+        //public double wheelCircumferenceIn = (96 * Math.PI)/25.4;
         public double inPerTick = 0.00294334069; //wheelCircumferenceIn/ticksPerRev;
         public double lateralInPerTick = 0.002157553880767978;
         public double trackWidthTicks = 4469.895882124905;
@@ -136,8 +142,11 @@ public final class AutoDrivetrain3DeadWheel {
 
             imu = lazyImu.get();
 
-            // TODO: reverse motor encoders if needed
- //           leftFront.setDirection(DcMotorSimple.Direction.FORWARD);
+            // TODO: reverse encoders if needed
+            //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+
+
+
         }
 
         @Override
@@ -226,11 +235,9 @@ public final class AutoDrivetrain3DeadWheel {
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // TODO: reverse motor directions if needed
-        leftFront.setDirection(DcMotorEx.Direction.REVERSE);
-        leftBack.setDirection(DcMotorEx.Direction.FORWARD);
-        rightBack.setDirection(DcMotorEx.Direction.FORWARD);
-        rightFront.setDirection(DcMotorEx.Direction.REVERSE);
-
+        //   leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         // TODO: make sure your config has an IMU with this name (can be BNO or BHI)
         //   see https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/configuring/index.html
         lazyImu = new LazyImu(hardwareMap, "imu", new RevHubOrientationOnRobot(
