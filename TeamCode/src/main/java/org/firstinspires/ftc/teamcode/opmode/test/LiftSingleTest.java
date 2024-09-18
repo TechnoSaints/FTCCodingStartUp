@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.common;
+package org.firstinspires.ftc.teamcode.opmode.test;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
@@ -6,7 +6,8 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.LiftSingle;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda117DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.Viper117Long2StageLiftData;
 
 @Config
@@ -16,14 +17,16 @@ public class LiftSingleTest extends LinearOpMode {
 
     private LiftSingle lift;
 
-    LiftSingleTest() {
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", new GoBilda312DcMotorData(), new Viper117Long2StageLiftData());
-    }
-
+    @Override
     public void runOpMode() {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-        waitForStart();
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", new GoBilda117DcMotorData(), new Viper117Long2StageLiftData());
 
+        telemetry.addLine("initialized");
+        sleep(2500);
+        waitForStart();
+        telemetry.addLine("running");
+        sleep(2500);
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.right_trigger > 0.2) {
                 lift.up(gamepad1.right_trigger);
@@ -34,5 +37,4 @@ public class LiftSingleTest extends LinearOpMode {
             }
         }
     }
-
 }
