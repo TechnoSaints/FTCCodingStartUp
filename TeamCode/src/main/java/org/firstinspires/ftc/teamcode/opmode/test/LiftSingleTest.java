@@ -22,6 +22,8 @@ public class LiftSingleTest extends LinearOpMode {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
         lift = new LiftSingle(hardwareMap, telemetry, "lift", true, new GoBilda117DcMotorData(), new Viper117Long2StageLiftData());
 
+        waitForStart();
+
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.right_trigger > 0.2) {
                 lift.up(gamepad1.right_trigger);
