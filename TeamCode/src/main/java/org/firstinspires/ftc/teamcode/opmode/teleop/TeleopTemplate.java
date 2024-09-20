@@ -14,7 +14,6 @@ import org.firstinspires.ftc.teamcode.common.TeleopBot;
 public class TeleopTemplate extends LinearOpMode {
 
     private TeleopBot bot;
-
     public static boolean loggingOn = false;
 
     @Override

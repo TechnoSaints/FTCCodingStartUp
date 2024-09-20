@@ -20,8 +20,7 @@ public class LiftSingleTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", true, new GoBilda223DcMotorData(), new Viper223Long2StageLiftData());
-
+        lift = new LiftSingle(this, hardwareMap, telemetry, "lift", false, false, new GoBilda223DcMotorData(), new Viper223Long2StageLiftData());
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -32,6 +31,7 @@ public class LiftSingleTest extends LinearOpMode {
             } else {
                 lift.stop();
             }
+            lift.log();
         }
     }
 }
