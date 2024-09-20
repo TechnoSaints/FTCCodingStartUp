@@ -22,7 +22,7 @@ public class LiftSingle extends Component {
     private final int minPosition;
     private final int minTolerance;
 
-    public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, MotorData motorData, LiftData liftData) {
+    public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
         maxVelocity = motorData.maxTicksPerSec;
         maxMovePower = liftData.maxMovePower;
@@ -34,7 +34,10 @@ public class LiftSingle extends Component {
 
 //        lift_sensor = hardwareMap.get(TouchSensor.class, "liftSensor");
         motor = hardwareMap.get(DcMotorEx.class, motorName);
-        motor.setDirection(DcMotor.Direction.REVERSE);
+        if (reverseMotor)
+        {
+            motor.setDirection(DcMotor.Direction.REVERSE);
+        }
         zero();
     }
 
