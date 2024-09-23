@@ -15,7 +15,6 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 
 public class LiftSingle extends Component {
     private final DcMotorEx motor;
-//    private final OverflowEncoder encoder;
 //    protected TouchSensor lift_sensor = null;
 
     private final double maxVelocity;
@@ -26,15 +25,10 @@ public class LiftSingle extends Component {
     private final int minPosition;
     private final int minTolerance;
     private double targetVelocity;
-    private ElapsedTime timer = new ElapsedTime();
-    private double prevTime;
-    private double prevPosition;
-    private final LinearOpMode opMode;
 
-    public LiftSingle(LinearOpMode opMode, HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, boolean reverseEncoder, MotorData motorData, LiftData liftData)
+    public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData)
     {
         super(telemetry);
-        this.opMode = opMode;
         maxVelocity = motorData.maxTicksPerSec;
         maxMovePower = liftData.maxMovePower;
         stopPower = liftData.stopPower;
@@ -52,14 +46,12 @@ public class LiftSingle extends Component {
         if (reverseMotor) {
             motor.setDirection(DcMotor.Direction.REVERSE);
         }
-        if (reverseEncoder)
-        {
-//            encoder.setDirection(DcMotorSimple.Direction.REVERSE);
-        }
+
         zero();
     }
 
-    public void stop() {
+    public void stop()
+    {
         stopAtPosition(motor.getCurrentPosition());
     }
 
@@ -72,6 +64,7 @@ public class LiftSingle extends Component {
         } else {
             telemetry.addData("Stopped at Top: ", "false");
         }
+        log();
     }
 
     public void down(double targetPower) {
@@ -83,6 +76,7 @@ public class LiftSingle extends Component {
         } else {
             telemetry.addData("Stopped at Bottom: ", " false");
         }
+        log();
     }
 
     private boolean stoppedAtTop() {
@@ -105,10 +99,11 @@ public class LiftSingle extends Component {
         return stop;
     }
 
-    public void stopAtPosition(int targetPosition) {
+    private void stopAtPosition(int targetPosition) {
         motor.setTargetPosition(targetPosition);
         motor.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         motor.setPower(stopPower);
+        log();
     }
 
     public void zero() {
@@ -119,6 +114,7 @@ public class LiftSingle extends Component {
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        log();
     }
 
     public void log()
