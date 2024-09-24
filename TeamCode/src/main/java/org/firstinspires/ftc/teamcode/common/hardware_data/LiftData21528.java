@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.common.hardware_data;
 
-public class Viper223Long2StageLiftData extends LiftData {
-    public Viper223Long2StageLiftData() {
+public class LiftData21528 extends LiftData {
+    public LiftData21528() {
         maxMovePower = 0.40;
         stopPower = 0.75;
         maxPosition = 3000;
