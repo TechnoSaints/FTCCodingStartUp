@@ -12,8 +12,8 @@ public class Drivetrain extends Component {
     public final DcMotorEx rightFrontDrive;
     public final DcMotorEx leftBackDrive;
     public final DcMotorEx rightBackDrive;
-    protected final double maxNormalPower = 0.85;
-    protected final double maxCreepPower = 0.35;
+    protected final double maxNormalPower = 0.65;
+    protected final double maxCreepPower = 0.25;
     protected double maxPower =  maxNormalPower;
 
     protected Drivetrain(HardwareMap hardwareMap, Telemetry telemetry)
@@ -33,12 +33,12 @@ public class Drivetrain extends Component {
         setBrakingOn();
         setToNormalPower();
     }
-    public void setToNormalPower()
+    protected void setToNormalPower()
     {
         maxPower = maxNormalPower;
     }
 
-    public void setToCreepPower(){
+    protected void setToCreepPower(){
         maxPower = maxCreepPower;
     }
 

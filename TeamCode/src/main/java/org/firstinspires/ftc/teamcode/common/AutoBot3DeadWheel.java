@@ -49,18 +49,6 @@ public class AutoBot3DeadWheel extends Bot {
         return new CloseGrabber();
     }
 
-    public class LiftToCruisingPosition implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Lift Moving to Cruising Position...",1);
-            telemetry.update();
-            return false;
-        }
-    }
-    public Action liftToCruisingPosition() {
-        return new LiftToCruisingPosition();
-    }
-
     public class LiftToBottomPosition implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {

@@ -74,7 +74,7 @@ public class AutoTemplate3DeadWheel extends LinearOpMode {
         // Another sample trajectory action that moves around and call some bot actions
         // Initially is the same as trajectoryAction1, but may be changed
         trajectoryAction2 = bot.drivetrain().actionBuilder(startPose)
-                .afterTime(0, bot.liftToCruisingPosition())
+                .afterTime(0, bot.liftToBottomPosition())
                 .lineToX(pose2.position.x)
                 .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)

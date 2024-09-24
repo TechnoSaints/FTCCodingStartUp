@@ -18,6 +18,7 @@ public abstract class Bot extends Component {
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
         arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
         grabberClose();
+        armClose();
     }
 
     public void grabberClose() {
