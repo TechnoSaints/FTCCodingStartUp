@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.common;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GenericServoData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GrabberServoData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.Viper223Long2StageLiftData;
 
@@ -14,7 +14,7 @@ public abstract class Bot extends Component {
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new Viper223Long2StageLiftData());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GenericServoData());
+        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData());
         grabberClose();
     }
 
