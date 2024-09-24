@@ -1,4 +1,6 @@
-package org.firstinspires.ftc.teamcode.common.hardware_data;
+package org.firstinspires.ftc.teamcode.common.hardware_data.team21528;
+
+import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 
 public class LiftData21528 extends LiftData {
     public LiftData21528() {
