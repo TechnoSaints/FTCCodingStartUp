@@ -1,53 +1,44 @@
 package org.firstinspires.ftc.teamcode.common;
 
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GrabberServoData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.Viper223Long2StageLiftData;
 
 public abstract class Bot extends Component {
-//    private final LiftOneMotor lift;
-
-//    private final Servo grabber;
-//    private final double grabberClosePosition = 0.0;
-//    private final double grabberOpenPosition = 1.0;
+    private final LiftSingle lift;
+    private final ServoSimple grabber;
 
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-//        grabber = hardwareMap.get(Servo.class, "grabber");
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new Viper223Long2StageLiftData());
+        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData());
         grabberClose();
-
-        //       lift = new LiftOneMotor(hardwareMap, telemetry);
     }
 
     public void grabberClose() {
-//        grabber.setPosition(grabberClosePosition);
+        grabber.close();
     }
 
     public void grabberOpen() {
-//        grabber.setPosition(grabberOpenPosition);
+        grabber.open();
     }
 
-    /*
     public void liftUp(double speed) {
-        lift.liftUp(speed);
+        lift.up(speed);
     }
 
     public void liftDown(double speed) {
-        lift.liftDown(speed);
+        lift.down(speed);
     }
 
     public void liftStop() {
         lift.stop();
     }
 
-    public void liftStopAtPosition(int position) {
-        lift.stopAtPosition(position);
-    }
-
     public void liftZero() {
-        lift.liftZero();
+        lift.zero();
     }
-    */
 }
