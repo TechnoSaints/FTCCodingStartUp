@@ -31,7 +31,6 @@ public class ServoTest extends LinearOpMode {
             } else if (gamepad1.left_bumper) {
                 grabber.setPosition(0.0);
             }
-
         }
     }
 }
