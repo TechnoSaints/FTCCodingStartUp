@@ -7,10 +7,10 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData26290;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.GrabberServoData26290;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.LiftData26290;
 
 public abstract class Bot extends Component {
     private final LiftSingle lift;
@@ -18,9 +18,9 @@ public abstract class Bot extends Component {
 
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData26290());
+        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
+        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData26290());
         grabberClose();
         armClose();
     }
