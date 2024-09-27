@@ -9,9 +9,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.common.TeleopBot;
 
 @Config
-@TeleOp(name = "TeleopTemplate", group = "Linear OpMode")
+@TeleOp(name = "Teleop21528", group = "Linear OpMode")
 
-public class TeleopTemplate extends LinearOpMode {
+public class Teleop21528 extends LinearOpMode {
 
     private TeleopBot bot;
     public static boolean loggingOn = false;
@@ -40,7 +40,7 @@ public class TeleopTemplate extends LinearOpMode {
             } else {
                 driveAxial = gamepad1.left_stick_y;
                 driveStrafe = gamepad1.left_stick_x;
-                driveYaw = gamepad1.right_stick_x;
+                driveYaw = -gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
@@ -55,10 +55,16 @@ public class TeleopTemplate extends LinearOpMode {
                 bot.liftStop();
             }
 
-            if (gamepad1.right_bumper) {
+            if (gamepad1.x) {
                 bot.grabberClose();
-            } else if (gamepad1.left_bumper) {
+            } else if (gamepad1.a) {
                 bot.grabberOpen();
+            }
+
+            if (gamepad1.left_bumper) {
+                bot.armClose();
+            } else if (gamepad1.right_bumper) {
+                bot.armOpen();
             }
         }
     }

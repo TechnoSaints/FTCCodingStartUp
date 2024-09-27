@@ -1,9 +1,10 @@
 package org.firstinspires.ftc.teamcode.common.hardware_data;
 
-public class GoBilda312DcMotorData extends MotorData {
-    public GoBilda312DcMotorData() {
+public class GoBilda117DcMotorData extends MotorData{
+
+    public GoBilda117DcMotorData() {
         ticksPerMotorRev = 28;
-        gearRatio = 19.2;
+        gearRatio = 50.9;
         wheelDiameterInches = 96.0 / 25.4;
         liftPulleyDiameterInches = 44.0 / 25.4;
         ticksPerGearboxRev = gearRatio * ticksPerMotorRev;
@@ -16,6 +17,3 @@ public class GoBilda312DcMotorData extends MotorData {
         maxTicksPerSec = maxMotorRps * ticksPerMotorRev;
     }
 }
-
-
-
