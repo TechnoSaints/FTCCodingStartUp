@@ -7,22 +7,26 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.ArmServoData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.GrabberServoData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.LiftData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeGrabberServoData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeWristServoData9800;
 
 public abstract class Bot extends Component {
     private final LiftSingle lift;
-    private final ServoSimple grabber, arm;
+    private final ServoSimple grabber, arm, outtakeGrabber, outtakeWrist;
 
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData9800());
+        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData9800());
+        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData9800());
+        outtakeGrabber = new ServoSimple(hardwareMap, telemetry, "outtakeGrabber", new OuttakeGrabberServoData9800());
+        outtakeWrist = new ServoSimple(hardwareMap, telemetry, "outtakeWrist", new OuttakeWristServoData9800());
         grabberClose();
-        armClose();
+        armOpen();
     }
 
     public void grabberClose() {
@@ -57,6 +61,21 @@ public abstract class Bot extends Component {
         lift.zero();
     }
 
+    public void outtakeGrabberClose(){
+        outtakeGrabber.close();
+    }
+
+    public void outtakeGrabberOpen(){
+        outtakeGrabber.open();
+    }
+
+    public void outtakeWristClose(){
+        outtakeWrist.close();
+    }
+
+    public void outtakeWristOpen(){
+        outtakeWrist.open();
+    }
 
     // Action classes and methods required to use scheduler
     // Intended for use in auto opmodes, but could be used in teleop

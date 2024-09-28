@@ -47,24 +47,37 @@ public class Teleop9800 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-            if (gamepad1.right_trigger > 0.2) {
-                bot.liftUp(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0.2) {
-                bot.liftDown(gamepad1.left_trigger);
+            if (gamepad2.right_trigger > 0.2) {
+                bot.liftDown(gamepad2.right_trigger);
+            } else if (gamepad2.left_trigger > 0.2) {
+                bot.liftUp(gamepad2.left_trigger);
             } else {
                 bot.liftStop();
             }
 
-            if (gamepad1.x) {
+            if (gamepad2.x) {
                 bot.grabberClose();
-            } else if (gamepad1.a) {
+            } else if (gamepad2.a) {
                 bot.grabberOpen();
             }
 
-            if (gamepad1.left_bumper) {
+            if (gamepad2.left_bumper) {
                 bot.armClose();
-            } else if (gamepad1.right_bumper) {
+            } else if (gamepad2.right_bumper) {
                 bot.armOpen();
+            }
+
+            if (gamepad2.y) {
+                bot.outtakeGrabberClose();
+            } else if (gamepad2.b) {
+                bot.outtakeGrabberOpen();
+            }
+
+            if (gamepad2.dpad_right) {
+                bot.outtakeWristClose();
+            }
+            else if (gamepad2.dpad_up) {
+                bot.outtakeWristOpen();
             }
         }
     }
