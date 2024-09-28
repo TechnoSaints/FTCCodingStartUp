@@ -7,24 +7,32 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.ArmServoData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.GoBilda312DcMotorData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.GoBilda312DcMotorDataOuttake9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.GrabberServoData9800;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.LiftData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.LiftDataIntake9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.LiftDataOuttake9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeGrabberServoData9800;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeWristServoData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeArmServoData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.WristServoData9800;
 
 public abstract class Bot extends Component {
-    private final LiftSingle lift;
-    private final ServoSimple grabber, arm, outtakeGrabber, outtakeWrist;
+    private final LiftSingle intakeLift, outtakeLift, lift;
+    private final ServoSimple grabber, arm, outtakeGrabber, outtakeArm, wrist;
 
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData9800());
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
+        intakeLift = new LiftSingle(hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData9800(), new LiftDataIntake9800());
+        outtakeLift = new LiftSingle(hardwareMap, telemetry, "outtakeLift", false, new GoBilda312DcMotorDataOuttake9800(), new LiftDataOuttake9800());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData9800());
         arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData9800());
+        wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData9800());
         outtakeGrabber = new ServoSimple(hardwareMap, telemetry, "outtakeGrabber", new OuttakeGrabberServoData9800());
-        outtakeWrist = new ServoSimple(hardwareMap, telemetry, "outtakeWrist", new OuttakeWristServoData9800());
+        outtakeArm = new ServoSimple(hardwareMap, telemetry, "outtakeArm", new OuttakeArmServoData9800());
         grabberClose();
         armOpen();
     }
@@ -45,7 +53,15 @@ public abstract class Bot extends Component {
         arm.open();
     }
 
-    public void liftUp(double speed) {
+    public void wristClose(){
+        wrist.close();
+    }
+
+    public void wristOpen(){
+        wrist.open();
+    }
+
+    public void liftUp(double speed){
         lift.up(speed);
     }
 
@@ -53,12 +69,40 @@ public abstract class Bot extends Component {
         lift.down(speed);
     }
 
-    public void liftStop() {
+    public void liftStop(){
         lift.stop();
     }
 
-    public void liftZero() {
-        lift.zero();
+    public void intakeLiftUp(double speed) {
+        intakeLift.up(speed);
+    }
+
+    public void intakeLiftDown(double speed) {
+        intakeLift.down(speed);
+    }
+
+    public void intakeLiftStop() {
+        intakeLift.stop();
+    }
+
+    public void intakeLiftZero() {
+        intakeLift.zero();
+    }
+
+    public void outtakeLiftUp(double speed){
+        outtakeLift.up(speed);
+    }
+
+    public void outtakeLiftDown(double speed){
+        outtakeLift.down(speed);
+    }
+
+    public void outtakeLiftZero(){
+        outtakeLift.zero();
+    }
+
+    public void outtakeLiftStop(){
+        outtakeLift.stop();
     }
 
     public void outtakeGrabberClose(){
@@ -69,12 +113,12 @@ public abstract class Bot extends Component {
         outtakeGrabber.open();
     }
 
-    public void outtakeWristClose(){
-        outtakeWrist.close();
+    public void outtakeArmClose(){
+        outtakeArm.close();
     }
 
-    public void outtakeWristOpen(){
-        outtakeWrist.open();
+    public void outtakeArmOpen(){
+        outtakeArm.open();
     }
 
     // Action classes and methods required to use scheduler

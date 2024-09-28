@@ -47,38 +47,68 @@ public class Teleop9800 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-            if (gamepad2.right_trigger > 0.2) {
-                bot.liftDown(gamepad2.right_trigger);
-            } else if (gamepad2.left_trigger > 0.2) {
-                bot.liftUp(gamepad2.left_trigger);
-            } else {
-                bot.liftStop();
-            }
 
-            if (gamepad2.x) {
+
+            if (gamepad1.a) {
                 bot.grabberClose();
-            } else if (gamepad2.a) {
+            } else if (gamepad1.x) {
                 bot.grabberOpen();
             }
 
-            if (gamepad2.left_bumper) {
+            if (gamepad1.y){
                 bot.armClose();
-            } else if (gamepad2.right_bumper) {
+            } else if (gamepad1.b){
                 bot.armOpen();
             }
 
-            if (gamepad2.y) {
+            if (gamepad2.dpad_up) {
+                bot.armClose();
+            } else if (gamepad2.dpad_right) {
+                bot.armOpen();
+            }
+
+            if (gamepad2.dpad_down) {
+                bot.grabberClose();
+            } else if (gamepad2.dpad_left) {
+                bot.grabberOpen();
+            }
+
+            if (gamepad2.a) {
                 bot.outtakeGrabberClose();
-            } else if (gamepad2.b) {
+            } else if (gamepad2.x) {
                 bot.outtakeGrabberOpen();
             }
 
-            if (gamepad2.dpad_right) {
-                bot.outtakeWristClose();
+            if (gamepad2.b) {
+                bot.outtakeArmClose();
             }
-            else if (gamepad2.dpad_up) {
-                bot.outtakeWristOpen();
+            else if (gamepad2.y) {
+                bot.outtakeArmOpen();
             }
+
+            if (gamepad2.right_stick_button){
+                bot.wristClose();
+            }
+            else if (gamepad2.left_stick_button){
+                bot.wristOpen();
+            }
+
+            if (gamepad2.right_bumper) {
+                bot.intakeLiftUp(1);
+            } else if (gamepad2.left_bumper) {
+                bot.intakeLiftDown(1);
+            } else {
+                bot.intakeLiftZero();
+            }
+
+            if (gamepad2.right_trigger > 0.2) {
+                bot.outtakeLiftUp(gamepad2.right_trigger);
+            } else if (gamepad2.left_trigger > 0.2) {
+                bot.outtakeLiftDown(gamepad2.left_trigger);
+            } else {
+                bot.outtakeLiftZero();
+            }
+
         }
     }
 }
