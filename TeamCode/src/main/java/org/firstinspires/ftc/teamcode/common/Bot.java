@@ -20,12 +20,12 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeArmSe
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.WristServoData9800;
 
 public abstract class Bot extends Component {
-    private final LiftSingle intakeLift, outtakeLift, lift;
+    private final LiftSingle intakeLift, outtakeLift;
     private final ServoSimple grabber, arm, outtakeGrabber, outtakeArm, wrist;
 
     public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
+       // lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
         intakeLift = new LiftSingle(hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData9800(), new LiftDataIntake9800());
         outtakeLift = new LiftSingle(hardwareMap, telemetry, "outtakeLift", false, new GoBilda312DcMotorDataOuttake9800(), new LiftDataOuttake9800());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData9800());
@@ -34,7 +34,6 @@ public abstract class Bot extends Component {
         outtakeGrabber = new ServoSimple(hardwareMap, telemetry, "outtakeGrabber", new OuttakeGrabberServoData9800());
         outtakeArm = new ServoSimple(hardwareMap, telemetry, "outtakeArm", new OuttakeArmServoData9800());
         grabberClose();
-        armOpen();
     }
 
     public void grabberClose() {
@@ -61,17 +60,17 @@ public abstract class Bot extends Component {
         wrist.open();
     }
 
-    public void liftUp(double speed){
-        lift.up(speed);
-    }
+   // public void liftUp(double speed){
+  //      lift.up(speed);
+ //   }
 
-    public void liftDown(double speed) {
-        lift.down(speed);
-    }
+//    public void liftDown(double speed) {
+  //      lift.down(speed);
+ //   }
 
-    public void liftStop(){
-        lift.stop();
-    }
+ //   public void liftStop(){
+   //     lift.stop();
+  //  }
 
     public void intakeLiftUp(double speed) {
         intakeLift.up(speed);
