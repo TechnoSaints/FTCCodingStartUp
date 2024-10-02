@@ -60,12 +60,6 @@ public class Teleop26290 extends LinearOpMode {
             } else if (gamepad1.a) {
                 bot.grabberOpen();
             }
-
-            if (gamepad1.left_bumper) {
-                bot.armClose();
-            } else if (gamepad1.right_bumper) {
-                bot.armOpen();
-            }
         }
     }
 }
