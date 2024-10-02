@@ -6,15 +6,14 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot21528;
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.TeleopBot9800;
 
 @Config
-@TeleOp(name = "Teleop21528", group = "Linear OpMode")
+@TeleOp(name = "Teleop9800", group = "Linear OpMode")
 
-public class Teleop21528 extends LinearOpMode {
+public class Teleop9800 extends LinearOpMode {
 
-    private TeleopBot21528 bot;
+    private TeleopBot9800 bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -26,7 +25,7 @@ public class Teleop21528 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot21528(hardwareMap, telemetry);
+        bot = new TeleopBot9800(hardwareMap, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -48,31 +47,68 @@ public class Teleop21528 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-            if (gamepad1.right_trigger > 0.2) {
-                bot.liftUp(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0.2) {
-                bot.liftDown(gamepad1.left_trigger);
-            } else {
-                bot.liftStop();
-            }
 
-            if (gamepad1.x) {
+
+            if (gamepad1.a) {
                 bot.grabberClose();
-            } else if (gamepad1.a) {
+            } else if (gamepad1.x) {
                 bot.grabberOpen();
             }
 
-            if (gamepad1.left_bumper) {
+            if (gamepad1.y){
                 bot.armClose();
-            } else if (gamepad1.right_bumper) {
+            } else if (gamepad1.b){
                 bot.armOpen();
             }
 
-            if (gamepad1.b){
-                bot.wristOpen();
-            } else if (gamepad1.y) {
+            if (gamepad2.dpad_up) {
+                bot.armClose();
+            } else if (gamepad2.dpad_right) {
+                bot.armOpen();
+            }
+
+            if (gamepad2.dpad_down) {
+                bot.grabberClose();
+            } else if (gamepad2.dpad_left) {
+                bot.grabberOpen();
+            }
+
+            if (gamepad2.a) {
+                bot.outtakeGrabberClose();
+            } else if (gamepad2.x) {
+                bot.outtakeGrabberOpen();
+            }
+
+            if (gamepad2.b) {
+                bot.outtakeArmClose();
+            }
+            else if (gamepad2.y) {
+                bot.outtakeArmOpen();
+            }
+
+            if (gamepad2.right_stick_button){
                 bot.wristClose();
             }
+            else if (gamepad2.left_stick_button){
+                bot.wristOpen();
+            }
+
+            if (gamepad2.right_bumper) {
+                bot.intakeLiftUp(1);
+            } else if (gamepad2.left_bumper) {
+                bot.intakeLiftDown(1);
+            } else {
+                bot.intakeLiftZero();
+            }
+
+            if (gamepad2.right_trigger > 0.2) {
+                bot.outtakeLiftUp(gamepad2.right_trigger);
+            } else if (gamepad2.left_trigger > 0.2) {
+                bot.outtakeLiftDown(gamepad2.left_trigger);
+            } else {
+                bot.outtakeLiftZero();
+            }
+
         }
     }
 }
