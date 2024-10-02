@@ -4,8 +4,8 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 
 public class LiftData21528 extends LiftData {
     public LiftData21528() {
-        maxMovePower = 0.40;
-        stopPower = 0.75;
+        maxMovePower = 0.65;
+        stopPower = 0.90;
         maxPosition = 3000;
         maxTolerance = 25;
         minPosition = 0;

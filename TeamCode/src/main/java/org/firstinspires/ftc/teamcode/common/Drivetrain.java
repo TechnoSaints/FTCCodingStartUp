@@ -6,29 +6,34 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 
 public class Drivetrain extends Component {
     public final DcMotorEx leftFrontDrive;
     public final DcMotorEx rightFrontDrive;
     public final DcMotorEx leftBackDrive;
     public final DcMotorEx rightBackDrive;
-    protected final double maxNormalPower = 0.65;
-    protected final double maxCreepPower = 0.25;
-    protected double maxPower =  maxNormalPower;
+    protected final double maxNormalPower;
+    protected final double maxCreepPower;
+    protected double maxPower;
 
-    protected Drivetrain(HardwareMap hardwareMap, Telemetry telemetry)
+    protected Drivetrain(HardwareMap hardwareMap, Telemetry telemetry, DrivetrainData drivetrainData)
     {
         super(telemetry);
+        maxNormalPower = drivetrainData.maxNormalPower;
+        maxCreepPower = drivetrainData.maxCreepPower;
+        maxPower = maxNormalPower;
+
 
         leftFrontDrive = hardwareMap.get(DcMotorEx.class, "leftFrontDrive");
         leftBackDrive = hardwareMap.get(DcMotorEx.class, "leftBackDrive");
         rightFrontDrive = hardwareMap.get(DcMotorEx.class, "rightFrontDrive");
         rightBackDrive = hardwareMap.get(DcMotorEx.class, "rightBackDrive");
 
-        leftFrontDrive.setDirection(DcMotorSimple.Direction.FORWARD);
-        leftBackDrive.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightFrontDrive.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightBackDrive.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFrontDrive.setDirection(drivetrainData.leftFrontDirection);
+        leftBackDrive.setDirection(drivetrainData.leftBackDirection);
+        rightFrontDrive.setDirection(drivetrainData.rightFrontDirection);
+        rightBackDrive.setDirection(drivetrainData.rightBackDirection);
 
         setBrakingOn();
         setToNormalPower();
