@@ -53,8 +53,6 @@ public class Teleop9800 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-
-
             if ((gamepad1.a) && (timer.milliseconds() > 250)) {
                 if (!grabberPressed) {
                     timer.reset();
@@ -68,18 +66,6 @@ public class Teleop9800 extends LinearOpMode {
             }
 
             if ((gamepad1.x) && (timer.milliseconds() > 250)){
-                if (!armPressed) {
-                    timer.reset();
-                    armPressed = true;
-                    bot.armClose();
-                } else {
-                    timer.reset();
-                    armPressed = false;
-                    bot.armOpen();
-                }
-            }
-
-            if ((gamepad1.x) && (timer.milliseconds() > 250)) {
                 if (!armPressed) {
                     timer.reset();
                     armPressed = true;
@@ -154,7 +140,6 @@ public class Teleop9800 extends LinearOpMode {
             } else {
                 bot.outtakeLiftZero();
             }
-
         }
     }
 }
