@@ -1,24 +1,30 @@
 package org.firstinspires.ftc.teamcode.common;
 
 import androidx.annotation.NonNull;
+
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.ArmAServoData26290;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.ArmBServoData26290;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.GrabberServoData26290;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.LiftData26290;
 
 public abstract class Bot26290 extends Component {
     private final LiftSingle lift;
     private final ServoSimple grabber;
+    private final ServoSimple arma;
+    private final ServoSimple armb;
 
     public Bot26290(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", true, new GoBilda312DcMotorData(), new LiftData26290());
+        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
+        arma = new ServoSimple(hardwareMap, telemetry, "arma", new ArmAServoData26290());
+        armb = new ServoSimple(hardwareMap, telemetry, "armb", new ArmBServoData26290());
         grabberClose();
     }
 
@@ -28,6 +34,16 @@ public abstract class Bot26290 extends Component {
 
     public void grabberOpen() {
         grabber.open();
+    }
+
+    public void armClose() {
+        arma.close();
+        armb.close();
+    }
+
+    public void armOpen() {
+        arma.open();
+        armb.open();
     }
 
     public void liftUp(double speed) {
