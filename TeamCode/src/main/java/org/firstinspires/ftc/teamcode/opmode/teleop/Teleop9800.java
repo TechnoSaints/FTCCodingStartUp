@@ -47,8 +47,6 @@ public class Teleop9800 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-
-
             if (gamepad1.a) {
                 bot.grabberClose();
             } else if (gamepad1.x) {
@@ -108,7 +106,6 @@ public class Teleop9800 extends LinearOpMode {
             } else {
                 bot.outtakeLiftZero();
             }
-
         }
     }
 }
