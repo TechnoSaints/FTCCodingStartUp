@@ -6,14 +6,14 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot;
+import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
 
 @Config
 @TeleOp(name = "TeleopTemplate", group = "Linear OpMode")
 
 public class TeleopTemplate extends LinearOpMode {
 
-    private TeleopBot bot;
+    private TeleopBotTemplate bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -25,7 +25,7 @@ public class TeleopTemplate extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot(hardwareMap, telemetry);
+        bot = new TeleopBotTemplate(hardwareMap, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -60,6 +60,29 @@ public class TeleopTemplate extends LinearOpMode {
             } else if (gamepad1.left_bumper) {
                 bot.grabberOpen();
             }
+
+/*
+            // How to use the same button to do off and on
+            // First two lines go before main loop
+            boolean pressed = false;
+            ElapsedTime timer = new ElapsedTime();
+
+            // Remaining line go inside loop
+            if ((gamepad1.a) && (timer.milliseconds() > 250))
+            {
+                if (!pressed)
+                {_
+                    // Turn thing on
+                    timer.reset();
+                    pressed = true;
+                } else
+                {
+                    // Turn thing off
+                    timer.reset();
+                    pressed = false;
+                }
+            }
+  */
         }
     }
 }

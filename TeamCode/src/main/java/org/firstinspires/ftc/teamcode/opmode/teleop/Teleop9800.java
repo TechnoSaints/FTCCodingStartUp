@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot;
+import org.firstinspires.ftc.teamcode.common.TeleopBot9800;
 
 import java.security.KeyStore;
 
@@ -16,7 +16,7 @@ import java.security.KeyStore;
 
 public class Teleop9800 extends LinearOpMode {
 
-    private TeleopBot bot;
+    private TeleopBot9800 bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -31,7 +31,7 @@ public class Teleop9800 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot(hardwareMap, telemetry);
+        bot = new TeleopBot9800(hardwareMap, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {

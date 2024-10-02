@@ -2,9 +2,9 @@ package org.firstinspires.ftc.teamcode.common.hardware_data.team21528;
 
 import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 
-public class ArmServoData21528 extends ServoData {
-    public ArmServoData21528() {
-        openPosition = 1;
-        closePosition = 0.6;
+public class WristServoData21528 extends ServoData {
+    public WristServoData21528() {
+        openPosition = 0.2;
+        closePosition = 0.8;
     }
 }

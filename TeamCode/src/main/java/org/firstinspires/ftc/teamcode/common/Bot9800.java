@@ -19,11 +19,12 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeGrabb
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeArmServoData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.WristServoData9800;
 
-public abstract class Bot extends Component {
+
+public abstract class Bot9800 extends Component {
     private final LiftSingle intakeLift, outtakeLift;
     private final ServoSimple grabber, arm, outtakeGrabber, outtakeArm, wrist;
 
-    public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
+    public Bot9800(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
        // lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
         intakeLift = new LiftSingle(hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData9800(), new LiftDataIntake9800());
