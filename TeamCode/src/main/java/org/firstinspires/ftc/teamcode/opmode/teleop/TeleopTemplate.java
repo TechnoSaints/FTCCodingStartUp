@@ -60,6 +60,29 @@ public class TeleopTemplate extends LinearOpMode {
             } else if (gamepad1.left_bumper) {
                 bot.grabberOpen();
             }
+
+/*
+            // How to use the same button to do off and on
+            // First two lines go before main loop
+            boolean pressed = false;
+            ElapsedTime timer = new ElapsedTime();
+
+            // Remaining line go inside loop
+            if ((gamepad1.a) && (timer.milliseconds() > 250))
+            {
+                if (!pressed)
+                {_
+                    // Turn thing on
+                    timer.reset();
+                    pressed = true;
+                } else
+                {
+                    // Turn thing off
+                    timer.reset();
+                    pressed = false;
+                }
+            }
+  */
         }
     }
 }
