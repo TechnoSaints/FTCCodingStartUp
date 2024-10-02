@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTemplate;
 
 @Config
 @Autonomous(name = "AutoTemplate3DeadWheel", group = "Linear OpMode")
-public class Auto3DeadWheelTemplate extends LinearOpMode {
+public class AutoTemplate extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
     protected AutoBot3DeadWheelTemplate bot;
@@ -28,7 +28,7 @@ public class Auto3DeadWheelTemplate extends LinearOpMode {
 
     protected MultipleTelemetry multipleTelemetry;
 
-    public Auto3DeadWheelTemplate() {
+    public AutoTemplate() {
     }
 
     @Override

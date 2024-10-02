@@ -5,15 +5,15 @@ import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.drive.AutoDrivetrain;
+import org.firstinspires.ftc.teamcode.drive.AutoDrivetrainTemplate;
 import org.firstinspires.ftc.teamcode.drive.TankDrive;
 
 public final class SplineTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         Pose2d beginPose = new Pose2d(0, 0, 0);
-        if (TuningOpModes.DRIVE_CLASS.equals(AutoDrivetrain.class)) {
-            AutoDrivetrain drive = new AutoDrivetrain(hardwareMap, beginPose);
+        if (TuningOpModes.DRIVE_CLASS.equals(AutoDrivetrainTemplate.class)) {
+            AutoDrivetrainTemplate drive = new AutoDrivetrainTemplate(hardwareMap, beginPose);
 
             waitForStart();
 
