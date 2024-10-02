@@ -3,9 +3,9 @@ package org.firstinspires.ftc.teamcode.common;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class TeleopBot extends Bot {
+public class TeleopBotTemplate extends Bot {
     private TeleopDrivetrain drivetrain = null;
-    public TeleopBot(HardwareMap hardwareMap, Telemetry telemetry)
+    public TeleopBotTemplate(HardwareMap hardwareMap, Telemetry telemetry)
     {
         super(hardwareMap, telemetry);
         drivetrain = new TeleopDrivetrain(hardwareMap, telemetry);
