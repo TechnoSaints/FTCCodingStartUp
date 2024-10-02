@@ -26,7 +26,7 @@ public abstract class Bot9800 extends Component {
 
     public Bot9800(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-       // lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
+        // lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
         intakeLift = new LiftSingle(hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData9800(), new LiftDataIntake9800());
         outtakeLift = new LiftSingle(hardwareMap, telemetry, "outtakeLift", false, new GoBilda312DcMotorDataOuttake9800(), new LiftDataOuttake9800());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData9800());
@@ -53,25 +53,25 @@ public abstract class Bot9800 extends Component {
         arm.open();
     }
 
-    public void wristClose(){
+    public void wristClose() {
         wrist.close();
     }
 
-    public void wristOpen(){
+    public void wristOpen() {
         wrist.open();
     }
 
-   // public void liftUp(double speed){
-  //      lift.up(speed);
- //   }
+    // public void liftUp(double speed){
+    //      lift.up(speed);
+    //   }
 
 //    public void liftDown(double speed) {
-  //      lift.down(speed);
- //   }
+    //      lift.down(speed);
+    //   }
 
- //   public void liftStop(){
-   //     lift.stop();
-  //  }
+    //   public void liftStop(){
+    //     lift.stop();
+    //  }
 
     public void intakeLiftUp(double speed) {
         intakeLift.up(speed);
@@ -89,35 +89,35 @@ public abstract class Bot9800 extends Component {
         intakeLift.zero();
     }
 
-    public void outtakeLiftUp(double speed){
+    public void outtakeLiftUp(double speed) {
         outtakeLift.up(speed);
     }
 
-    public void outtakeLiftDown(double speed){
+    public void outtakeLiftDown(double speed) {
         outtakeLift.down(speed);
     }
 
-    public void outtakeLiftZero(){
+    public void outtakeLiftZero() {
         outtakeLift.zero();
     }
 
-    public void outtakeLiftStop(){
+    public void outtakeLiftStop() {
         outtakeLift.stop();
     }
 
-    public void outtakeGrabberClose(){
+    public void outtakeGrabberClose() {
         outtakeGrabber.close();
     }
 
-    public void outtakeGrabberOpen(){
+    public void outtakeGrabberOpen() {
         outtakeGrabber.open();
     }
 
-    public void outtakeArmClose(){
+    public void outtakeArmClose() {
         outtakeArm.close();
     }
 
-    public void outtakeArmOpen(){
+    public void outtakeArmOpen() {
         outtakeArm.open();
     }
 
@@ -126,7 +126,7 @@ public abstract class Bot9800 extends Component {
     public class OpenGrabber implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Opening...",1);
+            telemetry.addData("Grabber Opening...", 1);
             telemetry.update();
             return false;
         }
@@ -139,7 +139,7 @@ public abstract class Bot9800 extends Component {
     public class CloseGrabber implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Closing...",1);
+            telemetry.addData("Grabber Closing...", 1);
             telemetry.update();
             return false;
         }
@@ -152,22 +152,25 @@ public abstract class Bot9800 extends Component {
     public class LiftToBottomPosition implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Lift Moving to Bottom Position...",1);
+            telemetry.addData("Lift Moving to Bottom Position...", 1);
             telemetry.update();
             return false;
         }
     }
+
     public Action liftToBottomPosition() {
         return new LiftToBottomPosition();
     }
+
     public class Shutdown implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Shutting Bot Down...",1);
+            telemetry.addData("Shutting Bot Down...", 1);
             telemetry.update();
             return false;
         }
     }
+
     public Action shutdown() {
         return new Shutdown();
     }
