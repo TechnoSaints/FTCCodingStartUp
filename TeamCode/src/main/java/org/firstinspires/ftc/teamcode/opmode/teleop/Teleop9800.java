@@ -77,18 +77,6 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad1.a) && (timer.milliseconds() > 250)) {
-                if (!grabberPressed){
-                    timer.reset();
-                    grabberPressed = true;
-                    bot.grabberClose();
-                } else {
-                    timer.reset();
-                    grabberPressed = false;
-                    bot.grabberOpen();
-                }
-            }
-
             if ((gamepad1.b) && (timer.milliseconds() > 250)) {
                 if (!oGrabberPressed){
                     timer.reset();
