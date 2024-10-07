@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData21528;
 
-public class TeleopBot21528 extends Bot21528 {
+public class TeleopBot26290 extends Bot26290 {
     private TeleopDrivetrain drivetrain = null;
 
-    public TeleopBot21528(HardwareMap hardwareMap, Telemetry telemetry) {
+    public TeleopBot26290(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap, telemetry);
         drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528());
     }
