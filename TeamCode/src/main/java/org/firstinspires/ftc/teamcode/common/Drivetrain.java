@@ -34,7 +34,6 @@ public class Drivetrain extends Component {
         leftBackDrive.setDirection(drivetrainData.leftBackDirection);
         rightFrontDrive.setDirection(drivetrainData.rightFrontDirection);
         rightBackDrive.setDirection(drivetrainData.rightBackDirection);
-
         setBrakingOn();
         setToNormalPower();
     }
