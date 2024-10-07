@@ -9,7 +9,7 @@ import com.acmerobotics.roadrunner.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.drive.Drawing;
-import org.firstinspires.ftc.teamcode.drive.AutoDrivetrain;
+import org.firstinspires.ftc.teamcode.drive.AutoDrivetrainTemplate;
 import org.firstinspires.ftc.teamcode.drive.TankDrive;
 
 public class LocalizationTest extends LinearOpMode {
@@ -17,8 +17,8 @@ public class LocalizationTest extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        if (TuningOpModes.DRIVE_CLASS.equals(AutoDrivetrain.class)) {
-            AutoDrivetrain drive = new AutoDrivetrain(hardwareMap, new Pose2d(0, 0, 0));
+        if (TuningOpModes.DRIVE_CLASS.equals(AutoDrivetrainTemplate.class)) {
+            AutoDrivetrainTemplate drive = new AutoDrivetrainTemplate(hardwareMap, new Pose2d(0, 0, 0));
 
             waitForStart();
 

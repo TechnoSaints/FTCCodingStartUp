@@ -6,15 +6,14 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot21528;
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.TeleopBot26290;
 
 @Config
-@TeleOp(name = "Teleop21528", group = "Linear OpMode")
+@TeleOp(name = "Teleop26290", group = "Linear OpMode")
 
-public class Teleop21528 extends LinearOpMode {
+public class Teleop26290 extends LinearOpMode {
 
-    private TeleopBot21528 bot;
+    private TeleopBot26290 bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -26,7 +25,7 @@ public class Teleop21528 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot21528(hardwareMap, telemetry);
+        bot = new TeleopBot26290(hardwareMap, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -48,30 +47,18 @@ public class Teleop21528 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-          //  if (gamepad1.right_trigger > 0.2) {
-           //     bot.liftUp(gamepad1.right_trigger);
-            //} else if (gamepad1.left_trigger > 0.2) {
-              //  bot.liftDown(gamepad1.left_trigger);
-           // } else {
-            //    bot.liftStop();
-           // }
+            if (gamepad1.right_trigger > 0.2) {
+                bot.liftUp(gamepad1.right_trigger);
+            } else if (gamepad1.left_trigger > 0.2) {
+                bot.liftDown(gamepad1.left_trigger);
+            } else {
+                bot.liftStop();
+            }
 
             if (gamepad1.x) {
                 bot.grabberClose();
             } else if (gamepad1.a) {
                 bot.grabberOpen();
-            }
-
-            if (gamepad1.left_bumper) {
-                bot.armClose();
-            } else if (gamepad1.right_bumper) {
-                bot.armOpen();
-            }
-
-            if (gamepad1.b){
-                bot.wristOpen();
-            } else if (gamepad1.y) {
-                bot.wristClose();
             }
         }
     }
