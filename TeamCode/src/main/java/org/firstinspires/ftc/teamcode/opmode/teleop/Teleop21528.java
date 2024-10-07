@@ -41,7 +41,7 @@ public class Teleop21528 extends LinearOpMode {
             } else {
                 driveAxial = gamepad1.left_stick_y;
                 driveStrafe = gamepad1.left_stick_x;
-                driveYaw = -gamepad1.right_stick_x;
+                driveYaw = gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
@@ -64,8 +64,10 @@ public class Teleop21528 extends LinearOpMode {
 
             if (gamepad1.left_bumper) {
                 bot.armClose();
+                bot.wristClose();
             } else if (gamepad1.right_bumper) {
                 bot.armOpen();
+                bot.wristOpen();
             }
 
             if (gamepad1.b){
