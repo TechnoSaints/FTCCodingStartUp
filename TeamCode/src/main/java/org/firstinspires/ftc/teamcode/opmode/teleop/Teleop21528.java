@@ -23,6 +23,7 @@ public class Teleop21528 extends LinearOpMode {
         double driveAxial = 0.0;
         double driveStrafe = 0.0;
         double driveYaw = 0.0;
+        int motorDirection = 0;
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
@@ -30,6 +31,7 @@ public class Teleop21528 extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
+
             if (gamepad1.dpad_up) {
                 bot.creepDirection(-1.0, 0.0, 0.0);
             } else if (gamepad1.dpad_down) {
@@ -39,8 +41,8 @@ public class Teleop21528 extends LinearOpMode {
             } else if (gamepad1.dpad_right) {
                 bot.creepDirection(0.0, 1.0, 0.0);
             } else {
-                driveAxial = gamepad1.left_stick_y;
-                driveStrafe = gamepad1.left_stick_x;
+                driveAxial = gamepad1.left_stick_y * motorDirection;
+                driveStrafe = gamepad1.left_stick_x * motorDirection;
                 driveYaw = gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
@@ -65,9 +67,11 @@ public class Teleop21528 extends LinearOpMode {
             if (gamepad1.left_bumper) {
                 bot.armClose();
                 bot.wristClose();
+                motorDirection = 1;
             } else if (gamepad1.right_bumper) {
                 bot.armOpen();
                 bot.wristOpen();
+                motorDirection = -1;
             }
 
             if (gamepad1.b) {
