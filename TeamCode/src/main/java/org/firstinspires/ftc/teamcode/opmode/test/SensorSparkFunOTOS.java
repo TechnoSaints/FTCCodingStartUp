@@ -5,6 +5,8 @@
 */
 package org.firstinspires.ftc.teamcode.opmode.test;
 
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.hardware.sparkfun.SparkFunOTOS;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -12,6 +14,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.common.TeleopBot21528;
+import org.firstinspires.ftc.teamcode.common.TeleopBotSimple;
+import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
 
 /*
  * This OpMode illustrates how to use the SparkFun Qwiic Optical Tracking Odometry Sensor (OTOS)
@@ -24,14 +29,26 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
  * See the sensor's product page: https://www.sparkfun.com/products/24904
  */
 @TeleOp(name = "Sensor: SparkFun OTOS", group = "Sensor")
-@Disabled
+
 public class SensorSparkFunOTOS extends LinearOpMode {
     // Create an instance of the sensor
     SparkFunOTOS myOtos;
+    TeleopBotSimple bot;
 
     @Override
     public void runOpMode() throws InterruptedException {
         // Get a reference to the sensor
+
+        double driveAxial = 0.0;
+        double driveStrafe = 0.0;
+        double driveYaw = 0.0;
+        int motorDirection = 1;
+
+        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+
+        bot = new TeleopBotSimple(hardwareMap, telemetry);
+        waitForStart();
+
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 
         // All the configuration for the OTOS is done in this helper method, check it out!
@@ -42,6 +59,25 @@ public class SensorSparkFunOTOS extends LinearOpMode {
 
         // Loop until the OpMode ends
         while (opModeIsActive()) {
+
+            if (gamepad1.dpad_up) {
+                bot.creepDirection(-1.0, 0.0, 0.0);
+            } else if (gamepad1.dpad_down) {
+                bot.creepDirection(1.0, 0.0, 0.0);
+            } else if (gamepad1.dpad_left) {
+                bot.creepDirection(0.0, -1.0, 0.0);
+            } else if (gamepad1.dpad_right) {
+                bot.creepDirection(0.0, 1.0, 0.0);
+            } else {
+                driveAxial = gamepad1.left_stick_y * motorDirection;
+                driveStrafe = gamepad1.left_stick_x * motorDirection;
+                driveYaw = gamepad1.right_stick_x;
+                if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
+                    bot.stopDrive();
+                } else
+                    bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
+            }
+
             // Get the latest position, which includes the x and y coordinates, plus the
             // heading angle
             SparkFunOTOS.Pose2D pos = myOtos.getPosition();
