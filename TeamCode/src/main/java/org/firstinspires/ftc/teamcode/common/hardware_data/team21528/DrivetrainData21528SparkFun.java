@@ -10,7 +10,7 @@ public class DrivetrainData21528SparkFun extends DrivetrainData {
         maxCreepPower = 0.25;
         leftFrontDirection = DcMotorSimple.Direction.REVERSE;
         leftBackDirection = DcMotorSimple.Direction.FORWARD;
-        rightFrontDirection = DcMotorSimple.Direction.REVERSE;
-        rightBackDirection = DcMotorSimple.Direction.FORWARD;
+        rightFrontDirection = DcMotorSimple.Direction.FORWARD;
+        rightBackDirection = DcMotorSimple.Direction.REVERSE;
     }
 }
