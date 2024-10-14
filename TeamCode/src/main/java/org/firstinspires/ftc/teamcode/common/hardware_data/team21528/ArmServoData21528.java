@@ -6,5 +6,6 @@ public class ArmServoData21528 extends ServoData {
     public ArmServoData21528() {
         openPosition = 0.55;
         closePosition = 0.11;
+        middlePosition = 0.4;
     }
 }
