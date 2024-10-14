@@ -23,7 +23,7 @@ public class Teleop21528 extends LinearOpMode {
         double driveAxial = 0.0;
         double driveStrafe = 0.0;
         double driveYaw = 0.0;
-        int motorDirection = 0;
+        int motorDirection = 1;
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
@@ -69,7 +69,6 @@ public class Teleop21528 extends LinearOpMode {
                 bot.wristClose();
                 //motorDirection = 1;
             } else if (gamepad1.right_bumper) {
-                bot.armOpen();
                 bot.armMiddle();
                 //bot.wristOpen();
                 //motorDirection = -1;
