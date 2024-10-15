@@ -24,7 +24,6 @@ public class Drivetrain extends Component {
         maxCreepPower = drivetrainData.maxCreepPower;
         maxPower = maxNormalPower;
 
-
         leftFrontDrive = hardwareMap.get(DcMotorEx.class, "leftFrontDrive");
         leftBackDrive = hardwareMap.get(DcMotorEx.class, "leftBackDrive");
         rightFrontDrive = hardwareMap.get(DcMotorEx.class, "rightFrontDrive");

@@ -42,6 +42,8 @@ public abstract class Bot21528 extends Component {
         arm.open();
     }
 
+    public void armMiddle() { arm.middle(); }
+
     public void wristOpen() {
         wrist.open();
     }
