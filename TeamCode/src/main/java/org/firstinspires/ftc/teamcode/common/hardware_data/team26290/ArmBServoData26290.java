@@ -4,7 +4,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 
 public class ArmBServoData26290 extends ServoData {
     public ArmBServoData26290() {
-        openPosition = 0.7;
-        closePosition = 0.3;
+        openPosition = 0.9;
+        closePosition = 0.5;
     }
 }

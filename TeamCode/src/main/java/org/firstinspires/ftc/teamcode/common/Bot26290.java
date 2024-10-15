@@ -7,21 +7,25 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda117DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.ArmAServoData26290;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.ArmBServoData26290;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.GrabberServoData26290;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.LiftData26290;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.HookData26290;
 
 public abstract class Bot26290 extends Component {
     private final LiftSingle lift;
     private final ServoSimple grabber;
     private final ServoSimple arma;
     private final ServoSimple armb;
+    private final LiftSingle hook;
 
     public Bot26290(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
         lift = new LiftSingle(hardwareMap, telemetry, "lift", true, new GoBilda312DcMotorData(), new LiftData26290());
+        hook = new LiftSingle(hardwareMap, telemetry, "hook", true, new GoBilda117DcMotorData(), new HookData26290());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
         arma = new ServoSimple(hardwareMap, telemetry, "arma", new ArmAServoData26290());
         armb = new ServoSimple(hardwareMap, telemetry, "armb", new ArmBServoData26290());
@@ -58,10 +62,24 @@ public abstract class Bot26290 extends Component {
         lift.stop();
     }
 
+    public void hookUp(double speed){
+        hook.up(speed);
+    }
+
+    public void hookDown(double speed){
+        hook.down(speed);
+    }
+
+    public void hookStop() {
+        hook.stop();
+    }
+
     public void liftZero() {
         lift.zero();
     }
-
+    public void hookZero() {
+        hook.zero();
+    }
 
     // Action classes and methods required to use scheduler
     // Intended for use in auto opmodes, but could be used in teleop
