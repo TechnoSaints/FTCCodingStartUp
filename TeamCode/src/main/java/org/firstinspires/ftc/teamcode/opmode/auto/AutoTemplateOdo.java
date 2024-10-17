@@ -14,8 +14,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTemplate;
 
 @Config
-@Autonomous(name = "AutoTemplate3DeadWheel", group = "Linear OpMode")
-public class AutoTemplate extends LinearOpMode {
+@Autonomous(name = "AutoTemplateOdo", group = "Linear OpMode")
+public class AutoTemplateOdo extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
     protected AutoBot3DeadWheelTemplate bot;
@@ -28,7 +28,7 @@ public class AutoTemplate extends LinearOpMode {
 
     protected MultipleTelemetry multipleTelemetry;
 
-    public AutoTemplate() {
+    public AutoTemplateOdo() {
     }
 
     @Override
@@ -74,7 +74,7 @@ public class AutoTemplate extends LinearOpMode {
         // Another sample trajectory action that moves around and call some bot actions
         // Initially is the same as trajectoryAction1, but may be changed
         trajectoryAction2 = bot.drivetrain().actionBuilder(startPose)
-                .afterTime(0, bot.liftToBottomPosition())
+                .afterTime(0, bot.openGrabber())
                 .lineToX(pose2.position.x)
                 .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
@@ -83,7 +83,7 @@ public class AutoTemplate extends LinearOpMode {
                 .splineToSplineHeading(pose3, pose3.heading)
                 .afterTime(0.5, bot.closeGrabber())
                 .splineToLinearHeading(startPose, startPose.heading)
-                .afterTime(5.0, bot.liftToBottomPosition())
+                .afterTime(5.0, bot.openGrabber())
                 .build();
 
         telemetry.addLine("trajectoryAction2 built");
@@ -107,7 +107,7 @@ public class AutoTemplate extends LinearOpMode {
         while (!isStopRequested() && opModeIsActive()) {
             Actions.runBlocking(new SequentialAction(
                     selectedTrajectoryAction,
-                    bot.shutdown()
+                    bot.openGrabber()
             ));
         }
     }

@@ -11,11 +11,11 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
 
-public abstract class Bot21528 extends Component {
+public abstract class Bot21528_B extends Component {
     private final LiftSingle lift;
     private final ServoSimple grabber, arm, wrist;
 
-    public Bot21528(HardwareMap hardwareMap, Telemetry telemetry) {
+    public Bot21528_B(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
