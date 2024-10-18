@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.drive.AutoDrivetrainTemplate;
 
 import com.acmerobotics.roadrunner.Pose2d;
 
-public class AutoBot3DeadWheel21528 extends Bot21528 {
+public class AutoBot3DeadWheel21528 extends Bot21528_B {
     private final AutoDrivetrainTemplate drivetrain;
     private Pose2d startPose;
 

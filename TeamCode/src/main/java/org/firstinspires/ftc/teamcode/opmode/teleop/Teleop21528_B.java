@@ -6,15 +6,14 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot21528;
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.TeleopBot21528_B;
 
 @Config
-@TeleOp(name = "Teleop21528", group = "Linear OpMode")
+@TeleOp(name = "Teleop21528_B", group = "Teleop")
 
-public class Teleop21528 extends LinearOpMode {
+public class Teleop21528_B extends LinearOpMode {
 
-    private TeleopBot21528 bot;
+    private TeleopBot21528_B bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -27,7 +26,7 @@ public class Teleop21528 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot21528(hardwareMap, telemetry);
+        bot = new TeleopBot21528_B(hardwareMap, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
