@@ -10,15 +10,15 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
 
 @Config
-@Autonomous(name = "AutoTemplateSimple", group = "Linear OpMode")
-public class AutoTemplateTimers extends LinearOpMode {
+@Autonomous(name = "AutoTimers21528", group = "Auto")
+public class AutoTimers21528 extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
     protected TeleopBotTemplate bot;
 
     protected MultipleTelemetry multipleTelemetry;
 
-    public AutoTemplateTimers() {
+    public AutoTimers21528() {
     }
 
     @Override
@@ -32,10 +32,11 @@ public class AutoTemplateTimers extends LinearOpMode {
         telemetry.addLine("Bot created.");
         telemetry.update();
 
-        bot.moveDirection(0.5, 0.5, 0);
+        bot.moveDirection(0.0, -0.25, 0);
         timer.reset();
         while (timer.milliseconds() < 1000)
         {}
+
         bot.stopDrive();
         // Do other stuff
     }

@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTemplate;
 
 @Config
-@Autonomous(name = "AutoTemplateOdo", group = "Linear OpMode")
+@Autonomous(name = "AutoTemplateOdo", group = "Auto")
 public class AutoTemplateOdo extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 

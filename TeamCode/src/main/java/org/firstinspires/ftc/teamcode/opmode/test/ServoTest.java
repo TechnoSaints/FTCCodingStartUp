@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.Viper223Long2StageLif
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
 
 @Config
-@TeleOp(name = "ServoTest", group = "TeleOp")
+@TeleOp(name = "TEST ServoTest", group = "Test")
 
 public class ServoTest extends LinearOpMode {
 

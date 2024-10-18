@@ -28,7 +28,7 @@ import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
  *
  * See the sensor's product page: https://www.sparkfun.com/products/24904
  */
-@TeleOp(name = "Sensor: SparkFun OTOS", group = "Sensor")
+@TeleOp(name = "TEST SparkFun OTOS", group = "Test")
 
 public class SensorSparkFunOTOS extends LinearOpMode {
     // Create an instance of the sensor

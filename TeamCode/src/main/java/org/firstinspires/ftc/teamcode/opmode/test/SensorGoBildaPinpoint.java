@@ -19,7 +19,7 @@ import org.firstinspires.ftc.teamcode.drive.GoBildaPinpointDriver;
 import java.util.Locale;
 
 
-@TeleOp(name = "Sensor: GoBildaPinpoint", group = "Sensor")
+@TeleOp(name = "TEST GoBildaPinpoint", group = "Test")
 
 public class SensorGoBildaPinpoint extends LinearOpMode {
     GoBildaPinpointDriver odo; // Declare OpMode member for the Odometry Computer

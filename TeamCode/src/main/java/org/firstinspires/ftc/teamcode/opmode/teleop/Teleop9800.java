@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.common.TeleopBot9800;
 import java.security.KeyStore;
 
 @Config
-@TeleOp(name = "Teleop9800", group = "Linear OpMode")
+@TeleOp(name = "Teleop9800", group = "9800")
 
 public class Teleop9800 extends LinearOpMode {
 

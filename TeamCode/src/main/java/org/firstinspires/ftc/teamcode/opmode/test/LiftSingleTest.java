@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData
 import org.firstinspires.ftc.teamcode.common.hardware_data.Viper223Long2StageLiftData;
 
 @Config
-@TeleOp(name = "LiftSingleTest", group = "TeleOp")
+@TeleOp(name = "TEST LiftSingleTest", group = "Test")
 
 public class LiftSingleTest extends LinearOpMode {
 
