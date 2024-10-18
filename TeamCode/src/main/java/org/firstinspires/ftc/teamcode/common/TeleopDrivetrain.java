@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.common;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 
 public class TeleopDrivetrain extends Drivetrain {
     private double leftFrontFactor = 1.0;
@@ -10,8 +11,8 @@ public class TeleopDrivetrain extends Drivetrain {
     private double leftBackFactor = 1.0;
     private double rightBackFactor = 1.0;
 
-    public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry) {
-        super(hardwareMap,telemetry);
+    public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry, DrivetrainData drivetrainData) {
+        super(hardwareMap,telemetry, drivetrainData);
     }
 
     public void creepDirection(double axial, double strafe, double yaw) {

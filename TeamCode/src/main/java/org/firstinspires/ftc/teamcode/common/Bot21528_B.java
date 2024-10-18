@@ -1,28 +1,29 @@
 package org.firstinspires.ftc.teamcode.common;
 
 import androidx.annotation.NonNull;
-
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
 
-public abstract class Bot extends Component {
+public abstract class Bot21528_B extends Component {
     private final LiftSingle lift;
-    private final ServoSimple grabber, arm;
+    private final ServoSimple grabber, arm, wrist;
 
-    public Bot(HardwareMap hardwareMap, Telemetry telemetry) {
+    public Bot21528_B(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
         arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
+        wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armClose();
+        wristClose();
     }
 
     public void grabberClose() {
@@ -39,6 +40,16 @@ public abstract class Bot extends Component {
 
     public void armOpen() {
         arm.open();
+    }
+
+    public void armMiddle() { arm.middle(); }
+
+    public void wristOpen() {
+        wrist.open();
+    }
+
+    public void wristClose() {
+        wrist.close();
     }
 
     public void liftUp(double speed) {
@@ -63,7 +74,7 @@ public abstract class Bot extends Component {
     public class OpenGrabber implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Opening...",1);
+            telemetry.addData("Grabber Opening...", 1);
             telemetry.update();
             return false;
         }
@@ -76,7 +87,7 @@ public abstract class Bot extends Component {
     public class CloseGrabber implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Closing...",1);
+            telemetry.addData("Grabber Closing...", 1);
             telemetry.update();
             return false;
         }
@@ -89,22 +100,25 @@ public abstract class Bot extends Component {
     public class LiftToBottomPosition implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Lift Moving to Bottom Position...",1);
+            telemetry.addData("Lift Moving to Bottom Position...", 1);
             telemetry.update();
             return false;
         }
     }
+
     public Action liftToBottomPosition() {
         return new LiftToBottomPosition();
     }
+
     public class Shutdown implements Action {
         @Override
         public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Shutting Bot Down...",1);
+            telemetry.addData("Shutting Bot Down...", 1);
             telemetry.update();
             return false;
         }
     }
+
     public Action shutdown() {
         return new Shutdown();
     }
