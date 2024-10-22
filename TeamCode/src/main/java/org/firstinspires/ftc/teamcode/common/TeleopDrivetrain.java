@@ -1,18 +1,62 @@
 package org.firstinspires.ftc.teamcode.common;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 
-public class TeleopDrivetrain extends Drivetrain {
-    private double leftFrontFactor = 1.0;
-    private double rightFrontFactor = 1.0;
-    private double leftBackFactor = 1.0;
-    private double rightBackFactor = 1.0;
+public class TeleopDrivetrain extends Component {
+    public final DcMotorEx leftFrontDrive;
+    public final DcMotorEx rightFrontDrive;
+    public final DcMotorEx leftBackDrive;
+    public final DcMotorEx rightBackDrive;
+    protected final double maxNormalPower;
+    protected final double maxCreepPower;
+    protected double currentPower;
+    protected  final double maxVelocity;
 
-    public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry, DrivetrainData drivetrainData) {
-        super(hardwareMap,telemetry, drivetrainData);
+    public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry, DrivetrainData drivetrainData, GoBilda312DcMotorData motorData) {
+        super(telemetry);
+        maxNormalPower = drivetrainData.maxNormalPower;
+        maxCreepPower = drivetrainData.maxCreepPower;
+        maxVelocity = motorData.maxTicksPerSec;
+
+        leftFrontDrive = hardwareMap.get(DcMotorEx.class, "leftFrontDrive");
+        leftBackDrive = hardwareMap.get(DcMotorEx.class, "leftBackDrive");
+        rightFrontDrive = hardwareMap.get(DcMotorEx.class, "rightFrontDrive");
+        rightBackDrive = hardwareMap.get(DcMotorEx.class, "rightBackDrive");
+
+        leftFrontDrive.setDirection(drivetrainData.leftFrontDirection);
+        leftBackDrive.setDirection(drivetrainData.leftBackDirection);
+        rightFrontDrive.setDirection(drivetrainData.rightFrontDirection);
+        rightBackDrive.setDirection(drivetrainData.rightBackDirection);
+        setBrakingOn();
+        setToNormalPower();
+    }
+    protected void setToNormalPower()
+    {
+        currentPower = maxNormalPower;
+    }
+
+    protected void setToCreepPower(){
+        currentPower = maxCreepPower;
+    }
+
+    protected void setBrakingOn() {
+        leftFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftBackDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightBackDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+
+    protected void setBrakingOff() {
+        leftFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        leftBackDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        rightFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        rightBackDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
     }
 
     public void creepDirection(double axial, double strafe, double yaw) {
@@ -39,10 +83,10 @@ public class TeleopDrivetrain extends Drivetrain {
             rightBackPower /= max;
         }
 
-        leftFrontDrive.setPower(leftFrontPower * maxPower * leftFrontFactor);
-        rightFrontDrive.setPower(rightFrontPower * maxPower * rightFrontFactor);
-        leftBackDrive.setPower(leftBackPower * maxPower * leftBackFactor);
-        rightBackDrive.setPower(rightBackPower * maxPower * rightBackFactor);
+        leftFrontDrive.setPower(leftFrontPower * currentPower);
+        rightFrontDrive.setPower(rightFrontPower * currentPower);
+        leftBackDrive.setPower(leftBackPower * currentPower);
+        rightBackDrive.setPower(rightBackPower * currentPower);
     }
 
     public void stop() {
