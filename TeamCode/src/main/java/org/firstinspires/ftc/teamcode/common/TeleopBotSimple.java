@@ -11,7 +11,7 @@ public class TeleopBotSimple extends BotSimple {
 
     public TeleopBotSimple(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap, telemetry);
-        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528OdoTest(), new GoBilda312DcMotorData());
+        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528OdoTest());
     }
 
     public void creepDirection(double axial, double strafe, double yaw) {

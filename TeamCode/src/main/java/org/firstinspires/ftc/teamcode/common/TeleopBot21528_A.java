@@ -11,7 +11,7 @@ public class TeleopBot21528_A extends Bot21528_A {
 
     public TeleopBot21528_A(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap, telemetry);
-        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528_A(), new GoBilda312DcMotorData());
+        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528_A());
     }
 
     public void creepDirection(double axial, double strafe, double yaw) {

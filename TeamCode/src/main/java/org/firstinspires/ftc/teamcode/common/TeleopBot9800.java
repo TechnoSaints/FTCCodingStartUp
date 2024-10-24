@@ -10,7 +10,7 @@ public class TeleopBot9800 extends Bot9800 {
 
     public TeleopBot9800(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap, telemetry);
-        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData9800(), new GoBilda312DcMotorData());
+        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData9800());
     }
 
     public void creepDirection(double axial, double strafe, double yaw) {

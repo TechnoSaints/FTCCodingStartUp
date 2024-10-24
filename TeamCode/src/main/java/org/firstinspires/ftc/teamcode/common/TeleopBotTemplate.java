@@ -10,7 +10,7 @@ public class TeleopBotTemplate extends BotTemplate {
 
     public TeleopBotTemplate(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap, telemetry);
-        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528_B(), new GoBilda312DcMotorData());
+        drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528_B());
     }
 
     public void creepDirection(double axial, double strafe, double yaw) {

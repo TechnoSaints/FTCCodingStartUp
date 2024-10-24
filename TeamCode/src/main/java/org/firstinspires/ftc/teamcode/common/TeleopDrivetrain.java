@@ -16,13 +16,11 @@ public class TeleopDrivetrain extends Component {
     protected final double maxNormalPower;
     protected final double maxCreepPower;
     protected double currentPower;
-    protected  final double maxVelocity;
 
-    public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry, DrivetrainData drivetrainData, GoBilda312DcMotorData motorData) {
+    public TeleopDrivetrain(HardwareMap hardwareMap, Telemetry telemetry, DrivetrainData drivetrainData) {
         super(telemetry);
         maxNormalPower = drivetrainData.maxNormalPower;
         maxCreepPower = drivetrainData.maxCreepPower;
-        maxVelocity = motorData.maxTicksPerSec;
 
         leftFrontDrive = hardwareMap.get(DcMotorEx.class, "leftFrontDrive");
         leftBackDrive = hardwareMap.get(DcMotorEx.class, "leftBackDrive");
@@ -36,12 +34,12 @@ public class TeleopDrivetrain extends Component {
         setBrakingOn();
         setToNormalPower();
     }
-    protected void setToNormalPower()
-    {
+
+    protected void setToNormalPower() {
         currentPower = maxNormalPower;
     }
 
-    protected void setToCreepPower(){
+    protected void setToCreepPower() {
         currentPower = maxCreepPower;
     }
 
@@ -64,6 +62,7 @@ public class TeleopDrivetrain extends Component {
         moveDirection(axial, strafe, yaw);
         setToNormalPower();
     }
+
     public void moveDirection(double axial, double strafe, double yaw) {
         // Calculate wheel powers.
         double leftFrontPower = axial - strafe - yaw;
