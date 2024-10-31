@@ -8,9 +8,9 @@ public class DrivetrainData26290 extends DrivetrainData {
     public DrivetrainData26290() {
         maxNormalPower = 0.7;
         maxCreepPower = 0.25;
-        leftFrontDirection = DcMotorSimple.Direction.REVERSE;
-        leftBackDirection = DcMotorSimple.Direction.REVERSE;
-        rightFrontDirection = DcMotorSimple.Direction.FORWARD;
-        rightBackDirection = DcMotorSimple.Direction.FORWARD;
+        leftFrontDirection = DcMotorSimple.Direction.FORWARD;
+        leftBackDirection = DcMotorSimple.Direction.FORWARD;
+        rightFrontDirection = DcMotorSimple.Direction.REVERSE;
+        rightBackDirection = DcMotorSimple.Direction.REVERSE;
     }
 }

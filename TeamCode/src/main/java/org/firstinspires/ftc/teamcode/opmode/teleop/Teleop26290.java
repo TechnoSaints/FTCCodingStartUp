@@ -40,44 +40,11 @@ public class Teleop26290 extends LinearOpMode {
             } else {
                 driveAxial = gamepad1.left_stick_y;
                 driveStrafe = gamepad1.left_stick_x;
-                driveYaw = gamepad1.right_stick_x;
+                driveYaw = -gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
-            }
-
-            if (gamepad1.right_trigger > 0.2 ) {
-                bot.liftUp(gamepad1.right_trigger);
-            }
-            else if (gamepad1.left_trigger > 0.2){
-                bot.liftDown(gamepad1.left_trigger);
-            }
-            else {
-                bot.liftStop();
-            }
-
-            if (gamepad2.right_trigger > 0.2){
-                bot.hookUp(gamepad2.right_trigger);
-            }
-            else if (gamepad2.left_trigger > 0.2){
-                bot.hookDown(gamepad2.left_trigger);
-            }
-            else {
-                bot.hookStop();
-            }
-
-            if (gamepad1.a) {
-                bot.grabberClose();
-            } else if (gamepad1.b) {
-                bot.grabberOpen();
-            }
-
-            if (gamepad1.left_bumper) {
-                bot.armClose();
-            }
-            else if (gamepad1.right_bumper){
-                bot.armOpen();
             }
         }
     }
