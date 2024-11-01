@@ -47,6 +47,23 @@ public class Teleop21527 extends LinearOpMode {
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
+
+            if (gamepad1.right_trigger > 0.2){
+                bot.liftUp(gamepad1.right_trigger);
+            }
+            else if (gamepad1.left_trigger > 0.2){
+                bot.liftDown(gamepad1.left_trigger);
+            }
+            else {
+                bot.liftStop();
+            }
+
+            if (gamepad1.a){
+                bot.grabberClose();
+            }
+            else if (gamepad1.b){
+                bot.grabberOpen();
+            }
         }
     }
 }

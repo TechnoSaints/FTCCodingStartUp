@@ -2,9 +2,10 @@ package org.firstinspires.ftc.teamcode.common.hardware_data.team26290;
 
 import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 
-public class GrabberServoData26290 extends ServoData {
-    public GrabberServoData26290() {
+public class 
+ArmServoData21527 extends ServoData {
+    public ArmServoData21527() {
         openPosition = 0.3;
-        closePosition = 0.75;
+        closePosition = 0.7;
     }
 }
