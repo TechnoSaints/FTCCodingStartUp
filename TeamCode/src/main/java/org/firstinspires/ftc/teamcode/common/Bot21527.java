@@ -26,7 +26,7 @@ public abstract class Bot21527 extends Component {
     }
 
     public void liftUp(double speed){lift.up(speed);}
-    public void liftDown(double speed){lift.up(speed);}
+    public void liftDown(double speed){lift.down(speed);}
     public void liftStop(){lift.stop();}
     public void liftZero(){lift.zero();}
 
