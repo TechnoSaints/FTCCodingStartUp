@@ -7,11 +7,11 @@ import org.firstinspires.ftc.teamcode.drive.AutoDrivetrainTest;
 
 import com.acmerobotics.roadrunner.Pose2d;
 
-public class AutoBot3DeadWheel21528 extends Bot21528_B {
+public class AutoBot3DeadWheelTest extends BotTest {
     private final AutoDrivetrainTest drivetrain;
     private Pose2d startPose;
 
-    public AutoBot3DeadWheel21528(HardwareMap hardwareMap, Telemetry telemetry, Pose2d startPose) {
+    public AutoBot3DeadWheelTest(HardwareMap hardwareMap, Telemetry telemetry, Pose2d startPose) {
         super(hardwareMap, telemetry);
         drivetrain = new AutoDrivetrainTest(hardwareMap, startPose);
     }

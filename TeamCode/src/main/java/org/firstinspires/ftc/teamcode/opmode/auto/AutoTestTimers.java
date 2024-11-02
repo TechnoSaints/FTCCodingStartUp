@@ -7,18 +7,18 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.TeleopBotTest;
 
 @Config
-@Autonomous(name = "AutoTemplateSimple", group = "Linear OpMode")
-public class AutoTemplateTimers extends LinearOpMode {
+@Autonomous(name = "AutoTestSimple", group = "Linear OpMode")
+public class AutoTestTimers extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
-    protected TeleopBotTemplate bot;
+    protected TeleopBotTest bot;
 
     protected MultipleTelemetry multipleTelemetry;
 
-    public AutoTemplateTimers() {
+    public AutoTestTimers() {
     }
 
     @Override
@@ -28,7 +28,7 @@ public class AutoTemplateTimers extends LinearOpMode {
         telemetry.addLine("Initializing.");
         telemetry.update();
 
-        bot = new TeleopBotTemplate(hardwareMap, multipleTelemetry);
+        bot = new TeleopBotTest(hardwareMap, multipleTelemetry);
         telemetry.addLine("Bot created.");
         telemetry.update();
 

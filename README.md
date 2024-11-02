@@ -1095,7 +1095,7 @@ Changes with version 3.5 include:
 ## Version 3.4 (built on 17.09.06)
 
 Changes with version 3.4 include:
- * Added telemetry.update() statement for BlankLinearOpMode template.
+ * Added telemetry.update() statement for BlankLinearOpMode Test.
  * Renamed sample Block OpModes to be more consistent with Java samples.
  * Added some additional sample Block OpModes.
  * Reworded OnBot Java readme slightly.
@@ -1115,14 +1115,14 @@ Changes with verion 3.3 include:
     - Added support for VuMarks that will be used for the 2017-2018 season game.
  * Blocks
     - Update to latest Google Blockly release.
-    - Sample OpModes can be selected as a template when creating new OpMode.
+    - Sample OpModes can be selected as a Test when creating new OpMode.
     - Fixed bug where the blocks would disappear temporarily when mouse button is held down.
     - Added blocks for Range.clip and Range.scale.
     - User can now disable/enable Block OpModes.
     - Fix to prevent occasional Blocks deadlock.
  * OnBot Java
     - Significant improvements with autocomplete function for OnBot Java editor.
-    - Sample OpModes can be selected as a template when creating new OpMode.
+    - Sample OpModes can be selected as a Test when creating new OpMode.
     - Fixes and changes to complete hardware setup feature.
     - Updated (and more useful) onBot welcome message.
 
@@ -1356,7 +1356,7 @@ Changes include:
 ## Version 2.20 (released on 16.09.08)
   * Support for Modern Robotics Compass Sensor.
   * Support for Modern Robotics Range Sensor.
-  * Revise device names for Pushbot templates to match the names used in Pushbot guide.
+  * Revise device names for Pushbot Tests to match the names used in Pushbot guide.
   * Fixed bug so that IrSeekerSensorV3 device is accessible as IrSeekerSensor in hardwareMap.
   * Modified computer vision code to require an individual Vuforia license (per legal requirement from PTC).
   * Minor fixes.
@@ -1411,7 +1411,7 @@ Changes include:
  * Fix mechanism added to all user to replace an electronic module easily.  For example, suppose a servo controller dies on your robot. You replace the broken module with a new module, which has a different serial number from the original servo controller.  You can use the Fix button to automatically reconfigure your configuration file to use the serial number of the new module.
  * Improvements made to fix resiliency and responsiveness of the system.
  * For LinearOpMode the user now must for a telemetry.update() to update the telemetry data on the driver station.  This update() mechanism ensures that the driver station gets the updated data properly and at the same time.
- * The Auto Configure function of the Robot Controller is now template based.  If there is a commonly used robot configuration, a template can be created so that the Auto Configure mechanism can be used to quickly configure a robot of this type.
+ * The Auto Configure function of the Robot Controller is now Test based.  If there is a commonly used robot configuration, a Test can be created so that the Auto Configure mechanism can be used to quickly configure a robot of this type.
  * The logic to detect a runaway OpMode (both in the LinearOpMode and OpMode types) and to abort the run, then auto recover has been improved/implemented.
  * Fix has been incorporated so that Logitech F310 gamepad mappings will be correct for Marshmallow users.
 

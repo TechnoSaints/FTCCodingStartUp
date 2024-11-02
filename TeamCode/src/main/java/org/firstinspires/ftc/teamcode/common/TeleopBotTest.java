@@ -2,13 +2,12 @@ package org.firstinspires.ftc.teamcode.common;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData21528_B;
 
-public class TeleopBotTemplate extends BotTemplate {
+public class TeleopBotTest extends BotTest {
     private TeleopDrivetrain drivetrain = null;
 
-    public TeleopBotTemplate(HardwareMap hardwareMap, Telemetry telemetry) {
+    public TeleopBotTest(HardwareMap hardwareMap, Telemetry telemetry) {
         super(hardwareMap, telemetry);
         drivetrain = new TeleopDrivetrain(hardwareMap, telemetry, new DrivetrainData21528_B());
     }
