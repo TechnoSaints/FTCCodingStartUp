@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda117DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda60DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.ArmData26290;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.GrabberServoData26290;
@@ -22,7 +23,7 @@ public abstract class Bot26290 extends Component {
         super(telemetry);
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda117DcMotorData(), new LiftData26290());
-        arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda117DcMotorData(), new ArmData26290());
+        arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
         grabberClose();
     }
 
