@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -16,20 +18,34 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData215
 
 public abstract class Bot21527 extends Component {
 
-    private final LiftSingle lift;
+    private final DcMotorEx arm;
     private final ServoSimple grabber;
 
     public Bot21527(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda117DcMotorData(), new LiftData21527());
+        arm = hardwareMap.get(DcMotorEx.class, "arm");
+        arm.setDirection(DcMotorSimple.Direction.FORWARD);
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21527());
     }
 
-    public void liftUp(double speed){lift.up(speed);}
-    public void liftDown(double speed){lift.down(speed);}
-    public void liftStop(){lift.stop();}
-    public void liftZero(){lift.zero();}
+    public void armUp() {
+        arm.setPower(0.2);
+    }
 
-    public void grabberOpen(){grabber.open();}
-    public void grabberClose(){grabber.close();}
+    public void armDown()
+    {
+        arm.setPower(-0.2);
+    }
+
+    public void armStop() {
+        arm.setPower(0.0);
+    }
+
+    public void grabberOpen() {
+        grabber.open();
+    }
+
+    public void grabberClose() {
+        grabber.close();
+    }
 }

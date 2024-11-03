@@ -48,14 +48,14 @@ public class Teleop21527 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-            if (gamepad1.right_trigger > 0.2){
-                bot.liftUp(gamepad1.right_trigger);
+            if (gamepad1.right_bumper){
+                bot.armUp();
             }
-            else if (gamepad1.left_trigger > 0.2){
-                bot.liftDown(gamepad1.left_trigger);
+            else if (gamepad1.left_bumper){
+                bot.armDown();
             }
             else {
-                bot.liftStop();
+                bot.armStop();
             }
 
             if (gamepad1.a){
