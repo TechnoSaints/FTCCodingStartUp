@@ -29,12 +29,12 @@ public abstract class Bot21527 extends Component {
     }
 
     public void armUp() {
-        arm.setPower(0.2);
+        arm.setPower(0.5);
     }
 
     public void armDown()
     {
-        arm.setPower(-0.2);
+        arm.setPower(-0.5);
     }
 
     public void armStop() {
