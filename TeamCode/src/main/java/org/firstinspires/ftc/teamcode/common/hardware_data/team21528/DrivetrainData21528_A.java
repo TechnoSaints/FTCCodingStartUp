@@ -4,13 +4,13 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 
-public class DrivetrainData9800 extends DrivetrainData {
-    public DrivetrainData9800() {
+public class DrivetrainData21528_A extends DrivetrainData {
+    public DrivetrainData21528_A() {
         maxFastPower = 0.65;
         maxSlowPower = 0.25;
-        leftFrontDirection = DcMotorSimple.Direction.FORWARD;
-        leftBackDirection = DcMotorSimple.Direction.REVERSE;
-        rightFrontDirection = DcMotorSimple.Direction.FORWARD;
+        leftFrontDirection = DcMotorSimple.Direction.REVERSE;
+        leftBackDirection = DcMotorSimple.Direction.FORWARD;
+        rightFrontDirection = DcMotorSimple.Direction.REVERSE;
         rightBackDirection = DcMotorSimple.Direction.REVERSE;
     }
 }

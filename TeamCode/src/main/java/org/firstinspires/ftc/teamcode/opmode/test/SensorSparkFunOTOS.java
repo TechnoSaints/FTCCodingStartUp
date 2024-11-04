@@ -14,9 +14,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.common.TeleopBot21528;
+import org.firstinspires.ftc.teamcode.common.TeleopBot21528_B;
 import org.firstinspires.ftc.teamcode.common.TeleopBotSimple;
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.TeleopBotTest;
 
 /*
  * This OpMode illustrates how to use the SparkFun Qwiic Optical Tracking Odometry Sensor (OTOS)
@@ -46,8 +46,7 @@ public class SensorSparkFunOTOS extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotSimple(hardwareMap, telemetry);
-        waitForStart();
+        bot = new TeleopBotSimple(this, telemetry);
 
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 
@@ -132,7 +131,7 @@ public class SensorSparkFunOTOS extends LinearOpMode {
         // clockwise (negative rotation) from the robot's orientation, the offset
         // would be {-5, 10, -90}. These can be any value, even the angle can be
         // tweaked slightly to compensate for imperfect mounting (eg. 1.3 degrees).
-        SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(-12.25/2, -0.5, 90);
+        SparkFunOTOS.Pose2D offset = new SparkFunOTOS.Pose2D(-.25, -5.2, 0);
         myOtos.setOffset(offset);
 
         // Here we can set the linear and angular scalars, which can compensate for
@@ -151,8 +150,8 @@ public class SensorSparkFunOTOS extends LinearOpMode {
         // multiple speeds to get an average, then set the linear scalar to the
         // inverse of the error. For example, if you move the robot 100 inches and
         // the sensor reports 103 inches, set the linear scalar to 100/103 = 0.971
-        myOtos.setLinearScalar(1.0);
-        myOtos.setAngularScalar(1.0);
+        myOtos.setLinearScalar(1.09);
+        myOtos.setAngularScalar(0.9873);
 
         // The IMU on the OTOS includes a gyroscope and accelerometer, which could
         // have an offset. Note that as of firmware version 1.0, the calibration
