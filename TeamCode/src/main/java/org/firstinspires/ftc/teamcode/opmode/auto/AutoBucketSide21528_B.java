@@ -36,7 +36,7 @@ public class AutoBucketSide21528_B extends LinearOpMode {
             bot.armMiddle();
             bot.wristClose();
             bot.liftHighPosition();
-            bot.strafeRightForDistance(-2);
+            //bot.strafeRightForDistance(-2);
             bot.moveForwardForDistance(32);
             bot.grabberOpen();
             sleep(1000);
