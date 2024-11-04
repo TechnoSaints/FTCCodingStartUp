@@ -16,7 +16,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.common.TeleopBot21528_B;
 import org.firstinspires.ftc.teamcode.common.TeleopBotSimple;
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.TeleopBotTest;
 
 /*
  * This OpMode illustrates how to use the SparkFun Qwiic Optical Tracking Odometry Sensor (OTOS)
@@ -46,7 +46,7 @@ public class SensorSparkFunOTOS extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotSimple(hardwareMap, telemetry);
+        bot = new TeleopBotSimple(this, telemetry);
 
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 

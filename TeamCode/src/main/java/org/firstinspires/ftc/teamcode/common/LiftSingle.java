@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.common;
 
-import com.acmerobotics.roadrunner.ftc.OverflowEncoder;
-import com.acmerobotics.roadrunner.ftc.RawEncoder;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -9,6 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
@@ -25,9 +24,11 @@ public class LiftSingle extends Component {
     private final int minPosition;
     private final int minTolerance;
     private double targetVelocity;
+    private int highPosition;
+    private int mediumPosition;
+    private int lowPosition;
 
-    public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData)
-    {
+    public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
         maxVelocity = motorData.maxTicksPerSec;
         maxMovePower = liftData.maxMovePower;
@@ -36,6 +37,9 @@ public class LiftSingle extends Component {
         maxTolerance = liftData.maxTolerance;
         minPosition = liftData.minPosition;
         minTolerance = liftData.minTolerance;
+        highPosition = liftData.highPosition;
+        mediumPosition = liftData.mediumPosition;
+        lowPosition = liftData.lowPosition;
         long prevTime;
         int prevPosition;
 //        lift_sensor = hardwareMap.get(TouchSensor.class, "liftSensor");
@@ -50,8 +54,7 @@ public class LiftSingle extends Component {
         zero();
     }
 
-    public void stop()
-    {
+    public void stop() {
         stopAtPosition(motor.getCurrentPosition());
     }
 
@@ -76,6 +79,21 @@ public class LiftSingle extends Component {
         } else {
             telemetry.addData("Stopped at Bottom: ", " false");
         }
+        log();
+    }
+
+    public void highPosition() {
+        stopAtPosition(highPosition);
+        log();
+    }
+
+    public void mediumPosition() {
+        stopAtPosition(mediumPosition);
+        log();
+    }
+
+    public void lowPosition() {
+        stopAtPosition(lowPosition);
         log();
     }
 
@@ -117,8 +135,7 @@ public class LiftSingle extends Component {
         log();
     }
 
-    public void log()
-    {
+    public void log() {
 //        prevTime = timer.milliseconds();
 //        prevPosition = motor.getCurrentPosition();
         telemetry.addData("Position:  ", motor.getCurrentPosition());
