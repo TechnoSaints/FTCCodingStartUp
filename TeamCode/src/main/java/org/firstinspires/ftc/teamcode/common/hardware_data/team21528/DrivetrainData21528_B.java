@@ -8,9 +8,9 @@ public class DrivetrainData21528_B extends DrivetrainData {
     public DrivetrainData21528_B() {
         maxFastPower = 0.65;
         maxSlowPower = 0.25;
-        leftFrontDirection = DcMotorSimple.Direction.FORWARD;
-        leftBackDirection = DcMotorSimple.Direction.FORWARD;
-        rightFrontDirection = DcMotorSimple.Direction.FORWARD;
-        rightBackDirection = DcMotorSimple.Direction.REVERSE;
+        leftFrontDirection = DcMotorSimple.Direction.REVERSE;
+        leftBackDirection = DcMotorSimple.Direction.REVERSE;
+        rightFrontDirection = DcMotorSimple.Direction.REVERSE;
+        rightBackDirection = DcMotorSimple.Direction.FORWARD;
     }
 }
