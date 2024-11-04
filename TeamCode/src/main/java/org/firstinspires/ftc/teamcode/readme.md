@@ -75,12 +75,12 @@ Driver Station's OpMode list.
 Each OpMode sample class begins with several lines of code like the ones shown below:
 
 ```
- @TeleOp(name="Template: Linear OpMode", group="Linear Opmode")
+ @TeleOp(name="Test: Linear OpMode", group="Linear Opmode")
  @Disabled
 ```
 
 The name that will appear on the driver station's "opmode list" is defined by the code:
- ``name="Template: Linear OpMode"``
+ ``name="Test: Linear OpMode"``
 You can change what appears between the quotes to better describe your opmode.
 The "group=" portion of the code can be used to help organize your list of OpModes.
 

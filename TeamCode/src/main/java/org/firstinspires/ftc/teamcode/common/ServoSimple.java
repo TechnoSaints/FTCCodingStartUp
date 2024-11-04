@@ -10,6 +10,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 public class ServoSimple extends Component {
     private final double openPosition;
     private final double closePosition;
+    private final double middlePosition;
     private final Servo servo;
 
     public ServoSimple(HardwareMap hardwareMap, Telemetry telemetry, String servoName, ServoData servoData)
@@ -17,6 +18,7 @@ public class ServoSimple extends Component {
         super(telemetry);
         openPosition = servoData.openPosition;
         closePosition = servoData.closePosition;
+        middlePosition = servoData.middlePosition;
         servo = hardwareMap.get(Servo.class, servoName);
     }
 
@@ -28,4 +30,5 @@ public class ServoSimple extends Component {
     {
         servo.setPosition(closePosition);
     }
+    public void middle() { servo.setPosition(middlePosition);}
 }

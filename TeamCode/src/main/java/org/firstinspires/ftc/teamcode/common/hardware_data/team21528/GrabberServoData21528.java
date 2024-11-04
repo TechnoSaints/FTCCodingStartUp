@@ -4,7 +4,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 
 public class GrabberServoData21528 extends ServoData {
     public GrabberServoData21528() {
-        openPosition = 0.4;
-        closePosition = 0.8;
+        openPosition = 0.3;
+        closePosition = 0.7;
     }
 }
