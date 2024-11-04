@@ -12,7 +12,7 @@ public class LiftData21528 extends LiftData {
         minTolerance = 25;
         highPosition = 3000;
         mediumPosition = 1000;
-        lowPosition = 100;
+        lowPosition = 350;
     }
 }
 
