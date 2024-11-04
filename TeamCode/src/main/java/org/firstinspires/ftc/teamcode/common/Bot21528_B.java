@@ -5,7 +5,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm1ServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
@@ -19,7 +19,7 @@ public abstract class Bot21528_B extends Component {
         super(telemetry);
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
+        arm = new ServoSimple(hardwareMap, telemetry, "arm1", new Arm1ServoData21528());
         wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armClose();
@@ -38,9 +38,7 @@ public abstract class Bot21528_B extends Component {
         arm.close();
     }
 
-    public void armOpen() {
-        arm.open();
-    }
+    public void armOpen() { arm.open(); }
 
     public void armMiddle() { arm.middle(); }
 

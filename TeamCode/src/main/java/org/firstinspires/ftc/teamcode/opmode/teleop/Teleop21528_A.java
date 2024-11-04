@@ -6,11 +6,11 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot21528_A;
 import org.firstinspires.ftc.teamcode.common.TeleopBot21528_B;
+import org.firstinspires.ftc.teamcode.common.TeleopBot21528_A;
 
 @Config
-@TeleOp(name = "TEST Teleop21528_A", group = "Test")
+@TeleOp(name = "Teleop21528_A", group = "Teleop")
 
 public class Teleop21528_A extends LinearOpMode {
 
@@ -43,11 +43,41 @@ public class Teleop21528_A extends LinearOpMode {
             } else {
                 driveAxial = gamepad1.left_stick_y * motorDirection;
                 driveStrafe = gamepad1.left_stick_x * motorDirection;
-                driveYaw = -gamepad1.right_stick_x;
+                driveYaw = gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
+            }
+
+            if (gamepad1.right_trigger > 0.2) {
+                bot.liftUp(gamepad1.right_trigger);
+            } else if (gamepad1.left_trigger > 0.2) {
+                bot.liftDown(gamepad1.left_trigger);
+            } else {
+                bot.liftStop();
+            }
+
+            if (gamepad1.x) {
+                bot.grabberClose();
+            } else if (gamepad1.a) {
+                bot.grabberOpen();
+            }
+
+            if (gamepad1.left_bumper) {
+                bot.armLeftClose();
+                bot.wristClose();
+                //motorDirection = 1;
+            } else if (gamepad1.right_bumper) {
+                bot.armLeftMiddle();
+                //bot.wristOpen();
+                //motorDirection = -1;
+            }
+
+            if (gamepad1.b) {
+                bot.wristOpen();
+            } else if (gamepad1.y) {
+                bot.wristClose();
             }
         }
     }

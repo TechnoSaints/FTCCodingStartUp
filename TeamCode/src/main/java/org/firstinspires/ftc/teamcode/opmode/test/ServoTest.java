@@ -5,13 +5,9 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.common.LiftSingle;
 import org.firstinspires.ftc.teamcode.common.ServoSimple;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.Viper223Long2StageLiftData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm2ServoData21528;
 
 @Config
 @TeleOp(name = "ServoTest", group = "TeleOp")
@@ -23,7 +19,7 @@ public class ServoTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-        servo = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
+        servo = new ServoSimple(hardwareMap, telemetry, "arm", new Arm2ServoData21528());
 
         waitForStart();
 
