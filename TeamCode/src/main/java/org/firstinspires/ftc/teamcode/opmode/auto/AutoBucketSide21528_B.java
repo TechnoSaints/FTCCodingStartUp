@@ -31,50 +31,16 @@ public class AutoBucketSide21528_B extends LinearOpMode {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
 
-//            telemetry.addLine("Moving straight");
-//            telemetry.update();
             bot.grabberClose();
             sleep(1000);
             bot.armMiddle();
             bot.wristClose();
             bot.liftHighPosition();
-            bot.strafeForDistance(-2);
-            bot.moveStraightForDistance(-32);
+            bot.strafeRightForDistance(-2);
+            bot.moveForwardForDistance(-32);
             bot.grabberOpen();
             sleep(1000);
-            bot.strafeForDistance(-12);
-            /*
-//            telemetry.addLine("Turning");
-//            telemetry.update();
-            bot.grabberOpen();
-            bot.turnToHeading(-90);
-//            telemetry.addLine("Moving straight");
-//            telemetry.update();
-            bot.armClose();
-            bot.grabberClose();
-            bot.moveStraightForDistance(18);
-            bot.grabberOpen();
-            bot.turnToHeading(90);
-            bot.moveStraightForDistance(18);
-            bot.turnToHeading(0);
-            bot.moveStraightForDistance(-18);
-            bot.armOpen();
-//            telemetry.addLine("Turning");
-//            telemetry.update();
-//            bot.turnToHeading(-180);
-//            telemetry.addLine("Moving straight");
-//            telemetry.update();
-//            bot.moveStraightForDistance(18);
-//            telemetry.addLine("Turning");
-//            telemetry.update();
-//            bot.turnToHeading(-270);
-//            telemetry.addLine("Moving straight");
-//            telemetry.update();
-//            bot.moveStraightForDistance(18);
-//            telemetry.addLine("Turning");
-//            telemetry.update();
-/            bot.turnToHeading(0);
-*/
+            bot.strafeRightForDistance(-12);
 
             telemetry.addLine("Complete");
             telemetry.update();

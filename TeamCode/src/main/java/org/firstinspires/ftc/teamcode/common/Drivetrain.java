@@ -141,7 +141,7 @@ public class Drivetrain extends Component {
 //        log();
     }
 
-    public void strafeForDistance(double distance) {
+    public void strafeRightForDistance(double distance) {
         int targetCounts = (int) (-distance * ticksPerInch);
         int leftFrontTarget = 0;
         int leftBackTarget = 0;
@@ -168,20 +168,21 @@ public class Drivetrain extends Component {
         setRunUsingEncoder();
     }
 
-    public void moveStraightForDistance(double distance) {
-        moveStraightForDistance(-distance, maxMediumPower, maxMediumPower);
+    public void moveForwardForDistance(double distance) {
+        moveForwardForDistance(-distance, maxMediumPower);
     }
 
-    public void creepStraightForDistance(double distance) {
-        moveStraightForDistance(distance, maxSlowPower, maxSlowPower);
+    public void creepForwardForDistance(double distance) {
+        moveForwardForDistance(distance, maxSlowPower);
     }
 
-    private void moveStraightForDistance(double distance, double turnSpeed, double driveSpeed) {
+    private void moveForwardForDistance(double distance, double driveSpeed) {
         int targetCounts = (int) (distance * ticksPerInch);
         int leftFrontTarget = 0;
         int leftBackTarget = 0;
         int rightFrontTarget = 0;
         int rightBackTarget = 0;
+        double turnSpeed = 0;
         double headingError = 0;
         double targetHeading = getHeading();
 

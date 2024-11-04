@@ -110,16 +110,16 @@ public void creepDirection(double axial, double strafe, double yaw) {
 }
 
 public void creepStraightForDistance(double distance) {
-    drivetrain.creepStraightForDistance(distance);
+    drivetrain.creepForwardForDistance(distance);
 }
 
 // Move straight for a specified distance in inches
-public void moveStraightForDistance(double distance) {
-    drivetrain.moveStraightForDistance(distance);
+public void moveForwardForDistance(double distance) {
+    drivetrain.moveForwardForDistance(distance);
 }
 
-public void strafeForDistance(double distance) {
-    drivetrain.strafeForDistance(distance);
+public void strafeRightForDistance(double distance) {
+    drivetrain.strafeRightForDistance(distance);
 }
 
 public void stopDrive() {
