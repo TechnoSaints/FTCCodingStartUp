@@ -169,7 +169,7 @@ public class Drivetrain extends Component {
     }
 
     public void moveForwardForDistance(double distance) {
-        moveForwardForDistance(-distance, maxMediumPower);
+        moveForwardForDistance(distance, maxMediumPower);
     }
 
     public void creepForwardForDistance(double distance) {
