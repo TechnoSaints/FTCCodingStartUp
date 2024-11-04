@@ -11,14 +11,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTemplate;
+import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTest;
 
 @Config
-@Autonomous(name = "AutoTemplate3DeadWheel", group = "Linear OpMode")
-public class AutoTemplate extends LinearOpMode {
+@Autonomous(name = "AutoTestOdo", group = "Linear OpMode")
+public class AutoTestOdo extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
-    protected AutoBot3DeadWheelTemplate bot;
+    protected AutoBot3DeadWheelTest bot;
 
     private Pose2d startPose, pose1, pose2, pose3;
 
@@ -28,7 +28,7 @@ public class AutoTemplate extends LinearOpMode {
 
     protected MultipleTelemetry multipleTelemetry;
 
-    public AutoTemplate() {
+    public AutoTestOdo() {
     }
 
     @Override
@@ -43,7 +43,7 @@ public class AutoTemplate extends LinearOpMode {
         pose2 = new Pose2d(24, 24, Math.toRadians(0));
         pose3 = new Pose2d(12, -12, Math.toRadians(0));
 
-        bot = new AutoBot3DeadWheelTemplate(hardwareMap, multipleTelemetry, startPose);
+        bot = new AutoBot3DeadWheelTest(hardwareMap, multipleTelemetry, startPose);
         telemetry.addLine("Bot created.");
         telemetry.update();
 
@@ -52,7 +52,7 @@ public class AutoTemplate extends LinearOpMode {
 
         // A sample trajectory action that moves around and call some bot actions
         trajectoryAction1 = bot.drivetrain().actionBuilder(startPose)
-//                .afterTime(0), bot.liftToCruisingPosition())
+//                .afterTime(0, bot.liftToCruisingPosition())
 //                .lineToX(36)
 //                .lineToX(0)
 
@@ -74,7 +74,7 @@ public class AutoTemplate extends LinearOpMode {
         // Another sample trajectory action that moves around and call some bot actions
         // Initially is the same as trajectoryAction1, but may be changed
         trajectoryAction2 = bot.drivetrain().actionBuilder(startPose)
-                .afterTime(0, bot.liftToBottomPosition())
+                .afterTime(0, bot.openGrabber())
                 .lineToX(pose2.position.x)
                 .afterTime(2.5, bot.closeGrabber())
                 .splineToLinearHeading(pose2, pose2.heading)
@@ -83,7 +83,7 @@ public class AutoTemplate extends LinearOpMode {
                 .splineToSplineHeading(pose3, pose3.heading)
                 .afterTime(0.5, bot.closeGrabber())
                 .splineToLinearHeading(startPose, startPose.heading)
-                .afterTime(5.0, bot.liftToBottomPosition())
+                .afterTime(5.0, bot.openGrabber())
                 .build();
 
         telemetry.addLine("trajectoryAction2 built");
@@ -107,7 +107,7 @@ public class AutoTemplate extends LinearOpMode {
         while (!isStopRequested() && opModeIsActive()) {
             Actions.runBlocking(new SequentialAction(
                     selectedTrajectoryAction,
-                    bot.shutdown()
+                    bot.openGrabber()
             ));
         }
     }

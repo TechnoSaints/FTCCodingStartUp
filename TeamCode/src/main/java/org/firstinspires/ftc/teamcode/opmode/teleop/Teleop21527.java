@@ -6,14 +6,15 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot26290;
+import org.firstinspires.ftc.teamcode.common.TeleopBot21527;
+import org.firstinspires.ftc.teamcode.common.TeleopBotTest;
 
 @Config
-@TeleOp(name = "Teleop26290", group = "Linear OpMode")
+@TeleOp(name = "Teleop21527", group = "21527")
 
-public class Teleop26290 extends LinearOpMode {
+public class Teleop21527 extends LinearOpMode {
 
-    private TeleopBot26290 bot;
+    private TeleopBot21527 bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -25,7 +26,7 @@ public class Teleop26290 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot26290(this, telemetry);
+        bot = new TeleopBot21527(this, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -40,25 +41,11 @@ public class Teleop26290 extends LinearOpMode {
             } else {
                 driveAxial = gamepad1.left_stick_y;
                 driveStrafe = gamepad1.left_stick_x;
-                driveYaw = -gamepad1.right_stick_x;
+                driveYaw = gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
-            }
-
-            if (gamepad1.right_trigger > 0.2) {
-                bot.liftUp(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0.2) {
-                bot.liftDown(gamepad1.left_trigger);
-            } else {
-                bot.liftStop();
-            }
-
-            if (gamepad1.x) {
-                bot.grabberClose();
-            } else if (gamepad1.a) {
-                bot.grabberOpen();
             }
         }
     }
