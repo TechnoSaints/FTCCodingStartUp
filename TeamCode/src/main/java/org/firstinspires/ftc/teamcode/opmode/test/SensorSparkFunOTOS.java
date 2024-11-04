@@ -46,7 +46,7 @@ public class SensorSparkFunOTOS extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotSimple(hardwareMap, telemetry);
+        bot = new TeleopBotSimple(this, telemetry);
 
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 

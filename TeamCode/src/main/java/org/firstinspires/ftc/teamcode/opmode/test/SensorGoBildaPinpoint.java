@@ -40,7 +40,7 @@ public class SensorGoBildaPinpoint extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotSimple(hardwareMap, telemetry);
+        bot = new TeleopBotSimple(this, telemetry);
 
         // Initialize the hardware variables. Note that the strings used here must correspond
         // to the names assigned during the robot configuration step on the DS or RC devices.

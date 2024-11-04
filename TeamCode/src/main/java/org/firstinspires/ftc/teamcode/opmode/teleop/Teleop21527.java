@@ -26,7 +26,7 @@ public class Teleop21527 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot21527(hardwareMap, telemetry);
+        bot = new TeleopBot21527(this, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {

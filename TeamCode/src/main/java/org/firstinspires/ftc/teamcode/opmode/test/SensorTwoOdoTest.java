@@ -40,7 +40,7 @@ public class SensorTwoOdoTest extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotSimple(hardwareMap, telemetry);
+        bot = new TeleopBotSimple(this, telemetry);
 
         sparkOdo = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
 

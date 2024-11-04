@@ -25,7 +25,7 @@ public class TeleopTest extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotTest(hardwareMap, telemetry);
+        bot = new TeleopBotTest(this, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
