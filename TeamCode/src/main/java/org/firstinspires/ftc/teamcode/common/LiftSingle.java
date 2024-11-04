@@ -97,6 +97,11 @@ public class LiftSingle extends Component {
         log();
     }
 
+    public void minPosition() {
+        stopAtPosition(minPosition);
+        log();
+    }
+
     private boolean stoppedAtTop() {
         boolean stop = false;
         int currentPosition = motor.getCurrentPosition();

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.common;
 
+import com.arcrobotics.ftclib.controller.PIDFController;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -27,10 +28,10 @@ public class Drivetrain extends Component {
     private IMU imu;
     private LinearOpMode opMode;
     private final double headingThreshold = 0.5;
-    private final double turnGain =0.02;
+    private final double turnGain = 0.02;
     private final double driveGain = 0.03;
     private final double ticksPerInch;
-
+    private PIDFController pidf;
 
     public Drivetrain(LinearOpMode opMode, Telemetry telemetry, DrivetrainData drivetrainData, MotorData motorData) {
         super(telemetry);
@@ -54,7 +55,7 @@ public class Drivetrain extends Component {
         stopAndResetEncoders();
         setRunUsingEncoder();
         setBrakingOn();
-        setToNormalPower();
+        setToFastPower();
 
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
@@ -65,11 +66,11 @@ public class Drivetrain extends Component {
         imu.resetYaw();
     }
 
-    protected void setToNormalPower() {
+    protected void setToFastPower() {
         currentPower = maxFastPower;
     }
 
-    protected void setToCreepPower() {
+    protected void setToSlowPower() {
         currentPower = maxSlowPower;
     }
 
@@ -88,10 +89,10 @@ public class Drivetrain extends Component {
             turnSpeed = Range.clip(turnSpeed, -maxMediumPower, maxMediumPower);
 
             // Pivot in place by applying the turning correction
-            moveDirection(0, 0, -turnSpeed);
+            moveDirection(0, 0, turnSpeed);
 
-            telemetry.addData("headingError: ",headingError);
-            telemetry.addData("turnSpeed: ",turnSpeed);
+            telemetry.addData("headingError: ", headingError);
+            telemetry.addData("turnSpeed: ", turnSpeed);
             telemetry.update();
         }
         stop();
@@ -129,9 +130,9 @@ public class Drivetrain extends Component {
             rightBackPower /= max;
         }
 
-        telemetry.addData("leftFrontPower: ",leftFrontPower);
-        telemetry.addData("currentPower: ",currentPower);
-        telemetry.addData("maxVelocity: ",maxVelocity);
+        telemetry.addData("leftFrontPower: ", leftFrontPower);
+        telemetry.addData("currentPower: ", currentPower);
+        telemetry.addData("maxVelocity: ", maxVelocity);
         telemetry.update();
 
         leftFrontDrive.setVelocity(leftFrontPower * currentPower * maxVelocity);
@@ -177,7 +178,7 @@ public class Drivetrain extends Component {
     }
 
     private void moveForwardForDistance(double distance, double driveSpeed) {
-        int targetCounts = (int) (distance * ticksPerInch);
+        int targetCounts = (int) (-distance * ticksPerInch);
         int leftFrontTarget = 0;
         int leftBackTarget = 0;
         int rightFrontTarget = 0;
@@ -210,30 +211,33 @@ public class Drivetrain extends Component {
 
             // Apply the turning correction to the current driving speed.
             moveDirection(driveSpeed, 0.0, -turnSpeed);
- //           log();
+            //           log();
         }
         stop();
         setRunUsingEncoder();
     }
 
+
     public double getHeadingError(double targetHeading) {
-        double headingError = targetHeading - getHeading();
+        return (targetHeading - getHeading());
+    }
+
+    public double getSteeringCorrection(double headingError, double gain) {
+        // Determine the heading current error
 
         // Normalize the error to be within +/- 180 degrees
         while (headingError > 180) headingError -= 360;
         while (headingError <= -180) headingError += 360;
-        return (headingError);
-    }
-
-    public double getSteeringCorrection(double headingError, double gain) {
 
         // Multiply the error by the gain to determine the required steering correction/  Limit the result to +/- 1.0
         return Range.clip(headingError * gain, -1, 1);
     }
 
+
     public double getHeading() {
         return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
+
 
     public void stop() {
         leftFrontDrive.setVelocity(0.0);
@@ -284,11 +288,10 @@ public class Drivetrain extends Component {
         rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
-    private void log()
-    {
-        telemetry.addData("leftFrontDrive Position: ",leftFrontDrive.getCurrentPosition());
-        telemetry.addData("leftFrontDrive Target: ",leftFrontDrive.getTargetPosition());
-        telemetry.addData("leftFrontDrive Velocity: ",leftFrontDrive.getVelocity());
+    private void log() {
+        telemetry.addData("leftFrontDrive Position: ", leftFrontDrive.getCurrentPosition());
+        telemetry.addData("leftFrontDrive Target: ", leftFrontDrive.getTargetPosition());
+        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
         telemetry.update();
     }
 }
