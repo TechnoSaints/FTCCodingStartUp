@@ -66,10 +66,12 @@ public class Teleop21528_A extends LinearOpMode {
 
             if (gamepad1.left_bumper) {
                 bot.armLeftClose();
+                bot.armRightClose();
                 bot.wristClose();
                 //motorDirection = 1;
             } else if (gamepad1.right_bumper) {
                 bot.armLeftMiddle();
+                bot.armRightMiddle();
                 //bot.wristOpen();
                 //motorDirection = -1;
             }

@@ -6,6 +6,7 @@ import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm1ServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm2ServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
@@ -13,16 +14,18 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData215
 
 public abstract class Bot21528_A extends Component {
     private final LiftSingle lift;
-    private final ServoSimple grabber, armLeft, wrist;
+    private final ServoSimple grabber, armLeft, wrist, armRight;
 
     public Bot21528_A(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
         armLeft = new ServoSimple(hardwareMap, telemetry, "armLeft", new Arm1ServoData21528());
+        armRight = new ServoSimple(hardwareMap, telemetry, "armRight", new Arm2ServoData21528());
         wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armLeftClose();
+        //armRightClose();
         wristClose();
     }
 
@@ -41,6 +44,12 @@ public abstract class Bot21528_A extends Component {
     public void armLeftOpen() { armLeft.open(); }
 
     public void armLeftMiddle() { armLeft.middle(); }
+
+    public void armRightClose() {armRight.close();}
+
+    public void armRightOpen() { armRight.open(); }
+
+    public void armRightMiddle() { armRight.middle(); }
 
     public void wristOpen() {
         wrist.open();
