@@ -71,13 +71,7 @@ public abstract class Bot21528_A extends Component {
         lift.stop();
     }
 
-    public void liftDown(double speed) {
-        lift.down(speed);
-    }
-
-    public void liftHighPosition() {
-        lift.highPosition();
-    }
+    public void liftHighPosition() { lift.highPosition(); }
 
     public void liftMediumPosition() {
         lift.mediumPosition();

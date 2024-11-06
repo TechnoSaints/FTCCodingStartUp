@@ -7,4 +7,8 @@ public abstract class LiftData {
     public int maxTolerance;
     public int minPosition;
     public int minTolerance;
+    public int highPosition;
+    public int mediumPosition;
+    public int lowPosition;
+
 }
