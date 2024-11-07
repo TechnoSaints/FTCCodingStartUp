@@ -27,6 +27,5 @@ public class Bot21527 extends Component {
 
     public void stopDrive() {
         drivetrain.stop();
-
     }
 }

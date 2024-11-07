@@ -4,18 +4,19 @@ import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda117DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda60DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.ArmData26290;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.GrabberServoData26290;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.LiftData26290;
 
-public abstract class Bot26290 extends Component {
+public class Bot26290 extends Component {
+    private Drivetrain drivetrain;
+
     private LiftSingle lift, arm;
     private ServoSimple grabber;
 
@@ -23,84 +24,85 @@ public abstract class Bot26290 extends Component {
         super(telemetry);
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
         lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda117DcMotorData(), new LiftData26290());
-        arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
         grabberClose();
     }
 
-    public void grabberClose(){
+    public void grabberClose() {
         grabber.close();
     }
 
-    public void grabberOpen(){
+    public void grabberOpen() {
         grabber.open();
     }
 
-    public void liftUp(double speed){lift.up(speed);}
-
-    public void liftDown(double speed){lift.down(speed);}
-
-    public void liftZero(){lift.zero();}
-
-    public void liftStop(){lift.stop();}
-
-    public void armUp(double speed){arm.up(speed);}
-
-    public void armDown(double speed){arm.down(speed);}
-
-    public void armZero(){arm.zero();}
-
-    public void armStop(){arm.stop();}
-    // Action classes and methods required to use scheduler
-    // Intended for use in auto opmodes, but could be used in teleop
-    public class OpenGrabber implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Opening...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void liftUp(double speed) {
+        lift.up(speed);
     }
 
-    public Action openGrabber() {
-        return new OpenGrabber();
+    public void liftDown(double speed) {
+        lift.down(speed);
     }
 
-    public class CloseGrabber implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Closing...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void liftHighPosition() {
+        lift.highPosition();
     }
 
-    public Action closeGrabber() {
-        return new CloseGrabber();
+    public void liftMediumPosition() {
+        lift.mediumPosition();
     }
 
-    public class LiftToBottomPosition implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Lift Moving to Bottom Position...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void liftlowPosition() {
+        lift.lowPosition();
     }
 
-    public Action liftToBottomPosition() {
-        return new LiftToBottomPosition();
+    public void liftMinPosition() {
+        lift.minPosition();
     }
 
-    public class Shutdown implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Shutting Bot Down...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void liftStop() {
+        lift.stop();
     }
 
-    public Action shutdown() {
-        return new Shutdown();
+    public void liftZero() {
+        lift.zero();
     }
+
+    public void turnToHeading(double heading) {
+        drivetrain.turnToHeading(heading);
+    }
+
+    // Turn a specified distance in degrees
+    public void turnForDistance(double distance) {
+        drivetrain.turnForDistance(distance);
+    }
+
+    public void moveDirection(double axial, double strafe, double yaw) {
+        drivetrain.moveDirection(axial, strafe, yaw);
+    }
+
+    public void moveDirectionNoEnc(double axial, double strafe, double yaw) {
+        drivetrain.moveDirection(axial, strafe, yaw);
+    }
+
+    public void creepDirection(double axial, double strafe, double yaw) {
+        drivetrain.creepDirection(axial, strafe, yaw);
+    }
+
+    public void creepStraightForDistance(double distance) {
+        drivetrain.creepForwardForDistance(distance);
+    }
+
+    // Move straight for a specified distance in inches
+    public void moveForwardForDistance(double distance) {
+        drivetrain.moveForwardForDistance(distance);
+    }
+
+    public void strafeRightForDistance(double distance) {
+        drivetrain.strafeRightForDistance(distance);
+    }
+
+    public void stopDrive() {
+        drivetrain.moveDirection(0, 0, 0);
+    }
+
 }
