@@ -51,7 +51,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Config
-public final class AutoDrivetrainTemplate {
+public final class AutoDrivetrainTest {
     public static class Params {
         // IMU orientation
         // TODO: fill in these values based on
@@ -135,10 +135,10 @@ public final class AutoDrivetrainTemplate {
         private boolean initialized;
 
         public DriveLocalizer() {
-            leftFront = new OverflowEncoder(new RawEncoder(AutoDrivetrainTemplate.this.leftFront));
-            leftBack = new OverflowEncoder(new RawEncoder(AutoDrivetrainTemplate.this.leftBack));
-            rightBack = new OverflowEncoder(new RawEncoder(AutoDrivetrainTemplate.this.rightBack));
-            rightFront = new OverflowEncoder(new RawEncoder(AutoDrivetrainTemplate.this.rightFront));
+            leftFront = new OverflowEncoder(new RawEncoder(AutoDrivetrainTest.this.leftFront));
+            leftBack = new OverflowEncoder(new RawEncoder(AutoDrivetrainTest.this.leftBack));
+            rightBack = new OverflowEncoder(new RawEncoder(AutoDrivetrainTest.this.rightBack));
+            rightFront = new OverflowEncoder(new RawEncoder(AutoDrivetrainTest.this.rightFront));
 
             imu = lazyImu.get();
 
@@ -213,7 +213,7 @@ public final class AutoDrivetrainTemplate {
         }
     }
 
-    public AutoDrivetrainTemplate(HardwareMap hardwareMap, Pose2d pose) {
+    public AutoDrivetrainTest(HardwareMap hardwareMap, Pose2d pose) {
         this.pose = pose;
 
         LynxFirmware.throwIfModulesAreOutdated(hardwareMap);

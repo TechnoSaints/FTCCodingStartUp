@@ -1,14 +1,14 @@
-package org.firstinspires.ftc.teamcode.common.hardware_data.team21528;
+package org.firstinspires.ftc.teamcode.common.hardware_data.team26290;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 
-public class DrivetrainData21528OdoTest extends DrivetrainData {
-    public DrivetrainData21528OdoTest() {
-        maxNormalPower = 0.65;
-        maxCreepPower = 0.25;
-        leftFrontDirection = DcMotorSimple.Direction.REVERSE;
+public class DrivetrainData26290 extends DrivetrainData {
+    public DrivetrainData26290() {
+        maxFastPower = 0.7;
+        maxSlowPower = 0.25;
+        leftFrontDirection = DcMotorSimple.Direction.FORWARD;
         leftBackDirection = DcMotorSimple.Direction.FORWARD;
         rightFrontDirection = DcMotorSimple.Direction.REVERSE;
         rightBackDirection = DcMotorSimple.Direction.REVERSE;
