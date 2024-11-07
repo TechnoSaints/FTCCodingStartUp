@@ -7,15 +7,20 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-
 import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 
 @Config
 @Autonomous(name = "HighSpecimanAuto21528_B", group = "Auto")
 
-public class HighSpecimenAuto21528_B extends AutoMaster21528 {
+public class HighSpecimenAuto21528_B extends LinearOpMode {
+    protected Bot21528_B bot;
     @Override
     public void runOpMode() {
+        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+
+        bot = new Bot21528_B(this, telemetry);
+        telemetry.addLine("Bot initialized...");
+        telemetry.update();
 
         waitForStart();
 
