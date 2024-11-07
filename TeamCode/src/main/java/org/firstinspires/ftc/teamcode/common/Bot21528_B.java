@@ -1,26 +1,34 @@
 package org.firstinspires.ftc.teamcode.common;
 
 import androidx.annotation.NonNull;
+
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData21528_B;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
 
-public abstract class Bot21528_B extends Component {
+public class Bot21528_B extends Component {
+    private Drivetrain drivetrain;
     private final LiftSingle lift;
     private final ServoSimple grabber, arm, wrist;
+    private LinearOpMode opMode;
 
-    public Bot21528_B(HardwareMap hardwareMap, Telemetry telemetry) {
+    public Bot21528_B(LinearOpMode opMode, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData21528());
-        wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData21528());
+        drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData21528_B(), new GoBilda312DcMotorData());
+        lift = new LiftSingle(opMode.hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
+        grabber = new ServoSimple(opMode.hardwareMap, telemetry, "grabber", new GrabberServoData21528());
+        arm = new ServoSimple(opMode.hardwareMap, telemetry, "arm", new ArmServoData21528());
+        wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armClose();
         wristClose();
@@ -42,7 +50,9 @@ public abstract class Bot21528_B extends Component {
         arm.open();
     }
 
-    public void armMiddle() { arm.middle(); }
+    public void armMiddle() {
+        arm.middle();
+    }
 
     public void wristOpen() {
         wrist.open();
@@ -60,6 +70,22 @@ public abstract class Bot21528_B extends Component {
         lift.down(speed);
     }
 
+    public void liftHighPosition() {
+        lift.highPosition();
+    }
+
+    public void liftMediumPosition() {
+        lift.mediumPosition();
+    }
+
+    public void liftlowPosition() {
+        lift.lowPosition();
+    }
+
+    public void liftMinPosition() {
+        lift.minPosition();
+    }
+
     public void liftStop() {
         lift.stop();
     }
@@ -68,58 +94,41 @@ public abstract class Bot21528_B extends Component {
         lift.zero();
     }
 
-
-    // Action classes and methods required to use scheduler
-    // Intended for use in auto opmodes, but could be used in teleop
-    public class OpenGrabber implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Opening...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void turnToHeading(double heading) {
+        drivetrain.turnToHeading(heading);
     }
 
-    public Action openGrabber() {
-        return new OpenGrabber();
+    // Turn a specified distance in degrees
+    public void turnForDistance(double distance) {
+        drivetrain.turnForDistance(distance);
     }
 
-    public class CloseGrabber implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Closing...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void moveDirection(double axial, double strafe, double yaw) {
+        drivetrain.moveDirection(axial, strafe, yaw);
     }
 
-    public Action closeGrabber() {
-        return new CloseGrabber();
+    public void moveDirectionNoEnc(double axial, double strafe, double yaw) {
+        drivetrain.moveDirection(axial, strafe, yaw);
     }
 
-    public class LiftToBottomPosition implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Lift Moving to Bottom Position...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void creepDirection(double axial, double strafe, double yaw) {
+        drivetrain.creepDirection(axial, strafe, yaw);
     }
 
-    public Action liftToBottomPosition() {
-        return new LiftToBottomPosition();
+    public void creepStraightForDistance(double distance) {
+        drivetrain.creepForwardForDistance(distance);
     }
 
-    public class Shutdown implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Shutting Bot Down...", 1);
-            telemetry.update();
-            return false;
-        }
+    // Move straight for a specified distance in inches
+    public void moveForwardForDistance(double distance) {
+        drivetrain.moveForwardForDistance(distance);
     }
 
-    public Action shutdown() {
-        return new Shutdown();
+    public void strafeRightForDistance(double distance) {
+        drivetrain.strafeRightForDistance(distance);
+    }
+
+    public void stopDrive() {
+        drivetrain.moveDirection(0, 0, 0);
     }
 }

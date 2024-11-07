@@ -5,7 +5,6 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import org.firstinspires.ftc.teamcode.common.TeleopBot21527;
 import org.firstinspires.ftc.teamcode.common.TeleopBot26290;
 
@@ -15,7 +14,13 @@ import org.firstinspires.ftc.teamcode.common.TeleopBot26290;
 public class Teleop21527 extends LinearOpMode {
 
     private TeleopBot21527 bot;
-    public static boolean loggingOn = false;
+
+@Config
+@TeleOp(name = "Teleop21527", group = "21527")
+
+public class Teleop21527 extends LinearOpMode {
+
+    private Bot21527 bot;
 
     @Override
     public void runOpMode() {
@@ -26,7 +31,8 @@ public class Teleop21527 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot21527(hardwareMap, telemetry);
+        bot = new Bot21527(hardwareMap, telemetry);
+
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -46,23 +52,6 @@ public class Teleop21527 extends LinearOpMode {
                     bot.stopDrive();
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
-            }
-
-            if (gamepad1.right_bumper){
-                bot.armUp();
-            }
-            else if (gamepad1.left_bumper){
-                bot.armDown();
-            }
-            else {
-                bot.armStop();
-            }
-
-            if (gamepad1.a){
-                bot.grabberClose();
-            }
-            else if (gamepad1.b){
-                bot.grabberOpen();
             }
         }
     }

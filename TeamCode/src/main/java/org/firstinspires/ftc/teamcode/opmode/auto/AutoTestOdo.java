@@ -11,14 +11,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTemplate;
+import org.firstinspires.ftc.teamcode.common.AutoBot3DeadWheelTest;
 
 @Config
-@Autonomous(name = "AutoTemplateOdo", group = "Auto")
-public class AutoTemplateOdo extends LinearOpMode {
+@Autonomous(name = "AutoTestOdo", group = "Linear OpMode")
+public class AutoTestOdo extends LinearOpMode {
     private ElapsedTime timer = new ElapsedTime();
 
-    protected AutoBot3DeadWheelTemplate bot;
+    protected AutoBot3DeadWheelTest bot;
 
     private Pose2d startPose, pose1, pose2, pose3;
 
@@ -28,7 +28,7 @@ public class AutoTemplateOdo extends LinearOpMode {
 
     protected MultipleTelemetry multipleTelemetry;
 
-    public AutoTemplateOdo() {
+    public AutoTestOdo() {
     }
 
     @Override
@@ -43,7 +43,7 @@ public class AutoTemplateOdo extends LinearOpMode {
         pose2 = new Pose2d(24, 24, Math.toRadians(0));
         pose3 = new Pose2d(12, -12, Math.toRadians(0));
 
-        bot = new AutoBot3DeadWheelTemplate(hardwareMap, multipleTelemetry, startPose);
+        bot = new AutoBot3DeadWheelTest(hardwareMap, multipleTelemetry, startPose);
         telemetry.addLine("Bot created.");
         telemetry.update();
 

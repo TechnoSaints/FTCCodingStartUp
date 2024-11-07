@@ -1,51 +1,32 @@
 package org.firstinspires.ftc.teamcode.common;
 
-import androidx.annotation.NonNull;
-
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.Action;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda117DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21527.GrabberServoData21527;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21527.LiftData21527;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21527.DrivetrainData21527;
+import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 
-public abstract class Bot21527 extends Component {
 
-    private final DcMotorEx arm;
-    private final ServoSimple grabber;
+public class Bot21527 extends Component {
+    private LinearOpMode opMode;
+    private Drivetrain drivetrain;
 
     public Bot21527(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
-        arm = hardwareMap.get(DcMotorEx.class, "arm");
-        arm.setDirection(DcMotorSimple.Direction.FORWARD);
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21527());
+        drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData21527(), new GoBilda312DcMotorData());
+    }
+    
+    public void creepDirection(double axial, double strafe, double yaw) {
+        drivetrain.creepDirection(axial, strafe, yaw);
     }
 
-    public void armUp() {
-        arm.setPower(0.5);
+    public void moveDirection(double axial, double strafe, double yaw) {
+        drivetrain.moveDirection(axial, strafe, yaw);
     }
 
-    public void armDown()
-    {
-        arm.setPower(-0.5);
-    }
+    public void stopDrive() {
+        drivetrain.stop();
 
-    public void armStop() {
-        arm.setPower(0.0);
-    }
-
-    public void grabberOpen() {
-        grabber.open();
-    }
-
-    public void grabberClose() {
-        grabber.close();
     }
 }

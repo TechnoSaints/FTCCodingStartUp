@@ -7,16 +7,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBot9800;
-
-import java.security.KeyStore;
+import org.firstinspires.ftc.teamcode.common.Bot9800;
 
 @Config
 @TeleOp(name = "Teleop9800", group = "9800")
 
 public class Teleop9800 extends LinearOpMode {
 
-    private TeleopBot9800 bot;
+    private Bot9800 bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -31,7 +29,7 @@ public class Teleop9800 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot9800(hardwareMap, telemetry);
+        bot = new Bot9800(hardwareMap, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -53,7 +51,7 @@ public class Teleop9800 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-            if ((gamepad1.a) && (timer.milliseconds() > 250)) {
+            if ((gamepad2.a) && (timer.milliseconds() > 250)) {
                 if (!grabberPressed) {
                     timer.reset();
                     grabberPressed = true;
@@ -65,7 +63,7 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad1.x) && (timer.milliseconds() > 250)){
+            if ((gamepad2.x) && (timer.milliseconds() > 250)) {
                 if (!armPressed) {
                     timer.reset();
                     armPressed = true;
@@ -77,8 +75,8 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad1.b) && (timer.milliseconds() > 250)) {
-                if (!oGrabberPressed){
+            if ((gamepad2.b) && (timer.milliseconds() > 250)) {
+                if (!oGrabberPressed) {
                     timer.reset();
                     oGrabberPressed = true;
                     bot.outtakeGrabberClose();
@@ -89,7 +87,7 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad1.y) && (timer.milliseconds() > 250)) {
+            if ((gamepad2.y) && (timer.milliseconds() > 250)) {
                 if (!oArmPressed) {
                     timer.reset();
                     oArmPressed = true;
@@ -101,7 +99,7 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad1.right_stick_button) && (timer.milliseconds() > 250)){
+            if ((gamepad2.right_stick_button) && (timer.milliseconds() > 250)) {
                 if (!wristPressed) {
                     timer.reset();
                     wristPressed = true;
@@ -113,20 +111,20 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if (gamepad1.right_bumper) {
+            if (gamepad2.right_bumper) {
                 bot.intakeLiftUp(1);
-            } else if (gamepad1.left_bumper) {
+            } else if (gamepad2.left_bumper) {
                 bot.intakeLiftDown(1);
             } else {
-                bot.intakeLiftZero();
+                bot.intakeLiftStop();
             }
 
-            if (gamepad1.right_trigger > 0.2) {
-                bot.outtakeLiftUp(gamepad1.right_trigger);
-            } else if (gamepad1.left_trigger > 0.2) {
-                bot.outtakeLiftDown(gamepad1.left_trigger);
+            if (gamepad2.right_trigger > 0.2) {
+                bot.outtakeLiftUp(gamepad2.right_trigger);
+            } else if (gamepad2.left_trigger > 0.2) {
+                bot.outtakeLiftDown(gamepad2.left_trigger);
             } else {
-                bot.outtakeLiftZero();
+                bot.outtakeLiftStop();
             }
         }
     }
