@@ -11,6 +11,6 @@ public class DrivetrainData9800 extends DrivetrainData {
         leftFrontDirection = DcMotorSimple.Direction.FORWARD;
         leftBackDirection = DcMotorSimple.Direction.REVERSE;
         rightFrontDirection = DcMotorSimple.Direction.FORWARD;
-        rightBackDirection = DcMotorSimple.Direction.REVERSE;
+        rightBackDirection = DcMotorSimple.Direction.FORWARD;
     }
 }

@@ -12,3 +12,4 @@ public abstract class LiftData {
     public int lowPosition;
 
 }
+

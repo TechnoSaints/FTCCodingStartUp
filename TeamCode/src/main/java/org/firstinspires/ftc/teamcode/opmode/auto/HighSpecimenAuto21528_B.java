@@ -13,17 +13,10 @@ import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 @Config
 @Autonomous(name = "HighSpecimanAuto21528_B", group = "Auto")
 
-public class HighSpecimanAuto21528_B extends LinearOpMode {
-    private Bot21528_B bot;
-
+public class HighSpecimenAuto21528_B extends AutoMaster21528 {
     @Override
     public void runOpMode() {
 
-        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-
-        bot = new Bot21528_B(this, telemetry);
-        telemetry.addLine("Bot initialized...");
-        telemetry.update();
         waitForStart();
 
         if (opModeIsActive() && !isStopRequested()) {

@@ -1,20 +1,13 @@
 package org.firstinspires.ftc.teamcode.opmode.auto;
 
 
-import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-
-import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 
 @Config
-@Autonomous(name = "AutoBucketSide21528_B", group = "Auto")
+@Autonomous(name = "AutoBucketSide9800", group = "Auto")
 
-public class AutoBucketSide21528_B extends AutoMaster21528 {
+public class AutoBucketSide9800 extends AutoMaster21528 {
 
     @Override
     public void runOpMode() {
@@ -40,12 +33,13 @@ public class AutoBucketSide21528_B extends AutoMaster21528 {
             bot.armOpen();
             sleep(1500);
             bot.liftlowPosition();
+            sleep(1000);
             bot.liftMinPosition();
             sleep(1500);
             bot.grabberClose();
             sleep(1000);
             bot.armMiddle();
-
+            sleep(1000);
             bot.turnToHeading(0);
             sleep(1000);
             bot.liftHighPosition();
@@ -59,9 +53,9 @@ public class AutoBucketSide21528_B extends AutoMaster21528 {
             bot.turnToHeading(-90);
             bot.strafeRightForDistance(-16);
             bot.armOpen();
-
+            sleep(1500);
             bot.liftlowPosition();
-
+            sleep(1000);
             bot.liftMinPosition();
             sleep(1500);
             bot.grabberClose();

@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 
 @Config
-@TeleOp(name = "Teleop21528_B", group = "Teleop")
+@TeleOp(name = "Teleop21528_B", group = "21528")
 
 public class Teleop21528_B extends LinearOpMode {
 
