@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.ArmServoData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
@@ -18,12 +20,17 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.OuttakeArmSe
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.WristServoData9800;
 
 
-public abstract class Bot9800 extends Component {
+public class Bot9800 extends Component {
+    private LinearOpMode opMode;
+    private Drivetrain drivetrain;
+
     private final LiftSingle intakeLift, outtakeLift;
     private final ServoSimple grabber, arm, outtakeGrabber, outtakeArm, wrist;
 
     public Bot9800(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
+        drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData9800(), new GoBilda312DcMotorData());
+
         // lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
         intakeLift = new LiftSingle(hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData(), new LiftDataIntake9800());
         outtakeLift = new LiftSingle(hardwareMap, telemetry, "outtakeLift", false, new GoBilda312DcMotorData(), new LiftDataOuttake9800());
@@ -119,57 +126,15 @@ public abstract class Bot9800 extends Component {
         outtakeArm.open();
     }
 
-    // Action classes and methods required to use scheduler
-    // Intended for use in auto opmodes, but could be used in teleop
-    public class OpenGrabber implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Opening...", 1);
-            telemetry.update();
-            return false;
-        }
+    public void creepDirection(double axial, double strafe, double yaw) {
+        drivetrain.creepDirection(axial, strafe, yaw);
     }
 
-    public Action openGrabber() {
-        return new OpenGrabber();
+    public void moveDirection(double axial, double strafe, double yaw) {
+        drivetrain.moveDirection(axial, strafe, yaw);
     }
 
-    public class CloseGrabber implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Grabber Closing...", 1);
-            telemetry.update();
-            return false;
-        }
-    }
-
-    public Action closeGrabber() {
-        return new CloseGrabber();
-    }
-
-    public class LiftToBottomPosition implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Lift Moving to Bottom Position...", 1);
-            telemetry.update();
-            return false;
-        }
-    }
-
-    public Action liftToBottomPosition() {
-        return new LiftToBottomPosition();
-    }
-
-    public class Shutdown implements Action {
-        @Override
-        public boolean run(@NonNull TelemetryPacket packet) {
-            telemetry.addData("Shutting Bot Down...", 1);
-            telemetry.update();
-            return false;
-        }
-    }
-
-    public Action shutdown() {
-        return new Shutdown();
+    public void stopDrive() {
+        drivetrain.stop();
     }
 }
