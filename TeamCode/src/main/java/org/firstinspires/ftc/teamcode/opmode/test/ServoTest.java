@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.common.ServoSimple;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm2ServoData21528;
 
 @Config
-@TeleOp(name = "ServoTest", group = "TeleOp")
+@TeleOp(name = "TEST ServoTest", group = "Test")
 
 public class ServoTest extends LinearOpMode {
 

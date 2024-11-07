@@ -5,15 +5,14 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import org.firstinspires.ftc.teamcode.common.TeleopBot21528_B;
+import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 
 @Config
-@TeleOp(name = "Teleop21528_B", group = "Teleop")
+@TeleOp(name = "Teleop21528_B", group = "21528")
 
 public class Teleop21528_B extends LinearOpMode {
 
-    private TeleopBot21528_B bot;
+    private Bot21528_B bot;
     public static boolean loggingOn = false;
 
     @Override
@@ -26,7 +25,7 @@ public class Teleop21528_B extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBot21528_B(hardwareMap, telemetry);
+        bot = new Bot21528_B(this, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -42,7 +41,7 @@ public class Teleop21528_B extends LinearOpMode {
             } else {
                 driveAxial = gamepad1.left_stick_y * motorDirection;
                 driveStrafe = gamepad1.left_stick_x * motorDirection;
-                driveYaw = gamepad1.right_stick_x;
+                driveYaw = -gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
@@ -66,11 +65,9 @@ public class Teleop21528_B extends LinearOpMode {
             if (gamepad1.left_bumper) {
                 bot.armClose();
                 bot.wristClose();
-                //motorDirection = 1;
             } else if (gamepad1.right_bumper) {
                 bot.armMiddle();
-                //bot.wristOpen();
-                //motorDirection = -1;
+                bot.wristOpen();
             }
 
             if (gamepad1.b) {
