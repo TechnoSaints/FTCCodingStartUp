@@ -60,6 +60,7 @@ public class AutoBucketSide21528_B extends AutoMaster21528 {
             bot.strafeRightForDistance(-16);
             bot.armOpen();
 
+            
             bot.liftlowPosition();
 
             bot.liftMinPosition();
