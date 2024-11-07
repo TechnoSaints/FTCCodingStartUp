@@ -24,10 +24,10 @@ public class Bot21528_B extends Component {
 
     public Bot21528_B(LinearOpMode opMode, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        arm = new ServoSimple(hardwareMap, telemetry, "arm1", new Arm1ServoData21528());
-        wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData21528());
+        lift = new LiftSingle(opMode.hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
+        grabber = new ServoSimple(opMode.hardwareMap, telemetry, "grabber", new GrabberServoData21528());
+        arm = new ServoSimple(opMode.hardwareMap, telemetry, "arm1", new Arm1ServoData21528());
+        wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armClose();
         wristClose();

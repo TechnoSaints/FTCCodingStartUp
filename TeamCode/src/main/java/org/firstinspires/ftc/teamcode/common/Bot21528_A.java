@@ -5,6 +5,8 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm1ServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm2ServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
@@ -16,11 +18,11 @@ public class Bot21528_A extends Component {
     private LinearOpMode opMode;
     public Bot21528_A(LinearOpMode opMode, Telemetry telemetry) {
         super(telemetry);
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        armLeft = new ServoSimple(hardwareMap, telemetry, "armLeft", new Arm1ServoData21528());
-        armRight = new ServoSimple(hardwareMap, telemetry, "armRight", new Arm2ServoData21528());
-        wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData21528());
+        lift = new LiftSingle(opMode.hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
+        grabber = new ServoSimple(opMode.hardwareMap, telemetry, "grabber", new GrabberServoData21528());
+        armLeft = new ServoSimple(opMode.hardwareMap, telemetry, "armLeft", new Arm1ServoData21528());
+        armRight = new ServoSimple(opMode.hardwareMap, telemetry, "armRight", new Arm2ServoData21528());
+        wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armLeftClose();
         //armRightClose();

@@ -22,6 +22,7 @@ public class Teleop21528_A extends LinearOpMode {
         double driveAxial = 0.0;
         double driveStrafe = 0.0;
         double driveYaw = 0.0;
+        double motorDirection = 1;
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
