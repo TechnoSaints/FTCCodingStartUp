@@ -48,7 +48,9 @@ public class Bot21528_B extends Component {
         arm.close();
     }
 
-    public void armOpen() { arm.open(); }
+    public void armOpen() {
+        arm.open();
+    }
 
     public void armMiddle() {
         arm.middle();
@@ -130,5 +132,9 @@ public class Bot21528_B extends Component {
 
     public void stopDrive() {
         drivetrain.moveDirection(0, 0, 0);
+    }
+
+    public void touchNoseSwitch() {
+        drivetrain.touchNoseSwitch();
     }
 }

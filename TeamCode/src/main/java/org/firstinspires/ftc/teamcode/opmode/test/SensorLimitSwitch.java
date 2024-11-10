@@ -29,10 +29,13 @@
 
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
+import android.text.method.Touch;
+
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 
 /*
  * This OpMode demonstrates how to use a digital channel.
@@ -42,19 +45,16 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list.
  */
-@TeleOp(name = "Sensor: digital channel", group = "Sensor")
+@TeleOp(name = "SensorLimitSwitch", group = "Sensor")
 @Disabled
-public class SensorDigitalTouch extends LinearOpMode {
-    DigitalChannel digitalTouch;  // Digital channel Object
+public class SensorLimitSwitch extends LinearOpMode {
+    private TouchSensor limitSwitch;
 
     @Override
     public void runOpMode() {
+        limitSwitch = hardwareMap.get(TouchSensor.class, "limitSwitch");
 
-        // get a reference to our touchSensor object.
-        digitalTouch = hardwareMap.get(DigitalChannel.class, "digitalTouch");
-
-        digitalTouch.setMode(DigitalChannel.Mode.INPUT);
-        telemetry.addData("DigitalTouchSensorExample", "Press start to continue...");
+        telemetry.addData("Limit Switch Example", "Press start to continue...");
         telemetry.update();
 
         // wait for the start button to be pressed.
@@ -66,7 +66,7 @@ public class SensorDigitalTouch extends LinearOpMode {
 
             // button is pressed if value returned is LOW or false.
             // send the info back to driver station using telemetry function.
-            if (digitalTouch.getState() == false) {
+            if (limitSwitch.isPressed() == true) {
                 telemetry.addData("Button", "PRESSED");
             } else {
                 telemetry.addData("Button", "NOT PRESSED");
