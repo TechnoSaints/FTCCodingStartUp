@@ -14,8 +14,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 
 public class LiftSingle extends Component {
     private final DcMotorEx motor;
-//    protected TouchSensor lift_sensor = null;
-
+    private TouchSensor liftSwitch;
     private final double maxVelocity;
     private final double maxMovePower;
     private final double stopPower;
@@ -42,10 +41,8 @@ public class LiftSingle extends Component {
         lowPosition = liftData.lowPosition;
         long prevTime;
         int prevPosition;
-//        lift_sensor = hardwareMap.get(TouchSensor.class, "liftSensor");
+        liftSwitch = hardwareMap.get(TouchSensor.class, "liftSwitch");
         motor = hardwareMap.get(DcMotorEx.class, motorName);
-//        encoder = new OverflowEncoder(new RawEncoder(hardwareMap.get(DcMotorEx.class, motorName)));
-
 
         if (reverseMotor) {
             motor.setDirection(DcMotor.Direction.REVERSE);
@@ -130,10 +127,10 @@ public class LiftSingle extends Component {
     }
 
     public void zero() {
-//        liftDown(0.2);
-//        while (!lift_sensor.isPressed()){
-//        }
-//        stop();
+        down(0.2);
+        while (!liftSwitch.isPressed()){
+        }
+        stop();
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

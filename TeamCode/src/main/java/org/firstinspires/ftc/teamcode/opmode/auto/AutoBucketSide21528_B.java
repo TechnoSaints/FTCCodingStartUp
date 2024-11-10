@@ -14,10 +14,15 @@ import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 @Config
 @Autonomous(name = "AutoBucketSide21528_B", group = "Auto")
 
-public class AutoBucketSide21528_B extends AutoMaster21528 {
-
+public class AutoBucketSide21528_B extends LinearOpMode {
+    protected Bot21528_B bot;
     @Override
     public void runOpMode() {
+        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
+
+        bot = new Bot21528_B(this, telemetry);
+        telemetry.addLine("Bot initialized...");
+        telemetry.update();
 
         waitForStart();
 
@@ -26,7 +31,6 @@ public class AutoBucketSide21528_B extends AutoMaster21528 {
             telemetry.update();
 
             bot.grabberClose();
-            sleep(1000);
             bot.armMiddle();
             bot.wristClose();
             bot.liftHighPosition();
@@ -34,8 +38,11 @@ public class AutoBucketSide21528_B extends AutoMaster21528 {
             bot.moveForwardForDistance(32);
             bot.grabberOpen();
             sleep(1000);
-            bot.moveForwardForDistance(-3.6);
-            bot.strafeRightForDistance(21.5);
+            bot.moveForwardForDistance(-6);
+            bot.strafeRightForDistance(12);
+            bot.liftMediumPosition();
+            bot.touchNoseSwitch();
+/*
             bot.turnToHeading(-90);
             bot.armOpen();
             sleep(1500);
@@ -74,7 +81,8 @@ public class AutoBucketSide21528_B extends AutoMaster21528 {
             bot.liftHighPosition();
             sleep(1000);
             bot.strafeRightForDistance(-23);
-            sleep(3000);
+ */
+            bot.liftMinPosition();
             bot.grabberOpen();
             sleep(3000);
 
