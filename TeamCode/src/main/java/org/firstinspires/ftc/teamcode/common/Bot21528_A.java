@@ -29,8 +29,7 @@ public class Bot21528_A extends Component {
         wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armLeftClose();
-        //armRightClose();
-
+        armRightClose();
         wristClose();
     }
 

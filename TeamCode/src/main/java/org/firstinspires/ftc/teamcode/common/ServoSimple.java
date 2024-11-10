@@ -13,8 +13,7 @@ public class ServoSimple extends Component {
     private final double middlePosition;
     private final Servo servo;
 
-    public ServoSimple(HardwareMap hardwareMap, Telemetry telemetry, String servoName, ServoData servoData)
-    {
+    public ServoSimple(HardwareMap hardwareMap, Telemetry telemetry, String servoName, ServoData servoData) {
         super(telemetry);
         openPosition = servoData.openPosition;
         closePosition = servoData.closePosition;
@@ -22,13 +21,24 @@ public class ServoSimple extends Component {
         servo = hardwareMap.get(Servo.class, servoName);
     }
 
-    public void open()
-    {
+    public void open() {
         servo.setPosition(openPosition);
+        log(openPosition);
     }
-    public void close()
-    {
+
+    public void close() {
         servo.setPosition(closePosition);
+        log(closePosition);
     }
-    public void middle() { servo.setPosition(middlePosition);}
+
+    public void middle() {
+        servo.setPosition(middlePosition);
+        log(middlePosition);
+    }
+
+    private void log(double position)
+    {
+        telemetry.addData("Target Position: ", position);
+        telemetry.update();
+    }
 }
