@@ -18,6 +18,7 @@ public class AutoBucketSide21528_B extends LinearOpMode {
     Bot21528_B bot;
     @Override
     public void runOpMode() {
+        bot = new Bot21528_B(this, telemetry);
 
         waitForStart();
 
