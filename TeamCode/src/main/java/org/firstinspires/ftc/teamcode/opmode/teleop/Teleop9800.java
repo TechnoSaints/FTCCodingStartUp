@@ -15,7 +15,6 @@ import org.firstinspires.ftc.teamcode.common.Bot9800;
 public class Teleop9800 extends LinearOpMode {
 
     private Bot9800 bot;
-    public static boolean loggingOn = false;
 
     @Override
     public void runOpMode() {
@@ -29,7 +28,7 @@ public class Teleop9800 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new Bot9800(hardwareMap, telemetry);
+        bot = new Bot9800(this, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
