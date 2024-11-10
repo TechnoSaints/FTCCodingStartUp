@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.common;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-
 import com.arcrobotics.ftclib.controller.PIDFController;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -23,7 +21,7 @@ public class Drivetrain extends Component {
     private final DcMotorEx rightFrontDrive;
     private final DcMotorEx leftBackDrive;
     private final DcMotorEx rightBackDrive;
-    private final TouchSensor noseSwitch;
+//    private final TouchSensor noseSwitch;
     private final double maxFastPower;
     private final double maxMediumPower;
     private final double maxSlowPower;
@@ -61,7 +59,7 @@ public class Drivetrain extends Component {
         setBrakingOn();
         setToFastPower();
 
-        noseSwitch = hardwareMap.get(TouchSensor.class, "noseSwitch");
+//        noseSwitch = hardwareMap.get(TouchSensor.class, "noseSwitch");
 
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
@@ -252,10 +250,10 @@ public class Drivetrain extends Component {
 
     public void touchNoseSwitch()
     {
-        moveDirection(0.2,0,0);
-        while (!noseSwitch.isPressed())
-        {}
-        stop();
+//        moveDirection(0.2,0,0);
+//        while (!noseSwitch.isPressed())
+//        {}
+//        stop();
     }
 
     private void setBrakingOn() {
