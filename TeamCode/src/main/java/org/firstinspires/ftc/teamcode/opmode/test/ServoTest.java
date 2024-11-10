@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.common.ServoSimple;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm2ServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
 
 @Config
 @TeleOp(name = "TEST ServoTest", group = "Test")
@@ -19,7 +20,7 @@ public class ServoTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-        servo = new ServoSimple(hardwareMap, telemetry, "arm", new Arm2ServoData21528());
+        servo = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData21528());
 
         waitForStart();
 
