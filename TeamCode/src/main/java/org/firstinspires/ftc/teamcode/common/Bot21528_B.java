@@ -134,7 +134,7 @@ public class Bot21528_B extends Component {
         drivetrain.moveDirection(0, 0, 0);
     }
 
-    public void touchNoseSwitch() {
-        drivetrain.touchNoseSwitch();
-    }
+   // public void touchNoseSwitch() {
+   //     drivetrain.touchNoseSwitch();
+   // }
 }
