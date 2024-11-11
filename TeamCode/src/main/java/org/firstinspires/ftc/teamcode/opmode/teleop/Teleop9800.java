@@ -145,17 +145,9 @@ public class Teleop9800 extends LinearOpMode {
                     }
                 }
 
-                if (gamepad1.right_bumper) {
+                if ((gamepad1.right_bumper) || (gamepad2.right_bumper)) {
                     bot.intakeLiftUp(1);
-                } else if (gamepad1.left_bumper) {
-                    bot.intakeLiftDown(1);
-                } else {
-                    bot.intakeLiftStop();
-                }
-
-                if (gamepad2.right_bumper) {
-                    bot.intakeLiftUp(1);
-                } else if (gamepad2.left_bumper) {
+                } else if ((gamepad1.left_bumper) || (gamepad2.left_bumper)){
                     bot.intakeLiftDown(1);
                 } else {
                     bot.intakeLiftStop();
