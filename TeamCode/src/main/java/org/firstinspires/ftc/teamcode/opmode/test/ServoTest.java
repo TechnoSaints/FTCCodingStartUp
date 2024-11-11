@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.common.ServoSimple;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm2ServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.ArmServoData9800;
 
 @Config

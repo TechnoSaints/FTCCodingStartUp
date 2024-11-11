@@ -15,15 +15,16 @@ public class ServoTunerDouble extends LinearOpMode {
 
     // Define class members
     Servo servo1, servo2;
-    double position1, position2 = (MAX_POS - MIN_POS) / 2; // Start at halfway position
+    double position1 = (MAX_POS - MIN_POS) / 2;
+    double position2 = position1; // Start at halfway position
 
     @Override
     public void runOpMode() {
 
         // Connect to servo (Assume Robot Left Hand)
         // Change the text in quotes to match any servo name on your robot.
-        servo1 = hardwareMap.get(Servo.class, "arm1");
-        servo2 = hardwareMap.get(Servo.class, "arm2");
+        servo1 = hardwareMap.get(Servo.class, "armLeft");
+        servo2 = hardwareMap.get(Servo.class, "armRight");
 
         // Wait for the start button
         telemetry.addData(">", "Press Start to tune servos.");

@@ -73,10 +73,13 @@ public class Teleop21528_A extends LinearOpMode {
             }
 
             if (gamepad1.b) {
-                bot.wristOpen();
+                bot.armLeftClose();
+                bot.armRightClose();
             } else if (gamepad1.y) {
-                bot.wristClose();
+                bot.armLeftSpecimenHang();
+                bot.armRightSpecimenHang();
             }
+
             if (gamepad1.right_bumper) {
                 bot.grabberClose();
             } else if (gamepad1.left_bumper) {
