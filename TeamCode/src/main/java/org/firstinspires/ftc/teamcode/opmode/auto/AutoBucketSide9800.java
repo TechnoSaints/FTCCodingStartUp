@@ -19,7 +19,7 @@ public class AutoBucketSide9800 extends LinearOpMode {
     public void runOpMode() {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new Bot9800(hardwareMap, telemetry);
+        bot = new Bot9800(this, telemetry);
         telemetry.addLine("Bot initialized...");
         telemetry.update();
         waitForStart();
