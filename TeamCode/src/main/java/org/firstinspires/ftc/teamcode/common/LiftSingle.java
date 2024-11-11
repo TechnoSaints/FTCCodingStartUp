@@ -26,6 +26,7 @@ public class LiftSingle extends Component {
     private int highPosition;
     private int mediumPosition;
     private int lowPosition;
+    private int direction = 1;
 
     public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
@@ -45,7 +46,11 @@ public class LiftSingle extends Component {
         motor = hardwareMap.get(DcMotorEx.class, motorName);
 
         if (reverseMotor) {
-            motor.setDirection(DcMotor.Direction.REVERSE);
+            direction = -1;
+//            motor.setDirection(DcMotor.Direction.REVERSE);
+        } else {
+//            motor.setDirection(DcMotorSimple.Direction.FORWARD);
+            direction = 1;
         }
 
         zero();
@@ -58,7 +63,7 @@ public class LiftSingle extends Component {
     public void up(double targetPower) {
         if (!stoppedAtTop()) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            targetVelocity = targetPower * maxMovePower * maxVelocity;
+            targetVelocity = direction * targetPower * maxMovePower * maxVelocity;
 //            motor.setPower(targetPower);
             motor.setVelocity(targetVelocity);
             telemetry.addData("Stopped at Top: ", "false");
@@ -71,7 +76,7 @@ public class LiftSingle extends Component {
     public void down(double targetPower) {
         if (!stoppedAtBottom()) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            targetVelocity = -targetPower * maxMovePower * maxVelocity;
+            targetVelocity = direction * -targetPower * maxMovePower * maxVelocity;
 //            motor.setPower(targetPower);
             motor.setVelocity(targetVelocity);
             telemetry.addData("Stopped at Bottom: ", " false");
