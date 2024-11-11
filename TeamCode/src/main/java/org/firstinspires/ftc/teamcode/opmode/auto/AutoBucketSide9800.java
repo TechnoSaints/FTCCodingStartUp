@@ -1,17 +1,27 @@
 package org.firstinspires.ftc.teamcode.opmode.auto;
 
 
+import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import org.firstinspires.ftc.teamcode.common.Bot9800;
 
 @Config
 @Autonomous(name = "AutoBucketSide9800", group = "Auto")
 
-public class AutoBucketSide9800 extends AutoMaster21528 {
+public class AutoBucketSide9800 extends LinearOpMode {
+    protected Bot9800 bot;
 
     @Override
     public void runOpMode() {
+        telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
+        bot = new Bot9800(hardwareMap, telemetry);
+        telemetry.addLine("Bot initialized...");
+        telemetry.update();
         waitForStart();
 
         if (opModeIsActive() && !isStopRequested()) {
@@ -26,16 +36,6 @@ public class AutoBucketSide9800 extends AutoMaster21528 {
             bot.turnToHeading(180);
             bot.intakeLiftLowPosistion();
             bot.armClose();
-            bot.grabberClose();
-            bot.armOpen();
-            bot.intakeLiftZero();
-            bot.outtakeGrabberClose();
-            bot.grabberOpen();
-            bot.outtakeArmOpen();
-            bot.moveBackwardsForDistance();
-            bot.outtakeLiftZero();
-
-*/
 
             sleep(1000);
             bot.armMiddle();
@@ -88,6 +88,7 @@ public class AutoBucketSide9800 extends AutoMaster21528 {
             sleep(3000);
             bot.grabberOpen();
             sleep(3000);
+            */
 
             telemetry.addLine("Complete");
             telemetry.update();

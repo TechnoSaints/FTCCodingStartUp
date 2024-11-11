@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 
 public class DrivetrainData21528_B extends DrivetrainData {
     public DrivetrainData21528_B() {
-        maxFastPower = 0.65;
+        maxFastPower = 0.7;
         maxMediumPower = 0.5;
         maxSlowPower = 0.25;
         leftFrontDirection = DcMotorSimple.Direction.REVERSE;
