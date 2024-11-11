@@ -17,8 +17,26 @@ public class AutoBucketSide9800 extends AutoMaster21528 {
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-
+/*
+            bot.outtakeGrabberClose();
+            bot.moveForwardForDistance(78);
+            bot.liftChamberPosistion();
+            bot.moveBackwardsForDistance(98);
+            bot.strafeLeftForDistance(98);
+            bot.turnToHeading(180);
+            bot.intakeLiftLowPosistion();
+            bot.armClose();
             bot.grabberClose();
+            bot.armOpen();
+            bot.intakeLiftZero();
+            bot.outtakeGrabberClose();
+            bot.grabberOpen();
+            bot.outtakeArmOpen();
+            bot.moveBackwardsForDistance();
+            bot.outtakeLiftZero();
+
+*/
+
             sleep(1000);
             bot.armMiddle();
             bot.wristClose();

@@ -3,7 +3,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData9800;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.DrivetrainData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.ArmServoData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.GrabberServoData9800;
