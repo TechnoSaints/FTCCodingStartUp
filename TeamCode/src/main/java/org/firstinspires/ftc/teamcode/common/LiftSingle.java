@@ -62,10 +62,11 @@ public class LiftSingle extends Component {
         if (!stoppedAtTop()) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             targetVelocity = targetPower * maxMovePower * maxVelocity;
+//            motor.setPower(targetPower);
             motor.setVelocity(targetVelocity);
-            telemetry.addData("Stopped at Top: ", "true");
-        } else {
             telemetry.addData("Stopped at Top: ", "false");
+        } else {
+            telemetry.addData("Stopped at Top: ", "true");
         }
         log();
     }
@@ -74,10 +75,11 @@ public class LiftSingle extends Component {
         if (!stoppedAtBottom()) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             targetVelocity = -targetPower * maxMovePower * maxVelocity;
+//            motor.setPower(targetPower);
             motor.setVelocity(targetVelocity);
-            telemetry.addData("Stopped at Bottom: ", " true");
-        } else {
             telemetry.addData("Stopped at Bottom: ", " false");
+        } else {
+            telemetry.addData("Stopped at Bottom: ", " true");
         }
         log();
     }
