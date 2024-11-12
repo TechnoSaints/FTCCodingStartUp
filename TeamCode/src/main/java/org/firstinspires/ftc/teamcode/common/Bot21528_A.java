@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.common;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmLeftServoData21528;
@@ -10,11 +11,13 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoD
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
+
 public class Bot21528_A extends Component {
     private final LiftSingle lift;
     private final ServoSimple grabber, armLeft, wrist, armRight;
     private Drivetrain drivetrain;
     private LinearOpMode opMode;
+
     public Bot21528_A(LinearOpMode opMode, Telemetry telemetry) {
         super(telemetry);
         drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData21528_A(), new GoBilda312DcMotorData());
@@ -37,36 +40,83 @@ public class Bot21528_A extends Component {
         grabber.open();
     }
 
-    public void armLeftClose() {
+    private void armLeftClose() {
         armLeft.close();
     }
 
-    public void armLeftOpen() { armLeft.open(); }
+    private void armLeftOpen() {
+        armLeft.open();
+    }
 
-    public void armLeftMiddle() { armLeft.middle(); }
+    private void armLeftMiddle() {
+        armLeft.middle();
+    }
 
-    public void armLeftSpecimenHang() { armLeft.specimenHang(); }
+    private void armLeftSpecimenHang() {
+        armLeft.specimenHang();
+    }
 
-    public void armLeftSpecimenGrab() { armLeft.specimenGrab(); }
+    private void armLeftSpecimenGrab() {
+        armLeft.specimenGrab();
+    }
 
-    public void armRightClose() {armRight.close();}
+    private void armRightClose() {
+        armRight.close();
+    }
 
-    public void armRightOpen() { armRight.open(); }
+    private void armRightOpen() {
+        armRight.open();
+    }
 
-    public void armRightMiddle() { armRight.middle(); }
+    private void armRightMiddle() {
+        armRight.middle();
+    }
 
-    public void armRightSpecimenHang() { armRight.specimenHang(); }
+    private void armRightSpecimenHang() {
+        armRight.specimenHang();
+    }
 
-    public void armRightSpecimenGrab() { armRight.specimenGrab(); }
+    private void armRightSpecimenGrab() {
+        armRight.specimenGrab();
+    }
 
+    public void armClose() {
+        armLeftClose();
+        armRightClose();
+    }
+
+    public void armOpen() {
+        armLeftOpen();
+        armRightOpen();
+    }
+
+
+    public void armMiddle() {
+        armLeftMiddle();
+        armRightMiddle();
+    }
+
+    public void armSpecimenGrab() {
+        armLeftSpecimenGrab();
+        armRightSpecimenGrab();
+    }
+
+    public void armSpecimenHang() {
+        armLeftSpecimenHang();
+        armRightSpecimenHang();
+    }
 
     public void wristOpen() {
         wrist.open();
     }
 
-    public void wristClose() { wrist.close(); }
+    public void wristClose() {
+        wrist.close();
+    }
 
-    public void wristSpecimenHang() { wrist.specimenHang(); }
+    public void wristSpecimenHang() {
+        wrist.specimenHang();
+    }
 
     public void liftUp(double speed) {
         lift.up(speed);
@@ -74,6 +124,10 @@ public class Bot21528_A extends Component {
 
     public void liftDown(double speed) {
         lift.down(speed);
+    }
+
+    public void liftHighPosition() {
+        lift.highPosition();
     }
 
     public void liftMediumPosition() {
@@ -87,6 +141,7 @@ public class Bot21528_A extends Component {
     public void liftMinPosition() {
         lift.minPosition();
     }
+
     public void liftStop() {
         lift.stop();
     }
@@ -94,6 +149,7 @@ public class Bot21528_A extends Component {
     public void liftZero() {
         lift.zero();
     }
+
 
     public void turnToHeading(double heading) {
         drivetrain.turnToHeading(heading);
@@ -131,5 +187,9 @@ public class Bot21528_A extends Component {
 
     public void stopDrive() {
         drivetrain.moveDirection(0, 0, 0);
+    }
+
+    public void touchNoseSwitch() {
+        drivetrain.touchNoseSwitch();
     }
 }

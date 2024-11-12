@@ -28,7 +28,7 @@ public class Teleop21528_A extends LinearOpMode {
 
         bot = new Bot21528_A(this, telemetry);
         waitForStart();
-
+        bot.liftZero();
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.dpad_up) {
                 bot.creepDirection(-1.0, 0.0, 0.0);
@@ -63,26 +63,22 @@ public class Teleop21528_A extends LinearOpMode {
             }
 
             if (gamepad1.left_bumper) {
-                bot.armLeftClose();
-                bot.armRightClose();
+                bot.armClose();
                 bot.wristClose();
                 motorDirection = 1;
             } else if (gamepad1.right_bumper) {
-                bot.armLeftMiddle();
-                bot.armRightMiddle();
+                bot.armMiddle();
                 bot.wristOpen();
                 motorDirection = 1;
             }
 
             if (gamepad1.b) {
-                bot.armLeftClose();
-                bot.armRightClose();
+                bot.armClose();
                 bot.wristClose();
                 motorDirection = 1;
             } else if (gamepad1.y) {
                 bot.wristSpecimenHang();
-                bot.armLeftSpecimenHang();
-                bot.armRightSpecimenHang();
+                bot.armSpecimenHang();
                 motorDirection = -1;
             }
 
