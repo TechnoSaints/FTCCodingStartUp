@@ -26,7 +26,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             telemetry.update();
 
             bot.grabberClose();
-            sleep(1000);
+            sleep(250);
             bot.armMiddle();
             bot.wristClose();
             bot.liftHighPosition();
@@ -37,6 +37,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.moveForwardForDistance(-2.1);
             bot.strafeRightForDistance(21.5);
             bot.turnToHeading(-90);
+            /*
             bot.armOpen();
             //sleep(1500);
             bot.liftLowPosition();
@@ -83,7 +84,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.grabberOpen();
             sleep(1000);
             //sleep(1000);
-
+*/
             telemetry.addLine("Complete");
             telemetry.update();
         }
