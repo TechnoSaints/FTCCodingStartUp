@@ -63,10 +63,6 @@ public class Bot26290 extends Component {
         lift.stop();
     }
 
-    public void liftZero() {
-        lift.zero();
-    }
-
     public void turnToHeading(double heading) {
         drivetrain.turnToHeading(heading);
     }

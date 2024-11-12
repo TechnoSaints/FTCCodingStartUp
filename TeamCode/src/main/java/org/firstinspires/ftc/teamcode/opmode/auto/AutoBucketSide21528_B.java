@@ -24,7 +24,6 @@ public class AutoBucketSide21528_B extends LinearOpMode {
 
         waitForStart();
 
-        bot.liftZero();
         telemetry.addLine("Starting auto actions...");
         telemetry.update();
 

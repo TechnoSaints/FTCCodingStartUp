@@ -23,12 +23,14 @@ public class Teleop21528_A extends LinearOpMode {
         double driveStrafe = 0.0;
         double driveYaw = 0.0;
         double motorDirection = 1;
+        boolean leftBumperPressed = false;
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         bot = new Bot21528_A(this, telemetry);
         waitForStart();
-        bot.liftZero();
+        bot.liftMoveDownToSwitch();
+        bot.liftResetEncoder();
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.dpad_up) {
                 bot.creepDirection(-1.0, 0.0, 0.0);
@@ -65,11 +67,18 @@ public class Teleop21528_A extends LinearOpMode {
             if (gamepad1.left_bumper) {
                 bot.armClose();
                 bot.wristClose();
+                bot.liftLowPosition();
                 motorDirection = 1;
+                leftBumperPressed = true;
             } else if (gamepad1.right_bumper) {
                 bot.armMiddle();
                 bot.wristOpen();
+                bot.liftHighPosition();
                 motorDirection = 1;
+            } else if (leftBumperPressed)
+            {
+                bot.liftMinPosition();
+                leftBumperPressed = false;
             }
 
             if (gamepad1.b) {

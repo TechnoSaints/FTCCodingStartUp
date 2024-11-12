@@ -85,9 +85,6 @@ public class Bot21528_B extends Component {
         lift.stop();
     }
 
-    public void liftZero() {
-        lift.zero();
-    }
 
     public void turnToHeading(double heading) {
         drivetrain.turnToHeading(heading);

@@ -18,6 +18,8 @@ public class AutoBucketSide21528_A extends LinearOpMode {
         bot = new Bot21528_A(this, telemetry);
 
         waitForStart();
+        bot.liftMoveDownToSwitch();
+        bot.liftResetEncoder();
 
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
@@ -38,7 +40,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.turnToHeading(-90);
             bot.armOpen();
             //sleep(1500);
-            bot.liftlowPosition();
+            bot.liftLowPosition();
             sleep(1000);
             bot.liftMinPosition();
             sleep(1500);
@@ -64,7 +66,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.strafeRightForDistance(-15);
             bot.armOpen();
             sleep(1000);
-            bot.liftlowPosition();
+            bot.liftLowPosition();
             sleep(500);
             bot.liftMinPosition();
             sleep(1000);

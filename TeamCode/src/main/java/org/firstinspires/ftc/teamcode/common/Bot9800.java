@@ -70,9 +70,6 @@ public class Bot9800 extends Component {
         intakeLift.stop();
     }
 
-    public void intakeLiftZero() {
-        intakeLift.zero();
-    }
 
     public void outtakeLiftUp(double speed) {
         outtakeLift.up(speed);
@@ -80,10 +77,6 @@ public class Bot9800 extends Component {
 
     public void outtakeLiftDown(double speed) {
         outtakeLift.down(speed);
-    }
-
-    public void outtakeLiftZero() {
-        outtakeLift.zero();
     }
 
     public void outtakeLiftStop() {

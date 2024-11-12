@@ -133,14 +133,17 @@ public class LiftSingle extends Component {
         log();
     }
 
-    public void zero() {
+    public void resetEncoder()
+    {
+        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+    public void moveDownToSwitch() {
         down(0.2);
         while (!liftSwitch.isPressed()) {
         }
         stop();
-        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         log();
     }
 

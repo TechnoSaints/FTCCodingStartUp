@@ -134,7 +134,7 @@ public class Bot21528_A extends Component {
         lift.mediumPosition();
     }
 
-    public void liftlowPosition() {
+    public void liftLowPosition() {
         lift.lowPosition();
     }
 
@@ -146,10 +146,14 @@ public class Bot21528_A extends Component {
         lift.stop();
     }
 
-    public void liftZero() {
-        lift.zero();
+    public void liftMoveDownToSwitch() {
+        lift.moveDownToSwitch();
     }
 
+    public void liftResetEncoder()
+    {
+        lift.resetEncoder();
+    }
 
     public void turnToHeading(double heading) {
         drivetrain.turnToHeading(heading);

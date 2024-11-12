@@ -42,9 +42,6 @@ public abstract class BotTest extends Component {
         lift.stop();
     }
 
-    public void liftZero() {
-        lift.zero();
-    }
 
 
     // Action classes and methods required to use scheduler
