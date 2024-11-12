@@ -6,15 +6,14 @@ import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.common.TeleopBotTemplate;
+import org.firstinspires.ftc.teamcode.common.Bot21527;
 
 @Config
-@TeleOp(name = "TeleopTemplate", group = "Linear OpMode")
+@TeleOp(name = "Teleop21527", group = "21527")
 
-public class TeleopTemplate extends LinearOpMode {
+public class Teleop21527 extends LinearOpMode {
 
-    private TeleopBotTemplate bot;
-    public static boolean loggingOn = false;
+    private Bot21527 bot;
 
     @Override
     public void runOpMode() {
@@ -25,7 +24,8 @@ public class TeleopTemplate extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new TeleopBotTemplate(hardwareMap, telemetry);
+        bot = new Bot21527(hardwareMap, telemetry);
+
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -46,43 +46,6 @@ public class TeleopTemplate extends LinearOpMode {
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
-
-         //   if (gamepad1.right_trigger > 0.2) {
-               // bot.liftUp(gamepad1.right_trigger);
-         //   } else if (gamepad1.left_trigger > 0.2) {
-         //       bot.liftDown(gamepad1.left_trigger);
-          //  } else {
-           //     bot.liftStop();
-          //  }
-
-            if (gamepad1.right_bumper) {
-                bot.grabberClose();
-            } else if (gamepad1.left_bumper) {
-                bot.grabberOpen();
-            }
-
-/*
-            // How to use the same button to do off and on
-            // First two lines go before main loop
-            boolean pressed = false;
-            ElapsedTime timer = new ElapsedTime();
-
-            // Remaining line go inside loop
-            if ((gamepad1.a) && (timer.milliseconds() > 250))
-            {
-                if (!pressed)
-                {_
-                    // Turn thing on
-                    timer.reset();
-                    pressed = true;
-                } else
-                {
-                    // Turn thing off
-                    timer.reset();
-                    pressed = false;
-                }
-            }
-  */
         }
     }
 }
