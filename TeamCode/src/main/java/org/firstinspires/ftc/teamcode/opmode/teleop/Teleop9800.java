@@ -15,7 +15,6 @@ import org.firstinspires.ftc.teamcode.common.Bot9800;
 public class Teleop9800 extends LinearOpMode {
 
     private Bot9800 bot;
-    public static boolean loggingOn = false;
 
     @Override
     public void runOpMode() {
@@ -29,7 +28,7 @@ public class Teleop9800 extends LinearOpMode {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new Bot9800(hardwareMap, telemetry);
+        bot = new Bot9800(this, telemetry);
         waitForStart();
 
         while (opModeIsActive() && !isStopRequested()) {
@@ -51,7 +50,7 @@ public class Teleop9800 extends LinearOpMode {
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
 
-            if ((gamepad2.a) && (timer.milliseconds() > 250)) {
+            if (((gamepad1.a) || (gamepad2.a)) && (timer.milliseconds() > 250)) {
                 if (!grabberPressed) {
                     timer.reset();
                     grabberPressed = true;
@@ -63,7 +62,7 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad2.x) && (timer.milliseconds() > 250)) {
+            if (((gamepad1.x) || (gamepad2.x)) && (timer.milliseconds() > 250)) {
                 if (!armPressed) {
                     timer.reset();
                     armPressed = true;
@@ -72,6 +71,18 @@ public class Teleop9800 extends LinearOpMode {
                     timer.reset();
                     armPressed = false;
                     bot.armOpen();
+                }
+            }
+
+            if (((gamepad1.b) || (gamepad2.right_stick_button)) && (timer.milliseconds() > 250)) {
+                if (!wristPressed) {
+                    timer.reset();
+                    wristPressed = true;
+                    bot.wristClose();
+                } else {
+                    timer.reset();
+                    wristPressed = false;
+                    bot.wristOpen();
                 }
             }
 
@@ -99,21 +110,9 @@ public class Teleop9800 extends LinearOpMode {
                 }
             }
 
-            if ((gamepad2.right_stick_button) && (timer.milliseconds() > 250)) {
-                if (!wristPressed) {
-                    timer.reset();
-                    wristPressed = true;
-                    bot.wristClose();
-                } else {
-                    timer.reset();
-                    wristPressed = false;
-                    bot.wristOpen();
-                }
-            }
-
-            if (gamepad2.right_bumper) {
+            if ((gamepad1.right_bumper) || (gamepad2.right_bumper)) {
                 bot.intakeLiftUp(1);
-            } else if (gamepad2.left_bumper) {
+            } else if ((gamepad1.left_bumper) || (gamepad2.left_bumper)) {
                 bot.intakeLiftDown(1);
             } else {
                 bot.intakeLiftStop();

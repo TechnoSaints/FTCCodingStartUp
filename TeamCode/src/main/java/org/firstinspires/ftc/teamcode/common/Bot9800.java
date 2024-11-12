@@ -1,15 +1,9 @@
 package org.firstinspires.ftc.teamcode.common;
-
-import androidx.annotation.NonNull;
-
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData9800;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.DrivetrainData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.ArmServoData9800;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.GrabberServoData9800;
@@ -27,18 +21,16 @@ public class Bot9800 extends Component {
     private final LiftSingle intakeLift, outtakeLift;
     private final ServoSimple grabber, arm, outtakeGrabber, outtakeArm, wrist;
 
-    public Bot9800(HardwareMap hardwareMap, Telemetry telemetry) {
+    public Bot9800(LinearOpMode opMode, Telemetry telemetry) {
         super(telemetry);
         drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData9800(), new GoBilda312DcMotorData());
-
-        // lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda312DcMotorData(), new LiftData21528());
-        intakeLift = new LiftSingle(hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData(), new LiftDataIntake9800());
-        outtakeLift = new LiftSingle(hardwareMap, telemetry, "outtakeLift", false, new GoBilda312DcMotorData(), new LiftDataOuttake9800());
-        grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData9800());
-        arm = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData9800());
-        wrist = new ServoSimple(hardwareMap, telemetry, "wrist", new WristServoData9800());
-        outtakeGrabber = new ServoSimple(hardwareMap, telemetry, "outtakeGrabber", new OuttakeGrabberServoData9800());
-        outtakeArm = new ServoSimple(hardwareMap, telemetry, "outtakeArm", new OuttakeArmServoData9800());
+        intakeLift = new LiftSingle(opMode.hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData(), new LiftDataIntake9800());
+        outtakeLift = new LiftSingle(opMode.hardwareMap, telemetry, "outtakeLift", false, new GoBilda312DcMotorData(), new LiftDataOuttake9800());
+        grabber = new ServoSimple(opMode.hardwareMap, telemetry, "grabber", new GrabberServoData9800());
+        arm = new ServoSimple(opMode.hardwareMap, telemetry, "arm", new ArmServoData9800());
+        wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData9800());
+        outtakeGrabber = new ServoSimple(opMode.hardwareMap, telemetry, "outtakeGrabber", new OuttakeGrabberServoData9800());
+        outtakeArm = new ServoSimple(opMode.hardwareMap, telemetry, "outtakeArm", new OuttakeArmServoData9800());
         grabberClose();
     }
 
@@ -65,18 +57,6 @@ public class Bot9800 extends Component {
     public void wristOpen() {
         wrist.open();
     }
-
-    // public void liftUp(double speed){
-    //      lift.up(speed);
-    //   }
-
-//    public void liftDown(double speed) {
-    //      lift.down(speed);
-    //   }
-
-    //   public void liftStop(){
-    //     lift.stop();
-    //  }
 
     public void intakeLiftUp(double speed) {
         intakeLift.up(speed);

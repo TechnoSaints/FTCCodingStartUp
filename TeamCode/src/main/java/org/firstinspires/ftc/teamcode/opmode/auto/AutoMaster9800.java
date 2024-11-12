@@ -15,7 +15,7 @@ public abstract class AutoMaster9800 extends LinearOpMode {
     {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        bot = new Bot9800(hardwareMap, telemetry);
+        bot = new Bot9800(this, telemetry);
         telemetry.addLine("Bot initialized...");
         telemetry.update();
     }

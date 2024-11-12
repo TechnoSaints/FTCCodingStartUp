@@ -1,15 +1,10 @@
 package org.firstinspires.ftc.teamcode.common;
 
-import androidx.annotation.NonNull;
-
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.Arm1ServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.ArmServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainData21528_B;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
@@ -24,9 +19,10 @@ public class Bot21528_B extends Component {
 
     public Bot21528_B(LinearOpMode opMode, Telemetry telemetry) {
         super(telemetry);
+        drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData21528_B(), new GoBilda312DcMotorData());
         lift = new LiftSingle(opMode.hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData21528());
         grabber = new ServoSimple(opMode.hardwareMap, telemetry, "grabber", new GrabberServoData21528());
-        arm = new ServoSimple(opMode.hardwareMap, telemetry, "arm1", new Arm1ServoData21528());
+        arm = new ServoSimple(opMode.hardwareMap, telemetry, "arm1", new ArmServoData21528());
         wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData21528());
         grabberClose();
         armClose();
@@ -45,7 +41,9 @@ public class Bot21528_B extends Component {
         arm.close();
     }
 
-    public void armOpen() { arm.open(); }
+    public void armOpen() {
+        arm.open();
+    }
 
     public void armMiddle() {
         arm.middle();
@@ -128,4 +126,8 @@ public class Bot21528_B extends Component {
     public void stopDrive() {
         drivetrain.moveDirection(0, 0, 0);
     }
+
+   // public void touchNoseSwitch() {
+   //     drivetrain.touchNoseSwitch();
+   // }
 }

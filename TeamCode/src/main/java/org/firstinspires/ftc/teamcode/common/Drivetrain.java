@@ -7,12 +7,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 
 public class Drivetrain extends Component {
@@ -20,6 +20,7 @@ public class Drivetrain extends Component {
     private final DcMotorEx rightFrontDrive;
     private final DcMotorEx leftBackDrive;
     private final DcMotorEx rightBackDrive;
+//    private final TouchSensor noseSwitch;
     private final double maxFastPower;
     private final double maxMediumPower;
     private final double maxSlowPower;
@@ -56,6 +57,8 @@ public class Drivetrain extends Component {
         setRunUsingEncoder();
         setBrakingOn();
         setToFastPower();
+
+//        noseSwitch = hardwareMap.get(TouchSensor.class, "noseSwitch");
 
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
@@ -217,7 +220,6 @@ public class Drivetrain extends Component {
         setRunUsingEncoder();
     }
 
-
     public double getHeadingError(double targetHeading) {
         return (targetHeading - getHeading());
     }
@@ -238,12 +240,19 @@ public class Drivetrain extends Component {
         return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
 
-
     public void stop() {
         leftFrontDrive.setVelocity(0.0);
         leftBackDrive.setVelocity(0.0);
         rightFrontDrive.setVelocity(0.0);
         rightBackDrive.setVelocity(0.0);
+    }
+
+    public void touchNoseSwitch()
+    {
+//        moveDirection(0.2,0,0);
+//        while (!noseSwitch.isPressed())
+//        {}
+//        stop();
     }
 
     private void setBrakingOn() {

@@ -11,24 +11,47 @@ public class ServoSimple extends Component {
     private final double openPosition;
     private final double closePosition;
     private final double middlePosition;
+    private final double specimenHangPosition;
+    private final double specimenGrabPosition;
     private final Servo servo;
 
-    public ServoSimple(HardwareMap hardwareMap, Telemetry telemetry, String servoName, ServoData servoData)
-    {
+    public ServoSimple(HardwareMap hardwareMap, Telemetry telemetry, String servoName, ServoData servoData) {
         super(telemetry);
         openPosition = servoData.openPosition;
         closePosition = servoData.closePosition;
         middlePosition = servoData.middlePosition;
+        specimenHangPosition = servoData.specimenHangPosition;
+        specimenGrabPosition = servoData.specimenGrabPosition;
         servo = hardwareMap.get(Servo.class, servoName);
     }
 
-    public void open()
-    {
+    public void open() {
         servo.setPosition(openPosition);
+        log(openPosition);
     }
-    public void close()
-    {
+
+    public void close() {
         servo.setPosition(closePosition);
+        log(closePosition);
     }
-    public void middle() { servo.setPosition(middlePosition);}
+
+    public void middle() {
+        servo.setPosition(middlePosition);
+        log(middlePosition);
+    }
+
+    public void specimenHang() {
+        servo.setPosition(specimenHangPosition);
+        log(specimenHangPosition);
+    }
+    public void specimenGrab() {
+        servo.setPosition(specimenGrabPosition);
+        log(specimenGrabPosition);
+    }
+
+    private void log(double position)
+    {
+        telemetry.addData("Target Position: ", position);
+        telemetry.update();
+    }
 }
