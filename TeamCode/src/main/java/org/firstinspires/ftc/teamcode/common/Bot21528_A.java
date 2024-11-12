@@ -64,9 +64,9 @@ public class Bot21528_A extends Component {
         wrist.open();
     }
 
-    public void wristClose() {
-        wrist.close();
-    }
+    public void wristClose() { wrist.close(); }
+
+    public void wristSpecimenHang() { wrist.specimenHang(); }
 
     public void liftUp(double speed) {
         lift.up(speed);
