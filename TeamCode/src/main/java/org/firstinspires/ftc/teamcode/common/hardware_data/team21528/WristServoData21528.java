@@ -7,5 +7,6 @@ public class WristServoData21528 extends ServoData {
         openPosition = 0.7;
         closePosition = 0.65;
         specimenHangPosition = 0.5;
+        specimenGrabPosition = 0.4;
     }
 }

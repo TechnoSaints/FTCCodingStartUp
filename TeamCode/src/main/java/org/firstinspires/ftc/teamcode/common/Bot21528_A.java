@@ -118,6 +118,10 @@ public class Bot21528_A extends Component {
         wrist.specimenHang();
     }
 
+    public void wristSpecimenGrab() {
+        wrist.specimenGrab();;
+    }
+
     public void liftUp(double speed) {
         lift.up(speed);
     }
