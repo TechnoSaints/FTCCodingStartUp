@@ -22,8 +22,8 @@ public abstract class Bot26290 extends Component {
     public Bot26290(HardwareMap hardwareMap, Telemetry telemetry) {
         super(telemetry);
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda117DcMotorData(), new LiftData26290());
-        arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", true, new GoBilda117DcMotorData(), new LiftData26290());
+        arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda117DcMotorData(), new ArmData26290());
         grabberClose();
     }
 

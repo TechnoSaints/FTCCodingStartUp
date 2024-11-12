@@ -65,6 +65,18 @@ public class Teleop26290 extends LinearOpMode {
             else {
                 bot.liftStop();
             }
+
+            if (gamepad1.left_bumper){
+                bot.armUp(1);
+            }
+
+            else if (gamepad1.right_bumper) {
+                bot.armDown(1);
+            }
+
+            else {
+                bot.armStop();
+            }
         }
     }
 }
