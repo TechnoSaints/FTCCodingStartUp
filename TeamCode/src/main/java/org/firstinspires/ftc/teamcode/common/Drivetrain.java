@@ -20,7 +20,7 @@ public class Drivetrain extends Component {
     private final DcMotorEx rightFrontDrive;
     private final DcMotorEx leftBackDrive;
     private final DcMotorEx rightBackDrive;
-//    private final TouchSensor noseSwitch;
+    private final TouchSensor noseSwitch;
     private final double maxFastPower;
     private final double maxMediumPower;
     private final double maxSlowPower;
@@ -58,7 +58,7 @@ public class Drivetrain extends Component {
         setBrakingOn();
         setToFastPower();
 
-//        noseSwitch = hardwareMap.get(TouchSensor.class, "noseSwitch");
+        noseSwitch = opMode.hardwareMap.get(TouchSensor.class, "noseSwitch");
 
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
@@ -114,7 +114,7 @@ public class Drivetrain extends Component {
         moveDirection(axial * maxSlowPower, strafe * maxSlowPower, yaw * maxSlowPower);
     }
 
-    public void moveDirection(double axial, double strafe, double yaw) {
+    protected void moveDirection(double axial, double strafe, double yaw) {
         // Calculate wheel powers.
         double leftFrontPower = axial - strafe - yaw;
         double rightFrontPower = axial + strafe + yaw;
@@ -220,11 +220,11 @@ public class Drivetrain extends Component {
         setRunUsingEncoder();
     }
 
-    public double getHeadingError(double targetHeading) {
+    private double getHeadingError(double targetHeading) {
         return (targetHeading - getHeading());
     }
 
-    public double getSteeringCorrection(double headingError, double gain) {
+    private double getSteeringCorrection(double headingError, double gain) {
         // Determine the heading current error
 
         // Normalize the error to be within +/- 180 degrees
@@ -236,7 +236,7 @@ public class Drivetrain extends Component {
     }
 
 
-    public double getHeading() {
+    protected double getHeading() {
         return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
 
@@ -249,10 +249,10 @@ public class Drivetrain extends Component {
 
     public void touchNoseSwitch()
     {
-//        moveDirection(0.2,0,0);
-//        while (!noseSwitch.isPressed())
-//        {}
-//        stop();
+        moveDirection(0.2,0,0);
+        while (!noseSwitch.isPressed())
+        {}
+        stop();
     }
 
     private void setBrakingOn() {
@@ -276,7 +276,7 @@ public class Drivetrain extends Component {
         rightBackDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-    public void setRunWithoutEncoders() {
+    private void setRunWithoutEncoders() {
         leftFrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBackDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFrontDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
