@@ -14,8 +14,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 
 public class LiftSingle extends Component {
     private final DcMotorEx motor;
-//    protected TouchSensor lift_sensor = null;
-
+    //private TouchSensor liftSwitch;
     private final double maxVelocity;
     private final double maxMovePower;
     private final double stopPower;
@@ -31,6 +30,7 @@ public class LiftSingle extends Component {
     private int releasePosition;
     private int highBucketPosition;
     private int grabPosition;
+    private int direction = 1;
 
     public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
@@ -50,13 +50,15 @@ public class LiftSingle extends Component {
         grabPosition = liftData.grabPosition;
         long prevTime;
         int prevPosition;
-//        lift_sensor = hardwareMap.get(TouchSensor.class, "liftSensor");
+        //liftSwitch = hardwareMap.get(TouchSensor.class, "liftSwitch");
         motor = hardwareMap.get(DcMotorEx.class, motorName);
-//        encoder = new OverflowEncoder(new RawEncoder(hardwareMap.get(DcMotorEx.class, motorName)));
-
 
         if (reverseMotor) {
-            motor.setDirection(DcMotor.Direction.REVERSE);
+            direction = -1;
+//            motor.setDirection(DcMotor.Direction.REVERSE);
+        } else {
+//            motor.setDirection(DcMotorSimple.Direction.FORWARD);
+            direction = 1;
         }
 
         zero();
@@ -69,11 +71,12 @@ public class LiftSingle extends Component {
     public void up(double targetPower) {
         if (!stoppedAtTop()) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            targetVelocity = targetPower * maxMovePower * maxVelocity;
+            targetVelocity = direction * targetPower * maxMovePower * maxVelocity;
+//            motor.setPower(targetPower);
             motor.setVelocity(targetVelocity);
-            telemetry.addData("Stopped at Top: ", "true");
-        } else {
             telemetry.addData("Stopped at Top: ", "false");
+        } else {
+            telemetry.addData("Stopped at Top: ", "true");
         }
         log();
     }
@@ -81,11 +84,12 @@ public class LiftSingle extends Component {
     public void down(double targetPower) {
         if (!stoppedAtBottom()) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            targetVelocity = -targetPower * maxMovePower * maxVelocity;
+            targetVelocity = direction * -targetPower * maxMovePower * maxVelocity;
+//            motor.setPower(targetPower);
             motor.setVelocity(targetVelocity);
-            telemetry.addData("Stopped at Bottom: ", " true");
-        } else {
             telemetry.addData("Stopped at Bottom: ", " false");
+        } else {
+            telemetry.addData("Stopped at Bottom: ", " true");
         }
         log();
     }
@@ -138,14 +142,14 @@ public class LiftSingle extends Component {
     }
 
     public void zero() {
-//        liftDown(0.2);
-//        while (!lift_sensor.isPressed()){
-//        }
-//        stop();
+//        down(0.2);
+  /*      while (!liftSwitch.isPressed()){
+        }
+        stop();
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        log();
+        log();*/
     }
 
     public void log() {
@@ -177,9 +181,4 @@ public class LiftSingle extends Component {
         stopAtPosition(grabPosition);
         log();
     }
-
 }
-
-
-
-
