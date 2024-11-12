@@ -22,6 +22,7 @@ public class Bot9800 extends Component {
     private final ServoSimple grabber, arm, outtakeGrabber, outtakeArm, wrist;
 
     public Bot9800(LinearOpMode opMode, Telemetry telemetry) {
+
         super(telemetry);
         drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData9800(), new GoBilda312DcMotorData());
         intakeLift = new LiftSingle(opMode.hardwareMap, telemetry, "intakeLift", true, new GoBilda312DcMotorData(), new LiftDataIntake9800());
