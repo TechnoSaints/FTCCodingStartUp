@@ -74,6 +74,22 @@ public class Bot9800 extends Component {
     public void intakeLiftZero() {
         intakeLift.zero();
     }
+    
+    public void chamberPosition(){
+        outtakeLift.chamberPosition();
+    }
+
+    public void releasePosition(){
+        outtakeLift.releasePosition();
+    }
+
+    public void highBucketPosition(){
+        outtakeLift.highBucketPosition();
+    }
+
+    public void grabPosition(){
+        intakeLift.grabPosition();
+    }
 
     public void outtakeLiftUp(double speed) {
         outtakeLift.up(speed);
@@ -115,7 +131,21 @@ public class Bot9800 extends Component {
         drivetrain.moveDirection(axial, strafe, yaw);
     }
 
+
+    public void moveForwardForDistance(double distance) {
+        drivetrain.moveForwardForDistance(distance);
+    }
+
+    public void strafeRightForDistance(double distance) {
+        drivetrain.strafeRightForDistance(distance);
+    }
+
+    public void turnToHeading(double heading) {
+        drivetrain.turnToHeading(heading);
+    }
+
     public void stopDrive() {
-        drivetrain.stop();
+        drivetrain.moveDirection(0, 0, 0);
     }
 }
+

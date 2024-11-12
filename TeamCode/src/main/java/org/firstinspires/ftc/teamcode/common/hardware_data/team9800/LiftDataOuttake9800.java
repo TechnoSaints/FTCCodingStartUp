@@ -10,5 +10,8 @@ public class LiftDataOuttake9800 extends LiftData {
         maxTolerance = 25;
         minPosition = 0;
         minTolerance = 25;
+        chamberPosition = 87;
+        releasePosition = 98;
+        highBucketPosition = 98;
     }
 }

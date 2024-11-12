@@ -27,6 +27,10 @@ public class LiftSingle extends Component {
     private int highPosition;
     private int mediumPosition;
     private int lowPosition;
+    private int chamberPosition;
+    private int releasePosition;
+    private int highBucketPosition;
+    private int grabPosition;
 
     public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
@@ -40,6 +44,10 @@ public class LiftSingle extends Component {
         highPosition = liftData.highPosition;
         mediumPosition = liftData.mediumPosition;
         lowPosition = liftData.lowPosition;
+        chamberPosition = liftData.chamberPosition;
+        releasePosition = liftData.releasePosition;
+        highBucketPosition = liftData.highBucketPosition;
+        grabPosition = liftData.grabPosition;
         long prevTime;
         int prevPosition;
 //        lift_sensor = hardwareMap.get(TouchSensor.class, "liftSensor");
@@ -149,4 +157,29 @@ public class LiftSingle extends Component {
 //        telemetry.addData("Velocity: ", ((motor.getCurrentPosition() - prevPosition) * 1000) / (timer.milliseconds() - prevTime));
         telemetry.update();
     }
+
+    public void chamberPosition() {
+        stopAtPosition(chamberPosition);
+        log();
+    }
+
+    public void releasePosition() {
+        stopAtPosition(releasePosition);
+        log();
+    }
+
+    public void highBucketPosition() {
+        stopAtPosition(highBucketPosition);
+        log();
+    }
+
+    public void grabPosition() {
+        stopAtPosition(grabPosition);
+        log();
+    }
+
 }
+
+
+
+

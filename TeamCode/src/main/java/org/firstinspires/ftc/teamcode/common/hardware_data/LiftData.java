@@ -10,6 +10,10 @@ public abstract class LiftData {
     public int highPosition;
     public int mediumPosition;
     public int lowPosition;
+    public int chamberPosition;
+    public int releasePosition;
+    public int highBucketPosition;
+    public int grabPosition;
 
 }
 
