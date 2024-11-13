@@ -257,8 +257,12 @@ public class Drivetrain extends Component {
 
     protected double getHeading() {
         //       return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+
         odo.update(GoBildaPinpointDriver.readData.ONLY_UPDATE_HEADING);
-        return Math.toDegrees(odo.getHeading());
+        double heading = Math.toDegrees(odo.getHeading());
+        while (heading > 180) heading -= 360;
+        while (heading <= -180) heading += 360;
+        return(heading);
     }
 
     public void stop() {
