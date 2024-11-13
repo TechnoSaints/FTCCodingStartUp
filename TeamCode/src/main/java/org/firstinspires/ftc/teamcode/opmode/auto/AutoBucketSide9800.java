@@ -27,7 +27,16 @@ public class AutoBucketSide9800 extends LinearOpMode {
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
+            bot.moveForwardForDistance(12);
+            bot.strafeRightForDistance(12);
+            bot.turnToHeading(-90);
+            bot.moveForwardForDistance(12);
+            bot.turnToHeading(90);
+            bot.moveForwardForDistance(24);
+            bot.strafeRightForDistance(-12);
+            bot.turnToHeading(0);
 
+            /*
             bot.outtakeGrabberClose();
             bot.moveForwardForDistance(-12);
             bot.chamberPosition();
@@ -53,7 +62,7 @@ public class AutoBucketSide9800 extends LinearOpMode {
             bot.moveForwardForDistance(78);
             bot.turnToHeading(-90);
             bot.moveForwardForDistance(78);
-
+*/
             telemetry.addLine("Complete");
             telemetry.update();
         }
