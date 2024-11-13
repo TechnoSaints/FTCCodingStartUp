@@ -25,6 +25,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
 
+            // Move to bucket and drop first brick
             bot.grabberClose();
             bot.armMiddle();
             bot.wristClose();
@@ -33,62 +34,60 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.moveForwardForDistance(36);
             sleep(500);
             bot.grabberOpen();
-            sleep(1000);
+            sleep(500);
+
+            // Move to second brick and grab it
             bot.moveForwardForDistance(-7.6);
             bot.turnToHeading(-90);
             bot.moveForwardForDistance(12.5);
             bot.armClose();
-            //sleep(1500);
             bot.liftLowPosition();
-            sleep(1000);
+            sleep(500);
             bot.liftMinPosition();
-            sleep(1500);
-            //sleep(1000);
+            sleep(500);
             bot.grabberClose();
-            sleep(1000);
+            sleep(500);
+
+            // Move to basket and drop second brick
             bot.armMiddle();
-            //sleep(1000);
-            sleep(250);
             bot.turnToHeading(0);
-            sleep(1000);
             bot.liftHighPosition();
-            //sleep(1000);
-            sleep(250);
             bot.strafeRightForDistance(-17);
             bot.moveForwardForDistance(8);
-            //sleep(1000);
-            sleep(250);
+            sleep(500);
             bot.grabberOpen();
+            sleep(500);
+
+            // Move to third brick and grab it
+            bot.moveForwardForDistance(-3);
             bot.strafeRightForDistance(5);
-            /*
-            sleep(1000);
-            bot.moveForwardForDistance(-3.6);
-            bot.strafeRightForDistance(23);
             bot.turnToHeading(-90);
-            bot.strafeRightForDistance(-15);
-            bot.armOpen();
-            sleep(1000);
+            bot.moveForwardForDistance(12);
+            bot.armClose();
             bot.liftLowPosition();
             sleep(500);
             bot.liftMinPosition();
-            sleep(1000);
-            bot.grabberClose();
-            //sleep(3000);
-            sleep(1000);
-            bot.strafeRightForDistance(16);
-            bot.turnToHeading(0);
-            bot.armMiddle();
             sleep(500);
+            bot.grabberClose();
+            sleep(500);
+
+            // Move to basket and drop third brick
+            bot.armMiddle();
+            bot.turnToHeading(0);
             bot.liftHighPosition();
-            sleep(1000);
-            bot.strafeRightForDistance(-23);
-            sleep(1000);
+            bot.strafeRightForDistance(-17);
+            bot.moveForwardForDistance(3);
+            sleep(500);
             bot.grabberOpen();
-            sleep(1000);
-            //sleep(1000);
-*/
+            sleep(500);
 
+            // Got to climb zone and touch bar
+            bot.moveForwardForDistance(-12);
+            bot.turnToHeading(180);
+            bot.strafeRightForDistance(-30);
+            bot.moveForwardForDistance(12);
 
+            // Prepare to shut down
             bot.armMiddle();
             bot.liftMinPosition();
             sleep(2500);
