@@ -76,7 +76,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
  * to use those parameters.
  */
 @TeleOp(name = "Sensor: IMU Orthogonal", group = "Sensor")
-@Disabled   // Comment this out to add to the OpMode list
+//@Disabled   // Comment this out to add to the OpMode list
 public class SensorIMUOrthogonal extends LinearOpMode
 {
     // The IMU sensor object
@@ -108,7 +108,7 @@ public class SensorIMUOrthogonal extends LinearOpMode
          *
          * To Do:  EDIT these two lines to match YOUR mounting configuration.
          */
-        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.UP;
+        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.RIGHT;
         RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
 
         RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
