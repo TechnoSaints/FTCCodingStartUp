@@ -6,19 +6,17 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.common.Bot21528_A;
-import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 
 @Config
-@Autonomous(name = "AutoBucketSide21528_A", group = "Auto")
+@Autonomous(name = "AutoTest21528", group = "Auto")
 
-public class AutoBucketSide21528_A extends LinearOpMode {
+public class AutoTest21528 extends LinearOpMode {
     Bot21528_A bot;
     @Override
     public void runOpMode() {
         bot = new Bot21528_A(this, telemetry);
 
         waitForStart();
-        bot.liftMoveDownToSwitch();
         bot.liftResetEncoder();
 
         if (opModeIsActive() && !isStopRequested()) {
@@ -29,16 +27,17 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             sleep(250);
             bot.armMiddle();
             bot.wristClose();
+            sleep(1000);
             bot.liftHighPosition();
             bot.strafeRightForDistance(2);
-            bot.moveForwardForDistance(30.5);
+            bot.moveForwardForDistance(31.5);
             bot.grabberOpen();
             sleep(1000);
-            bot.moveForwardForDistance(-2.1);
-            bot.strafeRightForDistance(21.5);
+            bot.moveForwardForDistance(-4);
+//            bot.strafeRightForDistance(21.5);
             bot.turnToHeading(-90);
             bot.armMiddle();
-            bot.liftMinPosition();
+            bot.liftMoveDownToSwitch();
             sleep(2500);
             /*
             bot.armOpen();

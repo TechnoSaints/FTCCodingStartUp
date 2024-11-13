@@ -29,7 +29,6 @@ public class Teleop21528_A extends LinearOpMode {
 
         bot = new Bot21528_A(this, telemetry);
         waitForStart();
-        bot.liftMoveDownToSwitch();
         bot.liftResetEncoder();
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.dpad_up) {
@@ -82,6 +81,11 @@ public class Teleop21528_A extends LinearOpMode {
                 bot.wristSpecimenHang();
                 bot.armSpecimenHang();
                 //motorDirection = -1;
+            }
+
+            if ((gamepad1.start) && (gamepad1.share)) {
+                bot.liftMoveDownToSwitch();
+                bot.liftResetEncoder();
             }
         }
     }
