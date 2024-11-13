@@ -94,6 +94,8 @@ public class Drivetrain extends Component {
             // Pivot in place by applying the turning correction
             moveDirection(0, 0, turnSpeed);
 
+            telemetry.addData("Actual Heading: ", getHeading());
+            telemetry.addData("Target Heading: ", targetHeading);
             telemetry.addData("headingError: ", headingError);
             telemetry.addData("turnSpeed: ", turnSpeed);
             telemetry.update();
@@ -132,12 +134,12 @@ public class Drivetrain extends Component {
             leftBackPower /= max;
             rightBackPower /= max;
         }
-
+/*
         telemetry.addData("leftFrontPower: ", leftFrontPower);
         telemetry.addData("currentPower: ", currentPower);
         telemetry.addData("maxVelocity: ", maxVelocity);
         telemetry.update();
-
+*/
         leftFrontDrive.setVelocity(leftFrontPower * currentPower * maxVelocity);
         rightFrontDrive.setVelocity(rightFrontPower * currentPower * maxVelocity);
         leftBackDrive.setVelocity(leftBackPower * currentPower * maxVelocity);

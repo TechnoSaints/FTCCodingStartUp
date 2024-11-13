@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.common.Bot21528_A;
 
 @Config
-@Autonomous(name = "AutoTest21528", group = "Auto")
+@Autonomous(name = "AutoTest21528_A", group = "Auto")
 
-public class AutoTest21528 extends LinearOpMode {
+public class AutoTest21528_A extends LinearOpMode {
     Bot21528_A bot;
     @Override
     public void runOpMode() {
@@ -26,16 +26,12 @@ public class AutoTest21528 extends LinearOpMode {
             bot.armMiddle();
             bot.liftMediumPosition();
             bot.turnToHeading(-90);
-            sleep(3000);
-            bot.turnToHeading(180);
-            sleep(3000);
-            bot.turnToHeading(90);
-            sleep(3000);
-            bot.turnToHeading(0);
-            sleep(3000);
 
             telemetry.addLine("Complete");
             telemetry.update();
+            while (opModeIsActive() && !isStopRequested()) {
+            }
+
         }
     }
 }
