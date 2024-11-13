@@ -7,8 +7,8 @@ public class ArmData26290 extends LiftData {
         maxMovePower = 1;
         stopPower = 1;
         maxPosition = 2300;
-        maxTolerance = 25;
+        maxTolerance = 0;
         minPosition = 0;
-        minTolerance = 25;
+        minTolerance = 0;
     }
 }

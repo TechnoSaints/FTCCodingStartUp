@@ -28,7 +28,7 @@ public class Bot26290 extends Component {
         super(telemetry);
         drivetrain = new Drivetrain(opMode, telemetry, new DrivetrainData26290(), new GoBilda312DcMotorData());
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", true, new GoBilda223DcMotorData(), new LiftData26290());
+        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData26290());
         arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
         grabberClose();
     }
