@@ -27,9 +27,11 @@ public class LiftSingle extends Component {
     private int mediumPosition;
     private int lowPosition;
     private int direction = 1;
+    private String liftName;
 
     public LiftSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
+        liftName = motorName;
         maxVelocity = motorData.maxTicksPerSec;
         maxMovePower = liftData.maxMovePower;
         stopPower = liftData.stopPower;
@@ -134,20 +136,20 @@ public class LiftSingle extends Component {
     }
 
     public void zero() {
-//        down(0.2);
-  /*      while (!liftSwitch.isPressed()){
+/*        down(0.2);
+        while (!liftSwitch.isPressed()){
         }
-        stop();
+        stop();*/
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        log();*/
+        log();
     }
 
     public void log() {
 //        prevTime = timer.milliseconds();
 //        prevPosition = motor.getCurrentPosition();
-        telemetry.addData("Position:  ", motor.getCurrentPosition());
+        telemetry.addData(liftName + "Position:  ", motor.getCurrentPosition());
 //        telemetry.addData("targetVelocity: ", targetVelocity);
 //        opMode.sleep(1000);
 //        telemetry.addData("Velocity: ", ((motor.getCurrentPosition() - prevPosition) * 1000) / (timer.milliseconds() - prevTime));
