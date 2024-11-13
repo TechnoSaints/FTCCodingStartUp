@@ -23,13 +23,22 @@ public class AutoTest21528_A extends LinearOpMode {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
 
+//            bot.grabberClose();
+//            sleep(250);
             bot.armMiddle();
-            bot.liftMediumPosition();
+//            bot.wristClose();
+            bot.liftHighPosition();
+            bot.strafeRightForDistance(2);
+            bot.moveForwardForDistance(31.5);
+//            bot.grabberOpen();
+            sleep(1000);
+            bot.moveForwardForDistance(-4);
+            bot.strafeRightForDistance(18);
             bot.turnToHeading(-90);
             bot.moveForwardForDistance(12);
+            bot.armMiddle();
+            bot.liftMinPosition();
             sleep(2500);
-            bot.turnToHeading(-180);
-            bot.moveForwardForDistance(-12);
 
             telemetry.addLine("Complete");
             telemetry.update();
