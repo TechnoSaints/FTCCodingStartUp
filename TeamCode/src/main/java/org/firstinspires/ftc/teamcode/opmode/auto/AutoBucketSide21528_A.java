@@ -31,61 +31,57 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.wristClose();
             bot.liftHighPosition();
             bot.strafeRightForDistance(3.5);
-            bot.moveForwardForDistance(36);
+            bot.moveForwardForDistance(38);
             sleep(500);
             bot.grabberOpen();
             sleep(500);
 
             // Move to second brick and grab it
-            bot.moveForwardForDistance(-7.6);
+            bot.moveForwardForDistance(-9.6);
             bot.turnToHeading(-90);
             bot.moveForwardForDistance(12.5);
             bot.armClose();
             bot.liftLowPosition();
             sleep(500);
             bot.liftMinPosition();
-            sleep(500);
+            sleep(1000);
             bot.grabberClose();
             sleep(500);
 
             // Move to basket and drop second brick
             bot.armMiddle();
-            bot.turnToHeading(0);
+            bot.turnToHeading(90);
             bot.liftHighPosition();
-            bot.strafeRightForDistance(-17);
-            bot.moveForwardForDistance(8);
+            bot.strafeRightForDistance(12);
+            bot.moveForwardForDistance(17);
             sleep(500);
             bot.grabberOpen();
             sleep(500);
 
             // Move to third brick and grab it
-            bot.moveForwardForDistance(-3);
-            bot.strafeRightForDistance(5);
+            bot.moveForwardForDistance(-17);
             bot.turnToHeading(-90);
-            bot.moveForwardForDistance(12);
             bot.armClose();
             bot.liftLowPosition();
             sleep(500);
             bot.liftMinPosition();
-            sleep(500);
+            sleep(1000);
             bot.grabberClose();
             sleep(500);
 
             // Move to basket and drop third brick
             bot.armMiddle();
-            bot.turnToHeading(0);
+            bot.turnToHeading(90);
             bot.liftHighPosition();
-            bot.strafeRightForDistance(-17);
-            bot.moveForwardForDistance(3);
+            bot.moveForwardForDistance(17);
             sleep(500);
             bot.grabberOpen();
             sleep(500);
 
-            // Got to climb zone and touch bar
-            bot.moveForwardForDistance(-12);
+            // Go to climb zone and touch bar
+            bot.moveForwardForDistance(-48);
             bot.turnToHeading(180);
-            bot.strafeRightForDistance(-30);
-            bot.moveForwardForDistance(12);
+            bot.moveForwardForDistance(32);
 
             // Prepare to shut down
             bot.armMiddle();
