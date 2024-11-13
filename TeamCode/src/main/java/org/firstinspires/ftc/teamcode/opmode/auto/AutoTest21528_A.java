@@ -26,6 +26,10 @@ public class AutoTest21528_A extends LinearOpMode {
             bot.armMiddle();
             bot.liftMediumPosition();
             bot.turnToHeading(-90);
+            bot.moveForwardForDistance(12);
+            sleep(2500);
+            bot.turnToHeading(-180);
+            bot.moveForwardForDistance(-12);
 
             telemetry.addLine("Complete");
             telemetry.update();

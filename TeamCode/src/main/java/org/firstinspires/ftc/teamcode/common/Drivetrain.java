@@ -15,6 +15,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
+import org.firstinspires.ftc.teamcode.drive.GoBildaPinpointDriver;
+
+import java.util.Locale;
+
+
 public class Drivetrain extends Component {
     private final DcMotorEx leftFrontDrive;
     private final DcMotorEx rightFrontDrive;
@@ -26,13 +34,17 @@ public class Drivetrain extends Component {
     private final double maxSlowPower;
     private double currentPower;
     private double maxVelocity;
-    private IMU imu;
+    //    private IMU imu;
     private LinearOpMode opMode;
     private final double headingThreshold = 0.5;
     private final double turnGain = 0.02;
     private final double driveGain = 0.03;
     private final double ticksPerInch;
     private PIDFController pidf;
+    GoBildaPinpointDriver odo; // Declare OpMode member for the Odometry Computer
+
+    double oldTime = 0;
+
 
     public Drivetrain(LinearOpMode opMode, Telemetry telemetry, DrivetrainData drivetrainData, MotorData motorData) {
         super(telemetry);
@@ -60,13 +72,18 @@ public class Drivetrain extends Component {
 
         noseSwitch = opMode.hardwareMap.get(TouchSensor.class, "noseSwitch");
 
-        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
-        RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
-        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
+//        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
+//        RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
+//        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
 
-        imu = opMode.hardwareMap.get(IMU.class, "imu");
-        imu.initialize(new IMU.Parameters(orientationOnRobot));
-        imu.resetYaw();
+//        imu = opMode.hardwareMap.get(IMU.class, "imu");
+//        imu.initialize(new IMU.Parameters(orientationOnRobot));
+//        imu.resetYaw();
+
+
+        odo = opMode.hardwareMap.get(GoBildaPinpointDriver.class, "odo");
+//        odo.recalibrateIMU();
+        odo.resetPosAndIMU();
     }
 
     protected void setToFastPower() {
@@ -239,7 +256,9 @@ public class Drivetrain extends Component {
 
 
     protected double getHeading() {
-        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+        //       return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+        odo.update(GoBildaPinpointDriver.readData.ONLY_UPDATE_HEADING);
+        return Math.toDegrees(odo.getHeading());
     }
 
     public void stop() {
@@ -249,11 +268,10 @@ public class Drivetrain extends Component {
         rightBackDrive.setVelocity(0.0);
     }
 
-    public void touchNoseSwitch()
-    {
-        moveDirection(0.2,0,0);
-        while (!noseSwitch.isPressed())
-        {}
+    public void touchNoseSwitch() {
+        moveDirection(0.2, 0, 0);
+        while (!noseSwitch.isPressed()) {
+        }
         stop();
     }
 
