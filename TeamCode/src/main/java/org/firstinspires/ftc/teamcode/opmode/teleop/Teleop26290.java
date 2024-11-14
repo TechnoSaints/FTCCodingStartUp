@@ -55,11 +55,11 @@ public class Teleop26290 extends LinearOpMode {
             }
 
             if (gamepad1.left_trigger > 0.2){
-                bot.liftDown(gamepad1.left_trigger);
+                bot.liftUp(gamepad1.left_trigger);
             }
 
             else if (gamepad1.right_trigger > 0.2){
-                bot.liftUp(gamepad1.right_trigger);
+                bot.liftDown(gamepad1.right_trigger);
             }
 
             else {
@@ -67,11 +67,11 @@ public class Teleop26290 extends LinearOpMode {
             }
 
             if (gamepad1.right_bumper){
-                bot.armDown(1);
+                bot.armUp(1);
             }
 
             else if (gamepad1.left_bumper) {
-                bot.armUp(1);
+                bot.armDown(1);
             }
 
             else {
