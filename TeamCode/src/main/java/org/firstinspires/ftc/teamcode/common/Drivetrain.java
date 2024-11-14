@@ -301,11 +301,11 @@ public class Drivetrain extends Component {
     private void log() {
 //        telemetry.addData("leftFrontDrive Position: ", leftFrontDrive.getCurrentPosition());
 //        telemetry.addData("leftFrontDrive Target: ", leftFrontDrive.getTargetPosition());
-        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
-        telemetry.addData("rightFrontDrive Velocity: ", rightFrontDrive.getVelocity());
-        telemetry.addData("leftBackDrive Velocity: ", leftBackDrive.getVelocity());
-        telemetry.addData("rightBackVelocity: ", rightBackDrive.getVelocity());
+//        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
+//        telemetry.addData("rightFrontDrive Velocity: ", rightFrontDrive.getVelocity());
+//        telemetry.addData("leftBackDrive Velocity: ", leftBackDrive.getVelocity());
+//        telemetry.addData("rightBackVelocity: ", rightBackDrive.getVelocity());
 
-        telemetry.update();
+//        telemetry.update();
     }
 }
