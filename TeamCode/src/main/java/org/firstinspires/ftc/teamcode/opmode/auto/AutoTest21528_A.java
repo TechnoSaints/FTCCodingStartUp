@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.common.Bot21528_A;
 @Config
 @Autonomous(name = "AutoTest21528_A", group = "Auto")
 @Disabled
-class AutoTest21528_A extends LinearOpMode {
+public class AutoTest21528_A extends LinearOpMode {
     Bot21528_A bot;
 
     @Override
