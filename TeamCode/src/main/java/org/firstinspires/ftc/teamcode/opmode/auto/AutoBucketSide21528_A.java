@@ -18,7 +18,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
         bot = new Bot21528_A(this, telemetry);
 
         waitForStart();
-        bot.liftMoveDownToSwitch();
+//        bot.liftMoveDownToSwitch();
         bot.liftResetEncoder();
 
         if (opModeIsActive() && !isStopRequested()) {
@@ -31,15 +31,15 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.wristClose();
             bot.liftHighPosition();
             bot.strafeRightForDistance(3.5);
-            bot.moveForwardForDistance(39);
-            sleep(500);
+            bot.moveForwardForDistance(38);
+            sleep(250);
             bot.grabberOpen();
             sleep(500);
 
             // Move to second brick and grab it
             bot.moveForwardForDistance(-10);
             bot.turnToHeading(-90);
-            bot.moveForwardForDistance(13.5);
+            bot.moveForwardForDistance(14);
             bot.armClose();
             bot.liftLowPosition();
             sleep(500);
@@ -51,17 +51,17 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to basket and drop second brick
             bot.armMiddle();
             bot.liftHighPosition();
-            bot.moveForwardForDistance(-12);
+            bot.moveForwardForDistance(-15);
             bot.turnToHeading(0);
-            bot.moveForwardForDistance(10);
-            sleep(500);
+            bot.moveForwardForDistance(9);
+            sleep(250);
             bot.grabberOpen();
-            sleep(500);
+            sleep(250);
 
             // Move to third brick and grab it
-            bot.moveForwardForDistance(-9.6);
+            bot.moveForwardForDistance(-9);
             bot.turnToHeading(-90);
-            bot.moveForwardForDistance(12.5);
+            bot.moveForwardForDistance(14);
             bot.strafeRightForDistance(-9.5);
             bot.armClose();
             bot.liftLowPosition();
@@ -74,20 +74,24 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to basket and drop third brick
             bot.armMiddle();
             bot.liftHighPosition();
-            bot.strafeRightForDistance(11.5);
-            bot.moveForwardForDistance(-12.5);
+            bot.strafeRightForDistance(10.5);
+            bot.moveForwardForDistance(-15.5);
             bot.turnToHeading(0);
-            bot.moveForwardForDistance(9.6);
-            sleep(500);
+            bot.moveForwardForDistance(8);
+            sleep(250);
             bot.grabberOpen();
-            sleep(500);
+            sleep(250);
 
             // Go to climb zone and touch bar
-            bot.moveForwardForDistance(-9.6);
-            bot.strafeRightForDistance(75);
+            bot.moveForwardForDistance(-22);
+            bot.liftMinPosition();
+            bot.strafeRightForDistance(64);
+//            bot.armSpecimenHang();
+            bot.moveForwardForDistance(-10);
+            bot.armOpen();
 
             // Prepare to shut down
-            bot.armMiddle();
+//            bot.armMiddle();
             bot.liftMinPosition();
             sleep(2500);
             telemetry.addLine("Complete");
