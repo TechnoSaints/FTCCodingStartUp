@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.opmode.teleop;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -11,7 +12,7 @@ import org.firstinspires.ftc.teamcode.common.Bot9800;
 
 @Config
 @TeleOp(name = "Teleop9800", group = "9800")
-
+@Disabled
 public class Teleop9800 extends LinearOpMode {
 
     private Bot9800 bot;
