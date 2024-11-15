@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.common.Bot26290;
 
 @Config
 @TeleOp(name = "Teleop26290", group = "26290")
-@Disabled
 public class Teleop26290 extends LinearOpMode {
 
     private Bot26290 bot;
