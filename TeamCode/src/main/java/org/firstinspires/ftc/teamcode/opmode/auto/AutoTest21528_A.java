@@ -3,15 +3,17 @@ package org.firstinspires.ftc.teamcode.opmode.auto;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.common.Bot21528_A;
 
 @Config
 @Autonomous(name = "AutoTest21528_A", group = "Auto")
-
-public class AutoTest21528_A extends LinearOpMode {
+@Disabled
+class AutoTest21528_A extends LinearOpMode {
     Bot21528_A bot;
+
     @Override
     public void runOpMode() {
         bot = new Bot21528_A(this, telemetry);
