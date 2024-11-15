@@ -27,26 +27,26 @@ public class ServoSimple extends Component {
 
     public void open() {
         servo.setPosition(openPosition);
-        log(openPosition);
+//        log(openPosition);
     }
 
     public void close() {
         servo.setPosition(closePosition);
-        log(closePosition);
+//        log(closePosition);
     }
 
     public void middle() {
         servo.setPosition(middlePosition);
-        log(middlePosition);
+//        log(middlePosition);
     }
 
     public void specimenHang() {
         servo.setPosition(specimenHangPosition);
-        log(specimenHangPosition);
+//        log(specimenHangPosition);
     }
     public void specimenGrab() {
         servo.setPosition(specimenGrabPosition);
-        log(specimenGrabPosition);
+//        log(specimenGrabPosition);
     }
 
     private void log(double position)
