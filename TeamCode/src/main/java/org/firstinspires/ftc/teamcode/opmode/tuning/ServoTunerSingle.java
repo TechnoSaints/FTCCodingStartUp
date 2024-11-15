@@ -1,11 +1,12 @@
 package org.firstinspires.ftc.teamcode.opmode.tuning;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "Servo Tuner", group = "Tuning")
-//@Disabled
+@Disabled
 public class ServoTunerSingle extends LinearOpMode {
 
     static final double INCREMENT = 0.01;     // amount to slew servo each CYCLE_MS cycle
