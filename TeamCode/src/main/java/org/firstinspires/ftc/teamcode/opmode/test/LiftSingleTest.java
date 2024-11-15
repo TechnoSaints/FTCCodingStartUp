@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.opmode.test;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -14,7 +15,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.LiftDataOutt
 
 @Config
 @TeleOp(name = "TEST LiftSingleTest", group = "Test")
-
+@Disabled
 public class LiftSingleTest extends LinearOpMode {
 
     private LiftSingle lift;
