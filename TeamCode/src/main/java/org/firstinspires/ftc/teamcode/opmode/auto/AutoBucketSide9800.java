@@ -27,7 +27,7 @@ public class AutoBucketSide9800 extends LinearOpMode {
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-            bot.moveForwardForDistance(12);
+            bot.moveForwardForDistance(-12);
             bot.strafeRightForDistance(12);
             bot.turnToHeading(-90);
             bot.moveForwardForDistance(12);
