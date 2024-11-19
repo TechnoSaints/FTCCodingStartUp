@@ -112,6 +112,8 @@ public class Bot21528_A extends Component {
         wrist.open();
     }
 
+    public void wristMiddle() { wrist.middle(); }
+
     public void wristClose() {
         wrist.close();
     }
@@ -120,17 +122,13 @@ public class Bot21528_A extends Component {
         wrist.specimenHang();
     }
 
-    public void wristSpecimenGrab() {
-        wrist.specimenGrab();;
-    }
+    public void wristSpecimenGrab() { wrist.specimenGrab(); }
 
     public void wristSwivel0() {
         wristSwivel.open();
     }
 
-    public void wristSwivel90() {
-        wristSwivel.middle();
-    }
+    public void wristSwivel90() { wristSwivel.middle(); }
 
     public void wristSwivel180() {
         wristSwivel.close();
