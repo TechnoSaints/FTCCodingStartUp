@@ -20,7 +20,7 @@ public class Drivetrain extends Component {
     private final DcMotorEx rightFrontDrive;
     private final DcMotorEx leftBackDrive;
     private final DcMotorEx rightBackDrive;
-//    private final TouchSensor noseSwitch;
+    //    private final TouchSensor noseSwitch;
     private final double maxFastPower;
     private final double maxMediumPower;
     private final double maxSlowPower;
@@ -92,10 +92,11 @@ public class Drivetrain extends Component {
             turnSpeed = Range.clip(turnSpeed, -maxMediumPower, maxMediumPower);
 
             // Pivot in place by applying the turning correction
-            moveDirection(0, 0, turnSpeed);
+            moveDirection(0, 0, -turnSpeed);
 
             telemetry.addData("headingError: ", headingError);
             telemetry.addData("turnSpeed: ", turnSpeed);
+            log();
             telemetry.update();
         }
         stop();
@@ -133,16 +134,15 @@ public class Drivetrain extends Component {
             rightBackPower /= max;
         }
 
-        telemetry.addData("leftFrontPower: ", leftFrontPower);
-        telemetry.addData("currentPower: ", currentPower);
-        telemetry.addData("maxVelocity: ", maxVelocity);
-        telemetry.update();
-
+//        telemetry.addData("leftFrontPower: ", leftFrontPower);
+//        telemetry.addData("currentPower: ", currentPower);
+//        telemetry.addData("maxVelocity: ", maxVelocity);
+//        telemetry.update();
         leftFrontDrive.setVelocity(leftFrontPower * currentPower * maxVelocity);
         rightFrontDrive.setVelocity(rightFrontPower * currentPower * maxVelocity);
         leftBackDrive.setVelocity(leftBackPower * currentPower * maxVelocity);
         rightBackDrive.setVelocity(rightBackPower * currentPower * maxVelocity);
-//        log();
+        log();
     }
 
     public void strafeRightForDistance(double distance) {
@@ -167,6 +167,7 @@ public class Drivetrain extends Component {
 
         while (leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() && rightBackDrive.isBusy() && !opMode.isStopRequested()) {
             moveDirection(0, strafeSpeed, 0);
+        log();
         }
         stop();
         setRunUsingEncoder();
@@ -215,6 +216,7 @@ public class Drivetrain extends Component {
             // Apply the turning correction to the current driving speed.
             moveDirection(driveSpeed, 0.0, -turnSpeed);
             //           log();
+        log();
         }
         stop();
         setRunUsingEncoder();
@@ -247,8 +249,7 @@ public class Drivetrain extends Component {
         rightBackDrive.setVelocity(0.0);
     }
 
-    public void touchNoseSwitch()
-    {
+    public void touchNoseSwitch() {
 //        moveDirection(0.2,0,0);
 //        while (!noseSwitch.isPressed())
 //        {}
@@ -298,9 +299,13 @@ public class Drivetrain extends Component {
     }
 
     private void log() {
-        telemetry.addData("leftFrontDrive Position: ", leftFrontDrive.getCurrentPosition());
-        telemetry.addData("leftFrontDrive Target: ", leftFrontDrive.getTargetPosition());
-        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
-        telemetry.update();
+//        telemetry.addData("leftFrontDrive Position: ", leftFrontDrive.getCurrentPosition());
+//        telemetry.addData("leftFrontDrive Target: ", leftFrontDrive.getTargetPosition());
+//        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
+//        telemetry.addData("rightFrontDrive Velocity: ", rightFrontDrive.getVelocity());
+//        telemetry.addData("leftBackDrive Velocity: ", leftBackDrive.getVelocity());
+//        telemetry.addData("rightBackVelocity: ", rightBackDrive.getVelocity());
+
+//        telemetry.update();
     }
 }
