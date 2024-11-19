@@ -82,6 +82,11 @@ public class Teleop21528_A extends LinearOpMode {
                 bot.armSpecimenHang();
                 //motorDirection = -1;
             }
+            if (gamepad1.start) {
+                bot.wristSwivel0();
+            } else if (gamepad1.share) {
+                bot.wristSwivel90();
+            }
 
             if ((gamepad1.start) && (gamepad1.share)) {
                 bot.liftMoveDownToSwitch();

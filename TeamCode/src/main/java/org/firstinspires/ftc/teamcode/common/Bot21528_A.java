@@ -10,11 +10,12 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.DrivetrainD
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.GrabberServoData21528;
+import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.WristSwivelServoData21528;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team21528.LiftData21528;
 
 public class Bot21528_A extends Component {
     private final LiftSingle lift;
-    private final ServoSimple grabber, armLeft, wrist, armRight;
+    private final ServoSimple grabber, armLeft, wrist, armRight, wristSwivel;
     private Drivetrain drivetrain;
     private LinearOpMode opMode;
 
@@ -26,6 +27,8 @@ public class Bot21528_A extends Component {
         armLeft = new ServoSimple(opMode.hardwareMap, telemetry, "armLeft", new ArmLeftServoData21528());
         armRight = new ServoSimple(opMode.hardwareMap, telemetry, "armRight", new ArmRightServoData21528());
         wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData21528());
+        wristSwivel = new ServoSimple(opMode.hardwareMap, telemetry, "wristSwivel", new WristSwivelServoData21528());
+
         grabberClose();
         wristClose();
         armOpen();
@@ -119,6 +122,18 @@ public class Bot21528_A extends Component {
 
     public void wristSpecimenGrab() {
         wrist.specimenGrab();;
+    }
+
+    public void wristSwivel0() {
+        wristSwivel.open();
+    }
+
+    public void wristSwivel90() {
+        wristSwivel.middle();
+    }
+
+    public void wristSwivel180() {
+        wristSwivel.close();
     }
 
     public void liftUp(double speed) {

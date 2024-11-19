@@ -8,6 +8,6 @@ public class ArmLeftServoData21528 extends ServoData {
         middlePosition = 0.6;
         specimenHangPosition = 0.8;
         specimenGrabPosition = 0.9;
-        closePosition = 0.95;
+        closePosition = 0.91;
     }
 }
