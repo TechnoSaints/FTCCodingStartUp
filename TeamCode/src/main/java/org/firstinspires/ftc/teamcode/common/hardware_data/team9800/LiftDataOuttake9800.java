@@ -4,7 +4,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 
 public class LiftDataOuttake9800 extends LiftData {
     public LiftDataOuttake9800() {
-        maxMovePower = 0.80;
+        maxMovePower = 0.95;
         stopPower = 0.80;
         maxPosition = 4350;
         maxTolerance = 25;

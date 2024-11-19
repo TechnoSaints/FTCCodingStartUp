@@ -31,11 +31,11 @@ public class AutoBucketSide9800 extends LinearOpMode {
             bot.outtakeGrabberClose();
             bot.moveForwardForDistance(-12);
             bot.chamberPosition();
-            bot.moveForwardForDistance(-78);
+            bot.moveForwardForDistance(-0.5);
             bot.releasePosition();
             bot.outtakeGrabberOpen();
-            bot.moveForwardForDistance(98);
-            bot.strafeRightForDistance(98);
+            bot.moveForwardForDistance(4);
+            bot.strafeRightForDistance(20);
             bot.turnToHeading(180);
             bot.grabPosition();
             bot.armClose();
@@ -49,10 +49,10 @@ public class AutoBucketSide9800 extends LinearOpMode {
             bot.highBucketPosition();
             bot.outtakeGrabberOpen();
             bot.outtakeLiftZero();
-            bot.strafeRightForDistance(78);
-            bot.moveForwardForDistance(78);
+            bot.strafeRightForDistance(13);
+            bot.moveForwardForDistance(18);
             bot.turnToHeading(-90);
-            bot.moveForwardForDistance(78);
+            bot.moveForwardForDistance(14);
 
             telemetry.addLine("Complete");
             telemetry.update();

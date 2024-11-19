@@ -32,7 +32,7 @@ public class Bot9800 extends Component {
         wrist = new ServoSimple(opMode.hardwareMap, telemetry, "wrist", new WristServoData9800());
         outtakeGrabber = new ServoSimple(opMode.hardwareMap, telemetry, "outtakeGrabber", new OuttakeGrabberServoData9800());
         outtakeArm = new ServoSimple(opMode.hardwareMap, telemetry, "outtakeArm", new OuttakeArmServoData9800());
-        grabberClose();
+        outtakeGrabberClose();
     }
 
     public void grabberClose() {

@@ -8,7 +8,7 @@ public class LiftDataIntake9800 extends LiftData {
         stopPower = 0.75;
         maxPosition = 3000;
         maxTolerance = 25;
-        minPosition = 0;
+        minPosition = 300;
         minTolerance = 25;
         grabPosition = 79;
     }

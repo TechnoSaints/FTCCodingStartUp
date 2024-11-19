@@ -23,7 +23,7 @@ public class Teleop9800 extends LinearOpMode {
         double driveStrafe = 0.0;
         double driveYaw = 0.0;
 
-        boolean oGrabberPressed = false, grabberPressed = false, armPressed = false, oArmPressed = false, wristPressed = false;
+        boolean outtakeGrabberPressed = false, grabberPressed = false, armPressed = false, oArmPressed = false, wristPressed = false;
         ElapsedTime timer = new ElapsedTime();
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
@@ -55,7 +55,7 @@ public class Teleop9800 extends LinearOpMode {
                     timer.reset();
                     grabberPressed = true;
                     bot.grabberClose();
-                } else {
+                } else if (grabberPressed){
                     timer.reset();
                     grabberPressed = false;
                     bot.grabberOpen();
@@ -87,13 +87,13 @@ public class Teleop9800 extends LinearOpMode {
             }
 
             if ((gamepad2.b) && (timer.milliseconds() > 250)) {
-                if (!oGrabberPressed) {
+                if (!outtakeGrabberPressed) {
                     timer.reset();
-                    oGrabberPressed = true;
+                    outtakeGrabberPressed = true;
                     bot.outtakeGrabberClose();
                 } else {
                     timer.reset();
-                    oGrabberPressed = false;
+                    outtakeGrabberPressed = false;
                     bot.outtakeGrabberOpen();
                 }
             }
