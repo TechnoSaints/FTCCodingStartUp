@@ -154,6 +154,10 @@ public class Bot21528_A extends Component {
         lift.lowPosition();
     }
 
+    public void liftSpecimanHangPosition() {
+        lift.specimenHangPosition();
+    }
+
     public void liftMinPosition() {
         lift.minPosition();
     }

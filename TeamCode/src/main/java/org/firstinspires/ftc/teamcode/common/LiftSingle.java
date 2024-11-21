@@ -101,6 +101,11 @@ public class LiftSingle extends Component {
         log();
     }
 
+    public void specimenHangPosition() {
+        stopAtPosition(lowPosition);
+        log();
+    }
+
     public void minPosition() {
         stopAtPosition(minPosition);
         log();

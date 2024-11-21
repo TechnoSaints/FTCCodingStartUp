@@ -10,6 +10,7 @@ public abstract class LiftData {
     public int highPosition;
     public int mediumPosition;
     public int lowPosition;
+    public int specimenHangPosition;
 
 }
 

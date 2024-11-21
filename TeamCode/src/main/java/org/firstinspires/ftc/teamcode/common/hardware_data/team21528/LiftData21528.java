@@ -13,6 +13,7 @@ public class LiftData21528 extends LiftData {
         highPosition = 2925;
         mediumPosition = 1000;
         lowPosition = 350;
+        specimenHangPosition = 750;
     }
 }
 
