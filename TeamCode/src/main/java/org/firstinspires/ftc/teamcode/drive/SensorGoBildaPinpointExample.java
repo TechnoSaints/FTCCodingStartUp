@@ -22,7 +22,6 @@
 
 package org.firstinspires.ftc.teamcode.drive;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -59,7 +58,7 @@ For support, contact tech@gobilda.com
  */
 
 @TeleOp(name="goBILDA® PinPoint Odometry Example", group="Linear OpMode")
-@Disabled
+//@Disabled
 
 public class SensorGoBildaPinpointExample extends LinearOpMode {
 
@@ -162,7 +161,7 @@ public class SensorGoBildaPinpointExample extends LinearOpMode {
             double frequency = 1/loopTime;
             oldTime = newTime;
 
-            telemetry.addData("Heading: ", Math.toDegrees(odo.getHeading()));
+
             /*
             gets the current Position (x & y in mm, and heading in degrees) of the robot, and prints it.
              */
@@ -196,4 +195,3 @@ public class SensorGoBildaPinpointExample extends LinearOpMode {
 
         }
     }}
-
