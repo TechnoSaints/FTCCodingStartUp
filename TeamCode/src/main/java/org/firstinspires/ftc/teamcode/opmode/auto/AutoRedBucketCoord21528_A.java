@@ -5,6 +5,7 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.common.Bot21528_A;
 import org.firstinspires.ftc.teamcode.common.Bot21528_B;
 import org.firstinspires.ftc.teamcode.common.BotCoord21528_A;
@@ -19,14 +20,12 @@ public class AutoRedBucketCoord21528_A extends LinearOpMode {
         bot = new BotCoord21528_A(this, telemetry);
 
         waitForStart();
-//        bot.liftMoveDownToSwitch();
         bot.liftResetEncoder();
-
+        bot.setPose(FieldLocations.redBucketStart);
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-
-
+            bot.moveToPose(FieldLocations.redBucketSpike2);
 
             sleep(2500);
             telemetry.addLine("Complete");

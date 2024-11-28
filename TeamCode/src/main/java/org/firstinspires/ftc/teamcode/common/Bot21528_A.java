@@ -208,8 +208,4 @@ public class Bot21528_A extends Component {
     public void stopDrive() {
         drivetrain.moveDirection(0, 0, 0);
     }
-
-    public void touchNoseSwitch() {
-        drivetrain.touchNoseSwitch();
-    }
 }

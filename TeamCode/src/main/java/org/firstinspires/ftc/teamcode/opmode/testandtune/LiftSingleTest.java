@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opmode.test;
+package org.firstinspires.ftc.teamcode.opmode.testandtune;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
@@ -8,9 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.common.LiftSingle;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
-import org.firstinspires.ftc.teamcode.common.hardware_data.Viper223Long2StageLiftData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.team9800.LiftDataOuttake9800;
 
 @Config

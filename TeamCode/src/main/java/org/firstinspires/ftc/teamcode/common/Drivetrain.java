@@ -1,50 +1,36 @@
 package org.firstinspires.ftc.teamcode.common;
 
 import com.arcrobotics.ftclib.controller.PIDFController;
-import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
-import org.firstinspires.ftc.teamcode.drive.GoBildaPinpointDriver;
-
-import java.util.Locale;
+import org.firstinspires.ftc.teamcode.drive.ourveryown.GoBildaPinpointDriver;
 
 
 public class Drivetrain extends Component {
-    private final DcMotorEx leftFrontDrive;
-    private final DcMotorEx rightFrontDrive;
-    private final DcMotorEx leftBackDrive;
-    private final DcMotorEx rightBackDrive;
-    private final TouchSensor noseSwitch;
-    private final double maxFastPower;
-    private final double maxMediumPower;
-    private final double maxSlowPower;
-    private double currentPower;
-    private double maxVelocity;
+    protected final DcMotorEx leftFrontDrive;
+    protected final DcMotorEx rightFrontDrive;
+    protected final DcMotorEx leftBackDrive;
+    protected final DcMotorEx rightBackDrive;
+    protected final double maxFastPower;
+    protected final double maxMediumPower;
+    protected final double maxSlowPower;
+    protected double currentPower;
+    protected double maxVelocity;
     //    private IMU imu;
-    private LinearOpMode opMode;
+    protected LinearOpMode opMode;
     private final double headingThreshold = 0.5;
     private final double turnGain = 0.02;
     private final double driveGain = 0.03;
     private final double ticksPerInch;
-    private PIDFController pidf;
     GoBildaPinpointDriver odo; // Declare OpMode member for the Odometry Computer
-
-    double oldTime = 0;
-
 
     public Drivetrain(LinearOpMode opMode, Telemetry telemetry, DrivetrainData drivetrainData, MotorData motorData) {
         super(telemetry);
@@ -69,16 +55,6 @@ public class Drivetrain extends Component {
         setRunUsingEncoder();
         setBrakingOn();
         setToFastPower();
-
-        noseSwitch = opMode.hardwareMap.get(TouchSensor.class, "noseSwitch");
-
-//        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
-//        RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
-//        RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
-
-//        imu = opMode.hardwareMap.get(IMU.class, "imu");
-//        imu.initialize(new IMU.Parameters(orientationOnRobot));
-//        imu.resetYaw();
 
 
         odo = opMode.hardwareMap.get(GoBildaPinpointDriver.class, "odo");
@@ -270,13 +246,6 @@ public class Drivetrain extends Component {
         leftBackDrive.setVelocity(0.0);
         rightFrontDrive.setVelocity(0.0);
         rightBackDrive.setVelocity(0.0);
-    }
-
-    public void touchNoseSwitch() {
-        moveDirection(0.2, 0, 0);
-        while (!noseSwitch.isPressed()) {
-        }
-        stop();
     }
 
     private void setBrakingOn() {
