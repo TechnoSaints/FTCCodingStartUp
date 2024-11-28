@@ -5,6 +5,8 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.common.Bot21528_A;
 import org.firstinspires.ftc.teamcode.common.Bot21528_B;
@@ -14,18 +16,20 @@ import org.firstinspires.ftc.teamcode.common.BotCoord21528_A;
 @Autonomous(name = "AutoRedBucketCoord21528_A", group = "Auto")
 
 public class AutoRedBucketCoord21528_A extends LinearOpMode {
-    BotCoord21528_A bot;
+    BotCoord21528_A botCoord;
     @Override
     public void runOpMode() {
-        bot = new BotCoord21528_A(this, telemetry);
+        botCoord = new BotCoord21528_A(this, telemetry);
+        botCoord.armMiddle();
+        sleep(500);
 
         waitForStart();
-        bot.liftResetEncoder();
-        bot.setPose(FieldLocations.redBucketStart);
+        botCoord.liftResetEncoder();
+        botCoord.setPose(new Pose2D(DistanceUnit.INCH,0,0, AngleUnit.DEGREES,0));
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-            bot.moveToPose(FieldLocations.redBucketSpike2);
+            botCoord.moveToPose(new Pose2D(DistanceUnit.INCH,12,12, AngleUnit.DEGREES,0));
 
             sleep(2500);
             telemetry.addLine("Complete");

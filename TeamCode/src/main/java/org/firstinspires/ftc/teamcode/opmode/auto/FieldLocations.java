@@ -5,19 +5,19 @@ import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 
 public class FieldLocations {
     // red submersible locations
-    public static final Pose2D redAscent = new Pose2D(DistanceUnit.INCH, -14.75, 0, AngleUnit.DEGREES, -90);
-    public static final Pose2D redChamber = new Pose2D(DistanceUnit.INCH, 0, -24.125, AngleUnit.DEGREES, 0);
+    public static final Pose2D redAscent = new Pose2D(DistanceUnit.INCH, -14.75, 0, AngleUnit.DEGREES, 0);
+    public static final Pose2D redChamber = new Pose2D(DistanceUnit.INCH, 0, -24.125, AngleUnit.DEGREES, 90);
 
     // red bucket side locations
-    public static final Pose2D redBucketStart = new Pose2D(DistanceUnit.INCH, -11.875, -58.75, AngleUnit.DEGREES, 90);
-    public static final Pose2D redBucketBucket = new Pose2D(DistanceUnit.INCH, -64.875, -64.875, AngleUnit.DEGREES, 90);
-    public static final Pose2D redBucketSpike1 = new Pose2D(DistanceUnit.INCH, -47.75, -25.625, AngleUnit.DEGREES, 0);
+    public static final Pose2D redBucketStart = new Pose2D(DistanceUnit.INCH, -11.875, -58.75, AngleUnit.DEGREES, 180);
+    public static final Pose2D redBucketBucket = new Pose2D(DistanceUnit.INCH, -64.875, -64.875, AngleUnit.DEGREES, 180);
+    public static final Pose2D redBucketSpike1 = new Pose2D(DistanceUnit.INCH, -47.75, -25.625, AngleUnit.DEGREES, 90);
     public static final Pose2D redBucketSpike2 = new Pose2D(DistanceUnit.INCH, redBucketSpike1.getX(DistanceUnit.INCH) - 10, redBucketSpike1.getY(DistanceUnit.INCH), AngleUnit.DEGREES, redBucketSpike1.getHeading(AngleUnit.DEGREES));
     public static final Pose2D redBucketSpike3 = new Pose2D(DistanceUnit.INCH, redBucketSpike2.getX(DistanceUnit.INCH) - 10, redBucketSpike2.getY(DistanceUnit.INCH), AngleUnit.DEGREES, redBucketSpike2.getHeading(AngleUnit.DEGREES));
 
     // red specimen side locations
     public static final Pose2D redSpecimenStart = new Pose2D(DistanceUnit.INCH, -redBucketStart.getX(DistanceUnit.INCH), redBucketStart.getY(DistanceUnit.INCH), AngleUnit.DEGREES, -redBucketStart.getHeading(AngleUnit.DEGREES));
-    public static final Pose2D redSpecimenObservation = new Pose2D(DistanceUnit.INCH, 58.5, -64.25, AngleUnit.DEGREES, -90);
+    public static final Pose2D redSpecimenObservation = new Pose2D(DistanceUnit.INCH, 58.5, -64.25, AngleUnit.DEGREES, 0);
     public static final Pose2D redSpecimenSpike1 = new Pose2D(DistanceUnit.INCH, -redBucketSpike1.getX(DistanceUnit.INCH), redBucketSpike1.getY(DistanceUnit.INCH), AngleUnit.DEGREES, redBucketSpike1.getHeading(AngleUnit.DEGREES));
     public static final Pose2D redSpecimenSpike2 = new Pose2D(DistanceUnit.INCH, redSpecimenSpike1.getX(DistanceUnit.INCH) + 10, redSpecimenSpike1.getY(DistanceUnit.INCH), AngleUnit.DEGREES, redSpecimenSpike1.getHeading(AngleUnit.DEGREES));
     public static final Pose2D redSpecimenSpike3 = new Pose2D(DistanceUnit.INCH, redSpecimenSpike2.getX(DistanceUnit.INCH) + 10, redSpecimenSpike2.getY(DistanceUnit.INCH), AngleUnit.DEGREES, redSpecimenSpike2.getHeading(AngleUnit.DEGREES));

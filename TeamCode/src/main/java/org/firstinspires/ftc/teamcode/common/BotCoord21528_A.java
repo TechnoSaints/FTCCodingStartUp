@@ -19,15 +19,14 @@ public class BotCoord21528_A extends Bot21528_A {
 
     public BotCoord21528_A(LinearOpMode opMode, Telemetry telemetry) {
         super(opMode, telemetry);
+        drivetrainCoord = new DrivetrainCoord(opMode, telemetry, new DrivetrainData21528_A(), new GoBilda312DcMotorData());
     }
 
-    public void setPose(Pose2D targetPose)
-    {
-        drivetrainCoord.setPose(targetPose);
+    public void setPose(Pose2D currentPose) {
+        drivetrainCoord.setPose(currentPose);
     }
 
-    public void moveToPose(Pose2D targetPose)
-    {
+    public void moveToPose(Pose2D targetPose) {
         drivetrainCoord.moveToPose(targetPose);
     }
 }
