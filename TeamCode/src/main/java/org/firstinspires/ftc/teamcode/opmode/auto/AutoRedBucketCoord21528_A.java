@@ -29,9 +29,8 @@ public class AutoRedBucketCoord21528_A extends LinearOpMode {
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-            botCoord.moveToPose(new Pose2D(DistanceUnit.INCH,12,12, AngleUnit.DEGREES,0));
+            botCoord.moveToPose(new Pose2D(DistanceUnit.INCH,0,0, AngleUnit.DEGREES,90));
 
-            sleep(2500);
             telemetry.addLine("Complete");
             telemetry.update();
         }

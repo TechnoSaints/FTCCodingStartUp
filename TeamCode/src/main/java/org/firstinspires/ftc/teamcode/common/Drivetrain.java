@@ -92,6 +92,10 @@ public class Drivetrain extends Component {
         currentPower = maxFastPower;
     }
 
+    protected void setToMediumPower() {
+        currentPower = maxMediumPower;
+    }
+
     protected void setToSlowPower() {
         currentPower = maxSlowPower;
     }
