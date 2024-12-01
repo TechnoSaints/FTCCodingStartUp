@@ -107,7 +107,7 @@ public class Bot9800 extends Component {
         drivetrain.moveDirection(axial, strafe, yaw);
     }
 
-    public void stopDrive() {
-        drivetrain.stop();
+    public void stopDriveVelocity() {
+        drivetrain.stopVelocity();
     }
 }

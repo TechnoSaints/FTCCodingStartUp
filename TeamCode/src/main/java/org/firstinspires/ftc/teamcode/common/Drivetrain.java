@@ -66,7 +66,7 @@ public class Drivetrain extends Component {
         the tracking point the Y (strafe) odometry pod is. forward of center is a positive number,
         backwards is a negative number.
          */
-        odo.setOffsets(-108.0, 48.0); //these are tuned for 3110-0002-0001 Product Insight #1
+        odo.setOffsets(-108.0, 72.0); //these are tuned for 3110-0002-0001 Product Insight #1
 
         /*
         Set the kind of pods used by your robot. If you're using goBILDA odometry pods, select either
@@ -76,7 +76,6 @@ public class Drivetrain extends Component {
          */
         odo.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
         //odo.setEncoderResolution(13.26291192);
-
 
         /*
         Set the direction that each of the two odometry pods count. The X (forward) pod should
@@ -123,7 +122,7 @@ public class Drivetrain extends Component {
             telemetry.addData("turnSpeed: ", turnSpeed);
             telemetry.update();
         }
-        stop();
+        stopVelocity();
     }
 
     public void turnForDistance(double distance) {
@@ -193,7 +192,7 @@ public class Drivetrain extends Component {
         while (leftFrontDrive.isBusy() && leftBackDrive.isBusy() && rightFrontDrive.isBusy() && rightBackDrive.isBusy() && !opMode.isStopRequested()) {
             moveDirection(0, strafeSpeed, 0);
         }
-        stop();
+        stopVelocity();
         setRunUsingEncoder();
     }
 
@@ -241,7 +240,7 @@ public class Drivetrain extends Component {
             moveDirection(driveSpeed, 0.0, -turnSpeed);
             //           log();
         }
-        stop();
+        stopVelocity();
         setRunUsingEncoder();
     }
 
@@ -271,14 +270,14 @@ public class Drivetrain extends Component {
         return (heading);
     }
 
-    public void stop() {
+    public void stopVelocity() {
         leftFrontDrive.setVelocity(0.0);
         leftBackDrive.setVelocity(0.0);
         rightFrontDrive.setVelocity(0.0);
         rightBackDrive.setVelocity(0.0);
     }
 
-    private void setBrakingOn() {
+    protected void setBrakingOn() {
         leftFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBackDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

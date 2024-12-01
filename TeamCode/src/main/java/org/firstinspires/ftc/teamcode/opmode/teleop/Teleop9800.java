@@ -47,7 +47,7 @@ public class Teleop9800 extends LinearOpMode {
                 driveStrafe = gamepad1.left_stick_x;
                 driveYaw = -gamepad1.right_stick_x;
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
-                    bot.stopDrive();
+                    bot.stopDriveVelocity();
                 } else
                     bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
             }
