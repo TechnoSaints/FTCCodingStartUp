@@ -98,11 +98,11 @@ public class Bot26290 extends Component {
         lift.zero();
     }
 
-    public void armUp(int speed){
+    public void armUp(double speed){
         arm.up(speed);
     }
 
-    public void armDown(int speed){
+    public void armDown(double speed){
         arm.down(speed);
     }
 
