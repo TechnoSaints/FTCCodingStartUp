@@ -1,15 +1,9 @@
 package org.firstinspires.ftc.teamcode.common;
 
-import androidx.annotation.NonNull;
-
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.Action;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda117DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda223DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda312DcMotorData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.GoBilda60DcMotorData;
@@ -23,8 +17,8 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.team26290.VerticalWri
 public class Bot26290 extends Component {
     private Drivetrain drivetrain;
 
-    private LiftSingle lift;
-    private ArmSingle arm;
+    private LiftSingle arm;
+    private LiftSingleNoSensor lift;
     private ServoSimple grabber, horizontalWrist, verticalWrist;
 
     public Bot26290(LinearOpMode opMode, HardwareMap hardwareMap, Telemetry telemetry) {
@@ -33,8 +27,8 @@ public class Bot26290 extends Component {
         grabber = new ServoSimple(hardwareMap, telemetry, "grabber", new GrabberServoData26290());
         horizontalWrist = new ServoSimple(hardwareMap, telemetry, "hWrist", new HorizontalWristServoData26290());
         verticalWrist = new ServoSimple(hardwareMap, telemetry, "vWrist", new VerticalWristServoData26290());
-        lift = new LiftSingle(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData26290());
-        arm = new ArmSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
+        lift = new LiftSingleNoSensor(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData26290());
+        arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
         grabberClose();
     }
 
@@ -108,6 +102,18 @@ public class Bot26290 extends Component {
 
     public void armStop(){
         arm.stop();
+    }
+
+    public void armHighPosition() {
+        arm.highPosition();
+    }
+
+    public void armMediumPosition() {
+        arm.mediumPosition();
+    }
+
+    public void armlowPosition() {
+        arm.lowPosition();
     }
 
     public void turnToHeading(double heading) {

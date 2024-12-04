@@ -9,9 +9,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.LiftData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 
-public class ArmSingle extends Component {
+public class LiftSingleNoSensor extends Component {
     private final DcMotorEx motor;
-    private TouchSensor liftSwitch;
+    //private TouchSensor liftSwitch;
     private final double maxVelocity;
     private final double maxMovePower;
     private final double stopPower;
@@ -26,7 +26,7 @@ public class ArmSingle extends Component {
     private int direction = 1;
     private String liftName;
 
-    public ArmSingle(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
+    public LiftSingleNoSensor(HardwareMap hardwareMap, Telemetry telemetry, String motorName, boolean reverseMotor, MotorData motorData, LiftData liftData) {
         super(telemetry);
         liftName = motorName;
         maxVelocity = motorData.maxTicksPerSec;
@@ -41,7 +41,7 @@ public class ArmSingle extends Component {
         lowPosition = liftData.lowPosition;
         long prevTime;
         int prevPosition;
-        liftSwitch = hardwareMap.get(TouchSensor.class, "armSwitch");
+        //liftSwitch = hardwareMap.get(TouchSensor.class, "armSwitch");
         motor = hardwareMap.get(DcMotorEx.class, motorName);
 
         if (reverseMotor) {
@@ -133,10 +133,10 @@ public class ArmSingle extends Component {
     }
 
     public void zero() {
-        down(0.2);
+        /*down(0.2);
         while (!liftSwitch.isPressed()){
         }
-        stop();
+        stop();*/
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

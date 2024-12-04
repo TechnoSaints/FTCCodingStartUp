@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "Servo Tuner", group = "Tuning")
-@Disabled
 public class ServoTunerSingle extends LinearOpMode {
 
     static final double INCREMENT = 0.01;     // amount to slew servo each CYCLE_MS cycle
@@ -35,21 +34,22 @@ public class ServoTunerSingle extends LinearOpMode {
                 position += INCREMENT;
                 if (position >= MAX_POS) {
                     position = MAX_POS;
-                } else if (gamepad1.left_bumper) {
-                    position -= INCREMENT;
-                    if (position <= MIN_POS) {
-                        position = MIN_POS;
-                    }
-
-                    // Display the current value
-                    telemetry.addData("Servo Position", "%5.2f", position);
-                    telemetry.addLine("Right Bumper to Increase");
-                    telemetry.addLine("Left Bumper to Decrease");
-                    telemetry.update();
-                    // Set the servo to the new position and pause;
-                    servo.setPosition(position);
-                    sleep(CYCLE_MS);
                 }
+            }
+            else if (gamepad1.left_bumper) {
+                position -= INCREMENT;
+                if (position <= MIN_POS) {
+                    position = MIN_POS;
+                }
+
+                // Display the current value
+                telemetry.addData("Servo Position", "%5.2f", position);
+                telemetry.addLine("Right Bumper to Increase");
+                telemetry.addLine("Left Bumper to Decrease");
+                telemetry.update();
+                // Set the servo to the new position and pause;
+                servo.setPosition(position);
+                sleep(CYCLE_MS);
             }
         }
     }

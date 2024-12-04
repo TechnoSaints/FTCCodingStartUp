@@ -22,6 +22,7 @@ public class Teleop26290 extends LinearOpMode {
         double driveAxial = 0.0;
         double driveStrafe = 0.0;
         double driveYaw = 0.0;
+        int servoPosition = -1;
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
@@ -54,20 +55,32 @@ public class Teleop26290 extends LinearOpMode {
                 bot.grabberOpen();
             }
 
-            if (gamepad2.x){
-                bot.down();
-            }
-
-            else if (gamepad2.y){
-                bot.up();
-            }
-
             if (gamepad2.left_bumper){
                 bot.left();
             }
 
             else if (gamepad2.right_bumper){
                 bot.right();
+            }
+
+            if (gamepad2.right_trigger > 0.2 && servoPosition < 1){
+                servoPosition += 1;
+            }
+
+            else if (gamepad2.left_trigger > 0.2 && servoPosition > -1){
+                servoPosition -= 1;
+            }
+
+            if (servoPosition == -1){
+                bot.back();
+            }
+
+            else if (servoPosition == 0){
+                bot.down();
+            }
+
+            else if (servoPosition == 1){
+                bot.up();
             }
 
             if (gamepad2.right_stick_y > 0.2 || gamepad2.right_stick_y < -0.2) {
