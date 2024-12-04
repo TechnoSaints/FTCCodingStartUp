@@ -29,7 +29,6 @@ public class AutoSpecimenSide21528_B extends LinearOpMode {
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-
             bot.grabberClose();
             sleep(1000);
             bot.armMiddle();

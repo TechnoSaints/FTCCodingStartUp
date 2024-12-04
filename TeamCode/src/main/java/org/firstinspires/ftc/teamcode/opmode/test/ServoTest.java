@@ -20,7 +20,7 @@ public class ServoTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-        servo = new ServoSimple(hardwareMap, telemetry, "arm", new ArmServoData9800());
+        servo = new ServoSimple(hardwareMap, telemetry, "wrist", new ArmServoData9800());
 
         waitForStart();
 
