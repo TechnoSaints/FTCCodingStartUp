@@ -55,7 +55,7 @@ public class LiftSingle extends Component {
             direction = 1;
         }
 
-        zero();
+        //zero();
     }
 
     public void stop() {
@@ -136,8 +136,8 @@ public class LiftSingle extends Component {
     }
 
     public void zero() {
-        down(0.2);
         while (!liftSwitch.isPressed()){
+            down(0.2);
         }
         stop();
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

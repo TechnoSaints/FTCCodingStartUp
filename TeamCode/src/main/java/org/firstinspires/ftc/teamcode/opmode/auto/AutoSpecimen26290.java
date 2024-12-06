@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.common.Bot26290;
 
 @Config
-@Autonomous(name = "Auto26290", group = "Auto")
+@Autonomous(name = "AutoSpecimen26290", group = "Auto")
 public class AutoSpecimen26290 extends LinearOpMode {
     protected Bot26290 bot;
     @Override
@@ -26,27 +26,27 @@ public class AutoSpecimen26290 extends LinearOpMode {
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-            bot.moveForwardForDistance(18);
+            bot.moveForwardForDistance(32);
             bot.armMediumPosition();
             bot.liftMediumPosition();
             bot.up();
-            bot.moveForwardForDistance(-2);
+            bot.moveForwardForDistance(-5);
             bot.grabberOpen();
             bot.liftlowPosition();
             bot.turnToHeading(180);
-            bot.strafeRightForDistance(-24);
+            bot.strafeRightForDistance(-32);
             bot.armlowPosition();
             bot.liftMediumPosition();
             bot.grabberClose();
             bot.armMediumPosition();
-            bot.strafeRightForDistance(24);
+            bot.strafeRightForDistance(32);
             bot.turnToHeading(180);
             bot.moveForwardForDistance(2);
             bot.down();
             bot.moveForwardForDistance(-2);
             bot.grabberOpen();
-            bot.moveForwardForDistance(18);
-            bot.strafeRightForDistance(30);
+            bot.moveForwardForDistance(-18);
+            bot.strafeRightForDistance(55);
             telemetry.addLine("Complete");
             telemetry.update();
         }

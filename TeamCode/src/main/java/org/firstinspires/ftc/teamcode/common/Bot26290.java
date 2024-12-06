@@ -30,6 +30,8 @@ public class Bot26290 extends Component {
         lift = new LiftSingleNoSensor(hardwareMap, telemetry, "lift", false, new GoBilda223DcMotorData(), new LiftData26290());
         arm = new LiftSingle(hardwareMap, telemetry, "arm", false, new GoBilda60DcMotorData(), new ArmData26290());
         grabberClose();
+        back();
+        right();
     }
 
     public void grabberClose() {
@@ -103,6 +105,8 @@ public class Bot26290 extends Component {
     public void armStop(){
         arm.stop();
     }
+
+    public void armZero(){arm.zero();}
 
     public void armHighPosition() {
         arm.highPosition();
