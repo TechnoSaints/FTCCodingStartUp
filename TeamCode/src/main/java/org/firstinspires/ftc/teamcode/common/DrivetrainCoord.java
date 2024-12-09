@@ -18,7 +18,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
-import org.firstinspires.ftc.teamcode.drive.ourveryown.GoBildaPinpointDriver;
+import org.firstinspires.ftc.teamcode.pedroPathing.localization.GoBildaPinpointDriver;
 
 import java.util.concurrent.TimeUnit;
 

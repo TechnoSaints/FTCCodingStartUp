@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 
-import org.firstinspires.ftc.teamcode.drive.ourveryown.GoBildaPinpointDriver;
+import org.firstinspires.ftc.teamcode.pedroPathing.localization.GoBildaPinpointDriver;
 
 
 public class Drivetrain extends Component {
