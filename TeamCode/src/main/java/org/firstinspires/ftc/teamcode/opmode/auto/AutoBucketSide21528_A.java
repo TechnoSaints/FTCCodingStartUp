@@ -39,7 +39,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to second brick and grab it
             bot.moveForwardForDistance(-10);
             bot.turnToHeading(-90);
-            bot.moveForwardForDistance(17);
+            bot.moveForwardForDistance(18);
             bot.armClose();
             bot.liftLowPosition();
             sleep(500);
@@ -51,7 +51,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to basket and drop second brick
             bot.armMiddle();
             bot.liftHighPosition();
-            bot.moveForwardForDistance(-17.5);
+            bot.moveForwardForDistance(-18.5);
             bot.turnToHeading(0);
             bot.moveForwardForDistance(6.5);
             sleep(250);
@@ -61,7 +61,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to third brick and grab it
             bot.moveForwardForDistance(-9);
             bot.turnToHeading(-90);
-            bot.moveForwardForDistance(18);
+            bot.moveForwardForDistance(17.5);
             bot.strafeRightForDistance(-12);
             bot.armClose();
             bot.liftLowPosition();
@@ -74,28 +74,39 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to basket and drop third brick
             bot.armMiddle();
             bot.liftHighPosition();
-            bot.strafeRightForDistance(12);
-            bot.moveForwardForDistance(-17);
+            bot.strafeRightForDistance(12.5);
+            bot.moveForwardForDistance(-17.5);
             bot.turnToHeading(0);
             bot.moveForwardForDistance(8);
             sleep(250);
             bot.grabberOpen();
             sleep(250);
 
-            // Go to climb zone and touch bar
-            /*bot.moveForwardForDistance(-22);
+            //Move to fourth brick and pick up
+            bot.moveForwardForDistance(-15);
+            bot.strafeRightForDistance(39.5);
+            bot.moveForwardForDistance(4.5);
+            bot.armClose();
+            bot.wristSwivel90();
+            bot.liftMediumPosition();
+            sleep(500);
+            bot.moveForwardForDistance(2.75);
             bot.liftMinPosition();
-            bot.strafeRightForDistance(64);
-//            bot.armSpecimenHang();
-            bot.moveForwardForDistance(-10);
-            bot.armOpen();
+            sleep(1000);
+            bot.grabberClose();
+            sleep(500);
 
-            // Prepare to shut down
-//            bot.armMiddle();
-            bot.liftMinPosition();
-            sleep(2500);
-            telemetry.addLine("Complete");
-            telemetry.update();*/
+
+            //Drop 4th Brick
+            bot.moveForwardForDistance(-4);
+            bot.armMiddle();
+            bot.liftHighPosition();
+            bot.strafeRightForDistance(-42);
+            bot.moveForwardForDistance(8.5);
+            bot.grabberOpen();
+            sleep(500);
+            bot.wristSwivel180();
+            bot.moveForwardForDistance(-2);
         }
     }
 }

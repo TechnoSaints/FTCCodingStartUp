@@ -86,7 +86,7 @@ public class Teleop21528_A extends LinearOpMode {
                 bot.wristClose();
             } else if (gamepad1.start) {
                 bot.wristSwivel90();
-                bot.wristMiddle();
+                bot.wristOpen();
             }
 
             if ((gamepad1.start) && (gamepad1.share)) {
