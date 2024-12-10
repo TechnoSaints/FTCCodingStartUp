@@ -12,6 +12,6 @@ public class ArmData26290 extends LiftData {
         minTolerance = 25;
         lowPosition = 0;
         mediumPosition = 400;
-        highPosition = 2000;
+        highPosition = 1500;
     }
 }

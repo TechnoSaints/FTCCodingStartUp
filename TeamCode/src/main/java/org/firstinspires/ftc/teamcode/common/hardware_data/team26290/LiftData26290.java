@@ -6,7 +6,7 @@ public class LiftData26290 extends LiftData {
     public LiftData26290() {
         maxMovePower = 1;
         stopPower = 1;
-        maxPosition = -4500;
+        maxPosition = -4300;
         maxTolerance = 0;
         minPosition = 0;
         minTolerance = 0;
