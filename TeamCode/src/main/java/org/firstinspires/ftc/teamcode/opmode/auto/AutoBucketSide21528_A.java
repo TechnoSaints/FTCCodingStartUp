@@ -62,7 +62,7 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             bot.moveForwardForDistance(-9);
             bot.turnToHeading(-90);
             bot.moveForwardForDistance(18);
-            bot.strafeRightForDistance(-11);
+            bot.strafeRightForDistance(-12);
             bot.armClose();
             bot.liftLowPosition();
             sleep(500);
@@ -74,8 +74,8 @@ public class AutoBucketSide21528_A extends LinearOpMode {
             // Move to basket and drop third brick
             bot.armMiddle();
             bot.liftHighPosition();
-            bot.strafeRightForDistance(10.5);
-            bot.moveForwardForDistance(-15.5);
+            bot.strafeRightForDistance(12);
+            bot.moveForwardForDistance(-17);
             bot.turnToHeading(0);
             bot.moveForwardForDistance(8);
             sleep(250);
