@@ -226,7 +226,6 @@ public class Drivetrain extends Component {
             headingError = getHeadingError(targetHeading);
             // Determine required steering to keep on heading
             turnSpeed = getSteeringCorrection(headingError, driveGain);
-
             // if driving in reverse, the motor correction also needs to be reversed
             if (distance < 0)
                 turnSpeed *= -1.0;
