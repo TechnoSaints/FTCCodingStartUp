@@ -213,7 +213,7 @@ public class Drivetrain extends Component {
                 turnSpeed *= -1.0;
 
             // Apply the turning correction to the current driving speed.
-            moveDirection(driveSpeed, 0.0, -turnSpeed);
+            moveDirection(driveSpeed, 0.0, 0.0);
             //           log();
         }
         stop();
