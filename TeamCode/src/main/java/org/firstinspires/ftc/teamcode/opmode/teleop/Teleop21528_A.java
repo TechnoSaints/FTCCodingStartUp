@@ -81,10 +81,10 @@ public class Teleop21528_A extends LinearOpMode {
                 bot.armSpecimenHang();
                 //motorDirection = -1;
             }
-            if (gamepad1.start) {
+            if (gamepad1.touchpad) {
                 bot.wristSwivel0();
                 bot.wristClose();
-            } else if (gamepad1.share) {
+            } else if (gamepad1.start) {
                 bot.wristSwivel90();
                 bot.wristMiddle();
             }

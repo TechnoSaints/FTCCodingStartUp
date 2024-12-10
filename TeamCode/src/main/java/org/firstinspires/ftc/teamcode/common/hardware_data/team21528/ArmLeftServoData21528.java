@@ -4,7 +4,7 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 
 public class ArmLeftServoData21528 extends ServoData {
     public ArmLeftServoData21528() {
-        openPosition = 0.2;
+        openPosition = 0.11;
         middlePosition = 0.55;
         specimenHangPosition = 0.31;
         specimenGrabPosition = 0.9;
