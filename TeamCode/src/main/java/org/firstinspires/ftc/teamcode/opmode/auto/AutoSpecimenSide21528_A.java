@@ -3,13 +3,14 @@ package org.firstinspires.ftc.teamcode.opmode.auto;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.common.Bot21528_A;
 
 @Config
 @Autonomous(name = "AutoSpecimenSide21528_A", group = "Auto")
-
+@Disabled
 public class AutoSpecimenSide21528_A extends LinearOpMode {
     Bot21528_A bot;
     @Override
