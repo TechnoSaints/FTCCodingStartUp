@@ -6,4 +6,5 @@ public abstract class ServoData {
         public double specimenHangPosition;
         public double specimenGrabPosition;
         public double closePosition;
+        public double highPosition;
 }

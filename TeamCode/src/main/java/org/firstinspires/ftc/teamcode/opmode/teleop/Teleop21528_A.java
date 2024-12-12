@@ -69,7 +69,7 @@ public class Teleop21528_A extends LinearOpMode {
                 //motorDirection = 1;
             } else if (gamepad1.right_bumper) {
                 bot.armMiddle();
-                bot.wristOpen();
+                bot.wristHighPosition();
                 //motorDirection = 1;
             }
             if (gamepad1.b) {
@@ -92,6 +92,11 @@ public class Teleop21528_A extends LinearOpMode {
             if ((gamepad1.start) && (gamepad1.share)) {
                 bot.liftMoveDownToSwitch();
                 bot.liftResetEncoder();
+            }
+            if (gamepad1.ps) {
+                bot.wristOpen();
+            } else if (gamepad1.share) {
+                bot.wristHighPosition();
             }
         }
     }

@@ -13,6 +13,7 @@ public class ServoSimple extends Component {
     private final double middlePosition;
     private final double specimenHangPosition;
     private final double specimenGrabPosition;
+    private final double highPosition;
     private final Servo servo;
 
     public ServoSimple(HardwareMap hardwareMap, Telemetry telemetry, String servoName, ServoData servoData) {
@@ -22,6 +23,7 @@ public class ServoSimple extends Component {
         middlePosition = servoData.middlePosition;
         specimenHangPosition = servoData.specimenHangPosition;
         specimenGrabPosition = servoData.specimenGrabPosition;
+        highPosition = servoData.highPosition;
         servo = hardwareMap.get(Servo.class, servoName);
     }
 
@@ -47,6 +49,9 @@ public class ServoSimple extends Component {
     public void specimenGrab() {
         servo.setPosition(specimenGrabPosition);
 //        log(specimenGrabPosition);
+    }
+    public void highPosition() {
+        servo.setPosition(highPosition);
     }
 
     private void log(double position)
