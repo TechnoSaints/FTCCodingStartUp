@@ -26,6 +26,8 @@ public class LiftSingle extends Component {
     private int highPosition;
     private int mediumPosition;
     private int lowPosition;
+    private int mediumHighPosition;
+    private int mediumLowPosition;
     private int direction = 1;
     private String liftName;
 
@@ -40,7 +42,9 @@ public class LiftSingle extends Component {
         minPosition = liftData.minPosition;
         minTolerance = liftData.minTolerance;
         highPosition = liftData.highPosition;
+        mediumHighPosition = liftData.mediumHighPosition;
         mediumPosition = liftData.mediumPosition;
+        mediumLowPosition = liftData.mediumLowPosition;
         lowPosition = liftData.lowPosition;
         long prevTime;
         int prevPosition;
@@ -93,8 +97,18 @@ public class LiftSingle extends Component {
         log();
     }
 
+    public void mediumHighPosition() {
+        stopAtPosition(mediumHighPosition);
+        log();
+    }
+
     public void mediumPosition() {
         stopAtPosition(mediumPosition);
+        log();
+    }
+
+    public void mediumLowPosition() {
+        stopAtPosition(mediumLowPosition);
         log();
     }
 
@@ -106,6 +120,10 @@ public class LiftSingle extends Component {
     public void minPosition() {
         stopAtPosition(minPosition);
         log();
+    }
+
+    public boolean lowered(){
+        return (motor.getCurrentPosition() < mediumLowPosition);
     }
 
     private boolean stoppedAtTop() {

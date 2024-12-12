@@ -55,12 +55,12 @@ public class LiftSingleNoSensor extends Component {
         zero();
     }
 
-    public void stop() {
-        stopAtPosition(motor.getCurrentPosition());
+    public void stop(boolean down) {
+        stopAtPosition(motor.getCurrentPosition(), down);
     }
 
-    public void up(double targetPower) {
-        if (!stoppedAtTop()) {
+    public void up(double targetPower, boolean down) {
+        if (!stoppedAtTop(down)) {
             motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             targetVelocity = direction * targetPower * maxMovePower * maxVelocity;
 //            motor.setPower(targetPower);
@@ -86,31 +86,35 @@ public class LiftSingleNoSensor extends Component {
     }
 
     public void highPosition() {
-        stopAtPosition(highPosition);
+        stopAtPosition(highPosition, false);
         log();
     }
 
     public void mediumPosition() {
-        stopAtPosition(mediumPosition);
+        stopAtPosition(mediumPosition, false);
         log();
     }
 
     public void lowPosition() {
-        stopAtPosition(lowPosition);
+        stopAtPosition(lowPosition, false);
         log();
     }
 
     public void minPosition() {
-        stopAtPosition(minPosition);
+        stopAtPosition(minPosition, false);
         log();
     }
 
-    private boolean stoppedAtTop() {
+    private boolean stoppedAtTop(boolean down) {
         boolean stop = false;
         int currentPosition = motor.getCurrentPosition();
-        if (currentPosition > (maxPosition - maxTolerance)) {
+        int upPosition = maxPosition;
+        if (down){
+            upPosition = highPosition;
+        }
+        if (currentPosition > (upPosition - maxTolerance)) {
             stop = true;
-            stopAtPosition(maxPosition);
+            stopAtPosition(upPosition, false);
         }
         return stop;
     }
@@ -120,12 +124,15 @@ public class LiftSingleNoSensor extends Component {
         int currentPosition = motor.getCurrentPosition();
         if (currentPosition < (minPosition - minTolerance)) {
             stop = true;
-            stopAtPosition(minPosition);
+            stopAtPosition(minPosition, false);
         }
         return stop;
     }
 
-    private void stopAtPosition(int targetPosition) {
+    private void stopAtPosition(int targetPosition, boolean checkForStop) {
+        if (checkForStop && motor.getCurrentPosition() < highPosition){
+            targetPosition = highPosition;
+        }
         motor.setTargetPosition(targetPosition);
         motor.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         motor.setPower(stopPower);

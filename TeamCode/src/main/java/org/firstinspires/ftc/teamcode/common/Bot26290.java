@@ -63,7 +63,7 @@ public class Bot26290 extends Component {
     }
 
     public void liftUp(double speed) {
-        lift.up(speed);
+        lift.up(speed, arm.lowered());
     }
 
     public void liftDown(double speed) {
@@ -87,7 +87,7 @@ public class Bot26290 extends Component {
     }
 
     public void liftStop() {
-        lift.stop();
+        lift.stop(arm.lowered());
     }
 
     public void liftZero() {
@@ -112,9 +112,13 @@ public class Bot26290 extends Component {
         arm.highPosition();
     }
 
+    public void armMediumHighPosition(){arm.mediumHighPosition();}
+
     public void armMediumPosition() {
         arm.mediumPosition();
     }
+
+    public void armMediumLowPosition(){arm.mediumLowPosition();}
 
     public void armlowPosition() {
         arm.lowPosition();

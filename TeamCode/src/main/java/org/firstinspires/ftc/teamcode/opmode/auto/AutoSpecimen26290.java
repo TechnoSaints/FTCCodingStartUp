@@ -20,24 +20,30 @@ public class AutoSpecimen26290 extends LinearOpMode {
         bot = new Bot26290(this, hardwareMap, telemetry);
         telemetry.addLine("Bot initialized...");
         telemetry.update();
+        bot.armStop();
 
         waitForStart();
+        bot.up();
         bot.armZero();
 
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-            bot.moveForwardForDistance(20);
+            bot.moveForwardForDistance(18);
             bot.armHighPosition();
             sleep(1000);
             bot.liftMediumPosition();
+            sleep(500);
+            bot.moveForwardForDistance(6);
+            sleep(500);
             bot.down();
             sleep(500);
-            bot.moveForwardForDistance(-5);
+            bot.moveForwardForDistance(-12);
             sleep(500);
             bot.grabberOpen();
-            sleep(500);
             bot.liftlowPosition();
+            bot.moveForwardForDistance(2);
+            bot.back();
             sleep(500);
             /*bot.turnToHeading(180);
             bot.strafeRightForDistance(-32);

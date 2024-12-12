@@ -11,5 +11,7 @@ public abstract class LiftData {
     public int mediumPosition;
     public int lowPosition;
 
+    public int mediumHighPosition;
+    public int mediumLowPosition;
 }
 

@@ -64,18 +64,18 @@ public class Teleop26290 extends LinearOpMode {
 
             if (gamepad1.x){
                 bot.up();
-                bot.left();
+                bot.right();
             }
 
             if (gamepad2.b){
                 bot.up();
             }
 
-            else if (gamepad1.y){
+            else if (gamepad2.y){
                 bot.down();
             }
 
-            else if (gamepad1.x){
+            else if (gamepad2.x){
                 bot.back();
             }
 
