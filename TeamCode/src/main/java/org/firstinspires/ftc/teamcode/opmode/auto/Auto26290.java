@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.common.Bot26290;
 
 @Config
-@Autonomous(name = "Auto26290", group = "Auto")
+@Autonomous(name = "Park", group = "Auto")
 public class Auto26290 extends LinearOpMode {
     protected Bot26290 bot;
     @Override
