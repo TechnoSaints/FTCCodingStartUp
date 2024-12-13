@@ -155,7 +155,11 @@ public class LiftSingle extends Component {
 
     public void zero() {
         while (!liftSwitch.isPressed()){
-            down(0.2);
+            double targetPower = 0.2;
+            motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            targetVelocity = direction * -targetPower * maxMovePower * maxVelocity;
+//            motor.setPower(targetPower);
+            motor.setVelocity(targetVelocity);
         }
         stop();
         motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
