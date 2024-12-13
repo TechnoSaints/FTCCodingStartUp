@@ -21,6 +21,7 @@ public class AutoSpecimen26290 extends LinearOpMode {
         telemetry.addLine("Bot initialized...");
         telemetry.update();
         bot.armStop();
+        bot.back();
 
         waitForStart();
         bot.up();
@@ -34,15 +35,16 @@ public class AutoSpecimen26290 extends LinearOpMode {
             sleep(1000);
             bot.liftMediumPosition();
             sleep(500);
-            bot.moveForwardForDistance(6);
+            bot.moveForwardForDistance(2);
             sleep(500);
-            bot.down();
-            sleep(500);
-            bot.moveForwardForDistance(-12);
+            bot.armMediumHighPosition();
             sleep(500);
             bot.grabberOpen();
+            sleep(500);
+            bot.armHighPosition();
             bot.liftlowPosition();
-            bot.moveForwardForDistance(2);
+            sleep(500);
+            bot.armlowPosition();
             bot.back();
             sleep(500);
             /*bot.turnToHeading(180);
@@ -67,9 +69,9 @@ public class AutoSpecimen26290 extends LinearOpMode {
             sleep(500);
             bot.liftlowPosition();
             sleep(500);*/
-            bot.armlowPosition();
             bot.moveForwardForDistance(-18);
             bot.strafeRightForDistance(55);
+            bot.armMediumHighPosition();
             telemetry.addLine("Complete");
             telemetry.update();
         }

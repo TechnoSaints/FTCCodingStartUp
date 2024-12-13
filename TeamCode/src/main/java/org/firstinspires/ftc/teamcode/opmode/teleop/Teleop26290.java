@@ -27,8 +27,9 @@ public class Teleop26290 extends LinearOpMode {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         bot = new Bot26290(this, hardwareMap, telemetry);
+        bot.back();
         waitForStart();
-
+        bot.up();
         bot.armZero();
         while (opModeIsActive() && !isStopRequested()) {
             if (gamepad1.dpad_up) {
@@ -59,31 +60,21 @@ public class Teleop26290 extends LinearOpMode {
 
             if (gamepad1.y){
                 bot.down();
-                bot.left();
             }
 
             if (gamepad1.x){
                 bot.up();
-                bot.right();
             }
 
-            if (gamepad2.b){
-                bot.up();
-            }
-
-            else if (gamepad2.y){
-                bot.down();
-            }
-
-            else if (gamepad2.x){
+            if (gamepad1.ps){
                 bot.back();
             }
 
-            if (gamepad2.left_bumper){
+            if (gamepad1.share){
                 bot.left();
             }
 
-            else if (gamepad2.right_bumper){
+            else if (gamepad1.options){
                 bot.right();
             }
 
