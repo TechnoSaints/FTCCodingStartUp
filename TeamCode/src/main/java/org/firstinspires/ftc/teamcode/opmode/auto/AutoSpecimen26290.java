@@ -35,7 +35,7 @@ public class AutoSpecimen26290 extends LinearOpMode {
             sleep(1000);
             bot.liftMediumPosition();
             sleep(500);
-            bot.moveForwardForDistance(2);
+            bot.moveForwardForDistance(1);
             sleep(500);
             bot.armMediumHighPosition();
             sleep(500);
