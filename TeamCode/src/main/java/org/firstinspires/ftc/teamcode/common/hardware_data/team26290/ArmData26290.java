@@ -13,7 +13,7 @@ public class ArmData26290 extends LiftData {
         lowPosition = 0;
         mediumPosition = 400;
         mediumLowPosition = 1393;
-        mediumHighPosition = 600;
+        mediumHighPosition = 1323;
         highPosition = 1624;
     }
 }
