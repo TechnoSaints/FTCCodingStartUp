@@ -10,7 +10,7 @@ public class DrivetrainData9800 extends DrivetrainData {
         maxSlowPower = 0.25;
         leftFrontDirection = DcMotorSimple.Direction.REVERSE;
         leftBackDirection = DcMotorSimple.Direction.REVERSE;
-        rightFrontDirection = DcMotorSimple.Direction.FORWARD;
-        rightBackDirection = DcMotorSimple.Direction.FORWARD;
+        rightFrontDirection = DcMotorSimple.Direction.REVERSE;
+        rightBackDirection = DcMotorSimple.Direction.REVERSE;
     }
 }

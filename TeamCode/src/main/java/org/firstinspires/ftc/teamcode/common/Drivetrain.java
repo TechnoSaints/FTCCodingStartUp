@@ -138,9 +138,9 @@ public class Drivetrain extends Component {
 //        telemetry.addData("currentPower: ", currentPower);
 //        telemetry.addData("maxVelocity: ", maxVelocity);
 //        telemetry.update();
-        leftFrontDrive.setVelocity(leftFrontPower * currentPower * maxVelocity);
+        leftFrontDrive.setVelocity(leftFrontPower * currentPower * maxVelocity*.8);
         rightFrontDrive.setVelocity(rightFrontPower * currentPower * maxVelocity);
-        leftBackDrive.setVelocity(leftBackPower * currentPower * maxVelocity);
+        leftBackDrive.setVelocity(leftBackPower * currentPower * maxVelocity*.8);
         rightBackDrive.setVelocity(rightBackPower * currentPower * maxVelocity);
         log();
     }
@@ -301,11 +301,11 @@ public class Drivetrain extends Component {
     private void log() {
 //        telemetry.addData("leftFrontDrive Position: ", leftFrontDrive.getCurrentPosition());
 //        telemetry.addData("leftFrontDrive Target: ", leftFrontDrive.getTargetPosition());
-//        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
-//        telemetry.addData("rightFrontDrive Velocity: ", rightFrontDrive.getVelocity());
-//        telemetry.addData("leftBackDrive Velocity: ", leftBackDrive.getVelocity());
-//        telemetry.addData("rightBackVelocity: ", rightBackDrive.getVelocity());
+        telemetry.addData("leftFrontDrive Velocity: ", leftFrontDrive.getVelocity());
+        telemetry.addData("rightFrontDrive Velocity: ", rightFrontDrive.getVelocity());
+        telemetry.addData("leftBackDrive Velocity: ", leftBackDrive.getVelocity());
+        telemetry.addData("rightBackVelocity: ", rightBackDrive.getVelocity());
 
-//        telemetry.update();
+      telemetry.update();
     }
 }

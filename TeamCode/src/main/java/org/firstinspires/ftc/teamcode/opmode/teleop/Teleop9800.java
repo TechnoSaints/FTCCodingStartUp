@@ -35,11 +35,11 @@ public class Teleop9800 extends LinearOpMode {
             if (gamepad1.dpad_up) {
                 bot.creepDirection(-1.0, 0.0, 0.0);
             } else if (gamepad1.dpad_down) {
-                bot.creepDirection(1.0, 0.0, 0.0);
+                bot.creepDirection(.65, 0.0, 0.0);
             } else if (gamepad1.dpad_left) {
-                bot.creepDirection(0.0, -1.0, 0.0);
+                bot.creepDirection(0.0, -.65, 0.0);
             } else if (gamepad1.dpad_right) {
-                bot.creepDirection(0.0, 1.0, 0.0);
+                bot.creepDirection(0.0, .65, 0.0);
             } else {
                 driveAxial = gamepad1.left_stick_y;
                 driveStrafe = gamepad1.left_stick_x;
@@ -47,9 +47,9 @@ public class Teleop9800 extends LinearOpMode {
                 if ((Math.abs(driveAxial) < 0.2) && (Math.abs(driveStrafe) < 0.2) && (Math.abs(driveYaw) < 0.2)) {
                     bot.stopDrive();
                 } else
-                    bot.moveDirection(driveAxial, driveStrafe, -driveYaw);
+                    bot.moveDirection(driveAxial*.65, driveStrafe*.65, -driveYaw*.65);
             }
-
+/*
             if (((gamepad1.a) || (gamepad2.a)) && (timer.milliseconds() > 250)) {
                 if (!grabberPressed) {
                     timer.reset();
@@ -125,6 +125,8 @@ public class Teleop9800 extends LinearOpMode {
             } else {
                 bot.outtakeLiftStop();
             }
+
+ */
         }
     }
 }
