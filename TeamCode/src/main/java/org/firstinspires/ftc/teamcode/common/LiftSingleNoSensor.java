@@ -21,7 +21,7 @@ public class LiftSingleNoSensor extends Component {
     private final int minTolerance;
     private double targetVelocity;
     private int highPosition;
-    private int mediumPosition;
+    private int mediumPosition, mediumHighPosition, mediumLowPosition;
     private int lowPosition;
     private int direction = 1;
     private String liftName;
@@ -37,7 +37,9 @@ public class LiftSingleNoSensor extends Component {
         minPosition = liftData.minPosition;
         minTolerance = liftData.minTolerance;
         highPosition = liftData.highPosition;
+        mediumHighPosition = liftData.mediumHighPosition;
         mediumPosition = liftData.mediumPosition;
+        mediumLowPosition = liftData.mediumLowPosition;
         lowPosition = liftData.lowPosition;
         long prevTime;
         int prevPosition;
@@ -90,9 +92,18 @@ public class LiftSingleNoSensor extends Component {
         log();
     }
 
+    public void mediumHighPosition(){
+        stopAtPosition(mediumHighPosition, false);
+        log();
+    }
+
     public void mediumPosition() {
         stopAtPosition(mediumPosition, false);
         log();
+    }
+
+    public void mediumLowPosition(){
+        stopAtPosition(mediumLowPosition, false);
     }
 
     public void lowPosition() {

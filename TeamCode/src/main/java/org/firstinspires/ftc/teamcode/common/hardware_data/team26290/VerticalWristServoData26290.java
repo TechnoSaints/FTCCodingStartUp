@@ -4,8 +4,8 @@ import org.firstinspires.ftc.teamcode.common.hardware_data.ServoData;
 
 public class VerticalWristServoData26290 extends ServoData{
     public VerticalWristServoData26290(){
-        openPosition = 0;
-        middlePosition = 0.87;
-        closePosition = 0.57;
+        openPosition = 0.31;
+        middlePosition = 0;
+        closePosition = 0.84;
     }
 }

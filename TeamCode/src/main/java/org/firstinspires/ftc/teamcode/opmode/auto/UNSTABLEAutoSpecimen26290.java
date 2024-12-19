@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.common.Bot26290;
 
 @Config
-@Autonomous(name = "Specimen and Park", group = "Auto", preselectTeleOp = "Teleop26290")
-public class AutoSpecimen26290 extends LinearOpMode {
+@Autonomous(name = "UNSTABLE Specimen and Park", group = "UNSTABLE")
+public class UNSTABLEAutoSpecimen26290 extends LinearOpMode {
     protected Bot26290 bot;
     @Override
     public void runOpMode() {
@@ -48,33 +48,42 @@ public class AutoSpecimen26290 extends LinearOpMode {
             bot.armlowPosition();
             bot.back();
             sleep(500);
-            /*bot.turnToHeading(180);
-            bot.strafeRightForDistance(-32);
-            bot.armMediumPosition();
-            sleep(500);
-            bot.liftMediumPosition();
-            bot.grabberClose();
-            sleep(500);
-            bot.liftlowPosition();
-            sleep(500);
-            bot.armHighPosition();
-            bot.strafeRightForDistance(32);
-            bot.turnToHeading(180);
-            bot.liftMediumPosition();
-            sleep(500);
-            bot.moveForwardForDistance(2);
-            bot.down();
-            bot.moveForwardForDistance(-2);
-            sleep(500);
-            bot.grabberOpen();
-            sleep(500);
-            bot.liftlowPosition();
-            sleep(500);*/
+            for (int i=0; i < 4; i++){
+                GrabSpecimen();
+                ClipSpecimen();
+            }
             bot.moveForwardForDistance(-18);
             bot.strafeRightForDistance(55);
             bot.armMediumHighPosition();
             telemetry.addLine("Complete");
             telemetry.update();
         }
+    }
+
+    void GrabSpecimen(){
+        bot.turnToHeading(179.9);
+        bot.strafeRightForDistance(-32);
+        bot.armMediumPosition();
+        sleep(500);
+        bot.liftMediumPosition();
+        bot.grabberClose();
+        sleep(500);
+        bot.liftlowPosition();
+        sleep(500);
+        bot.armHighPosition();
+        bot.strafeRightForDistance(32);
+        bot.turnToHeading(0.1);
+    }
+
+    void ClipSpecimen(){
+        bot.liftMediumPosition();
+        sleep(500);
+        bot.back();
+        bot.liftMediumHighPosition();
+        bot.grabberOpen();
+        sleep(500);
+        bot.armHighPosition();
+        bot.liftlowPosition();
+        sleep(500);
     }
 }

@@ -73,9 +73,13 @@ public class Bot26290 extends Component {
         lift.highPosition();
     }
 
+    public void liftMediumHighPosition(){lift.mediumHighPosition();}
+
     public void liftMediumPosition() {
         lift.mediumPosition();
     }
+
+    public void liftMediumLowPosition(){lift.mediumLowPosition();}
 
     public void liftlowPosition() {
         lift.lowPosition();

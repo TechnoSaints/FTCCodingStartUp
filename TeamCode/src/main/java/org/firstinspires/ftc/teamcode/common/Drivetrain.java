@@ -12,6 +12,9 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.common.hardware_data.DrivetrainData;
 import org.firstinspires.ftc.teamcode.common.hardware_data.MotorData;
 
@@ -60,9 +63,10 @@ public class Drivetrain extends Component {
 
 //        noseSwitch = hardwareMap.get(TouchSensor.class, "noseSwitch");
 
-        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.LEFT;
+        RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.RIGHT;
         RevHubOrientationOnRobot.UsbFacingDirection usbDirection = RevHubOrientationOnRobot.UsbFacingDirection.FORWARD;
         RevHubOrientationOnRobot orientationOnRobot = new RevHubOrientationOnRobot(logoDirection, usbDirection);
+        RevHubOrientationOnRobot exOrientationOnRobot = new RevHubOrientationOnRobot(new Orientation(AxesReference.INTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES, 90, 180, 0, 0));
 
         imu = opMode.hardwareMap.get(IMU.class, "imu");
         imu.initialize(new IMU.Parameters(orientationOnRobot));
@@ -85,6 +89,9 @@ public class Drivetrain extends Component {
         while (Math.abs(headingError) > headingThreshold) {
             headingError = getHeadingError(targetHeading);
 
+            // This section doesn't seem to work...
+
+
             // Determine required steering to keep on heading
             turnSpeed = getSteeringCorrection(headingError, turnGain);
 
@@ -94,11 +101,22 @@ public class Drivetrain extends Component {
             // Pivot in place by applying the turning correction
             moveDirection(0, 0, turnSpeed);
 
-            telemetry.addData("headingError: ", headingError);
-            telemetry.addData("turnSpeed: ", turnSpeed);
-            telemetry.update();
+            /*if (getHeadingError(targetHeading) > headingError){
+                moveDirection(0, 0, -turnSpeed);
+            }
+            while (Math.abs(headingError) > headingThreshold && opMode.opModeIsActive() && !opMode.isStopRequested())
+            {
+                telemetry.addData("headingError: ", headingError);
+                telemetry.addData("turnSpeed: ", turnSpeed);
+                telemetry.addData("targetHeading", targetHeading);
+                telemetry.addData("currentPosition", getHeading());
+                telemetry.update();
+            }*/
         }
-        stop();
+        leftFrontDrive.setVelocity(0.0);
+        leftBackDrive.setVelocity(0.0);
+        rightFrontDrive.setVelocity(0.0);
+        rightBackDrive.setVelocity(0.0);
     }
 
     public void turnForDistance(double distance) {
@@ -133,10 +151,10 @@ public class Drivetrain extends Component {
             rightBackPower /= max;
         }
 
-        telemetry.addData("leftFrontPower: ", leftFrontPower);
+        /*telemetry.addData("leftFrontPower: ", leftFrontPower);
         telemetry.addData("currentPower: ", currentPower);
         telemetry.addData("maxVelocity: ", maxVelocity);
-        telemetry.update();
+        //telemetry.update();*/
 
         leftFrontDrive.setVelocity(leftFrontPower * currentPower * maxVelocity);
         rightFrontDrive.setVelocity(rightFrontPower * currentPower * maxVelocity);

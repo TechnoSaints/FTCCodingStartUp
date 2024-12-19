@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.common.Bot26290;
 
 @Config
-@Autonomous(name = "Specimen and Park", group = "Auto", preselectTeleOp = "Teleop26290")
-public class AutoSpecimen26290 extends LinearOpMode {
+@Autonomous(name = "DEBUG UNSTABLE Specimen and Park", group = "UNSTABLE")
+public class DEBUGUNSTABLEAutoSpecimen26290 extends LinearOpMode {
     protected Bot26290 bot;
     @Override
     public void runOpMode() {
@@ -25,12 +25,11 @@ public class AutoSpecimen26290 extends LinearOpMode {
 
         waitForStart();
         bot.up();
-        bot.armZero();
 
         if (opModeIsActive() && !isStopRequested()) {
             telemetry.addLine("Starting auto actions...");
             telemetry.update();
-            bot.moveForwardForDistance(16);
+            /*bot.moveForwardForDistance(16);
             bot.armHighPosition();
             sleep(1000);
             bot.liftMediumPosition();
@@ -47,9 +46,9 @@ public class AutoSpecimen26290 extends LinearOpMode {
             sleep(500);
             bot.armlowPosition();
             bot.back();
-            sleep(500);
-            /*bot.turnToHeading(180);
-            bot.strafeRightForDistance(-32);
+            sleep(500);*/
+            bot.turnToHeading(179.9);
+            /*bot.strafeRightForDistance(-32);
             bot.armMediumPosition();
             sleep(500);
             bot.liftMediumPosition();
@@ -59,7 +58,7 @@ public class AutoSpecimen26290 extends LinearOpMode {
             sleep(500);
             bot.armHighPosition();
             bot.strafeRightForDistance(32);
-            bot.turnToHeading(180);
+            bot.turnToHeading(0.1);
             bot.liftMediumPosition();
             sleep(500);
             bot.moveForwardForDistance(2);
@@ -69,10 +68,10 @@ public class AutoSpecimen26290 extends LinearOpMode {
             bot.grabberOpen();
             sleep(500);
             bot.liftlowPosition();
-            sleep(500);*/
+            sleep(500);
             bot.moveForwardForDistance(-18);
             bot.strafeRightForDistance(55);
-            bot.armMediumHighPosition();
+            bot.armMediumHighPosition();*/
             telemetry.addLine("Complete");
             telemetry.update();
         }
